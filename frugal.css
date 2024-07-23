@@ -1,0 +1,220 @@
+@font-face {
+    font-family: 'NationalParkExtraBold';
+    src: url('fonts/NationalPark-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'NationalParkRegular';
+    src: url('fonts/NationalPark-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DinishCondensedBold';
+    src: url('fonts/DinishCondensed-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DinishCondensedRegular';
+    src: url('fonts/DinishCondensed-Regular.woff2') format('woff2');
+}
+
+@page {
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    word-spacing: -0.1rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-style: normal;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+h3 {
+    font-weight: 900;
+}
+
+h4 {
+    font-weight: 600;
+}
+
+
+a,
+a:visited {
+    color: var(--main-color);
+}
+
+footer {
+    margin-top: 100px;
+    padding-top: 10px;
+    border-top: 1px solid var(--main-color);
+}
+
+
+/* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
+@media only screen and (max-width: 799px) {
+    :root {
+        --main-color: teal;
+        --lite-bkg: beige;
+    }
+
+    body {
+        margin: 10px 20px;
+        background-color: var(--lite-bkg);
+        color: var(--main-color);
+    }
+
+    header {
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        font-size: 60px;
+        line-height: 100%;
+    }
+
+    #description {
+        font-size: 24px;
+        line-height: 100%;
+    }
+
+    #evenements {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1.5rem;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 26px;
+        line-height: 100%;
+    }
+
+    h4 {
+        font-size: 32px;
+        line-height: 100%;
+    }
+
+
+
+}
+
+
+@media screen and (min-width: 800px) {
+    :root {
+        --main-color: teal;
+        --lite-bkg: Beige;
+    }
+
+    body {
+        margin: 15px 20px;
+        background-color: var(--lite-bkg);
+        color: var(--main-color);
+    }
+
+    header {
+        margin-bottom: 70px;
+    }
+
+    h1 {
+        font-size: 100px;
+        line-height: 100%;
+    }
+
+    #description {
+        font-size: 50px;
+    }
+
+    #evenements {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1.5rem;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 30px;
+        line-height: 100%;
+    }
+
+    h4 {
+        font-size: 36px;
+        line-height: 100%;
+    }
+}
+
+
+
+@media print {
+    :root {
+        --main-color: black;
+        --lite-bkg: white;
+    }
+
+
+    body {
+        font-size: 13px;
+        max-width: 21cm;
+    }
+
+    header {
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 100px;
+        line-height: 90%;
+    }
+
+    #description {
+        font-size: 40px;
+    }
+
+    #evenements {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 24px;
+        line-height: 100%;
+    }
+
+    h4 {
+        font-size: 24px;
+        line-height: 100%;
+    }
+}
