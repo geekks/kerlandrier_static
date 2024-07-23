@@ -42,11 +42,11 @@
 
         // Premier script qui permet de peupler la liste d'événements
         async function loadEvents() {
-            const response = await fetch(`https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events?relative%5B0%5D=current&relative%5B1%5D=upcoming&detailed=1&key=${PUBLIC_KEY}`);
+            const response = await fetch(`https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events?relative%5B0%5D=current&relative%5B1%5D=upcoming&detailed=1&key=${PUBLIC_KEY}&size=100`);
             const evnts = await response.json();
             let content = "";
             for (let i = 0; i < evnts.events.length; i++) {
-                content += `<span class='evenement'>
+                content += `<span class='evenement' title='${evnts.events[i].longDescription.fr}'>
                     <h2>${evnts.events[i].dateRange.fr}</h2>
                     <h3> ${evnts.events[i].location.name}</h3>
                     <h4><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${evnts.events[i].slug}> ${evnts.events[i].title.fr}</a></h4>
