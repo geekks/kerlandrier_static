@@ -46,11 +46,14 @@
             const evnts = await response.json();
             let content = "";
             for (let i = 0; i < evnts.events.length; i++) {
-                content += `<span class='evenement' title='${evnts.events[i].longDescription.fr}'>
+                const kw = evnts.events[i].keywords?.fr?.[0] ?? "";
+                content += 
+                `<span class='evenement' title='${evnts.events[i].longDescription.fr ?? evnts.events[i].description.fr}'>
                     <h2>${evnts.events[i].dateRange.fr}</h2>
                     <h3> ${evnts.events[i].location.name}</h3>
                     <h4><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${evnts.events[i].slug}> ${evnts.events[i].title.fr}</a></h4>
-                    </span>`;
+                    ${kw ? `<span class="tag"> ${kw} </span>` : ""}
+                </span>`;
             }
             document.getElementById("evenements").innerHTML = content
         }
