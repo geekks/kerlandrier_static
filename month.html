@@ -20,6 +20,7 @@
         <h1>Kerlandrier</h1>
         <p id="description">Test éditorial</p>
         <select id="monthSelect">
+            <option value="">Choisir une date</option>
             <option value="2024-09-01:00:00:00.000,2024-10-01:00:00:00.000">Sept-24</option>
             <option value="2024-10-01:00:00:00.000,2024-11-01:00:00:00.000">Oct-24</option>
             <option value="2024-11-01:00:00:00.000,2024-12-01:00:00:00.000">Nov-24</option>
@@ -94,6 +95,7 @@
         // Event listener on select change
         document.getElementById('monthSelect').addEventListener('change', () => {
             const selectedMonth = document.getElementById('monthSelect').value;
+            if (!selectedMonth) return
             document.getElementById('description').innerText = selectedMonth
             const query = updateQueryParams(selectedMonth);
             console.log("query - ", query);
