@@ -18,7 +18,13 @@
 <body>
     <header>
         <h1>Kerlandrier</h1>
-        <p id="description">Oct-24</p>
+        <p id="description">Test éditorial</p>
+        <select id="monthSelect">
+            <option value="2024-09-01:00:00:00.000,2024-10-01:00:00:00.000">Sept-24</option>
+            <option value="2024-10-01:00:00:00.000,2024-11-01:00:00:00.000">Oct-24</option>
+            <option value="2024-11-01:00:00:00.000,2024-12-01:00:00:00.000">Nov-24</option>
+            <option value="2024-12-01:00:00:00.000,2025-01-01:00:00:00.000">Dec-24</option>
+        </select>
     </header>
 
     <section id="evenements">
@@ -46,20 +52,35 @@
             key: PUBLIC_KEY,
             size: 100,
             monolingual: "fr",
-            "timings[gte]": "2024-10-01:00:00:00.000",
-            "timings[lte]": "2024-11-01:00:00:00.000",
         });
-        const query = URL + "?" + paramsURL.toString();
+        const defaultQuery = URL + "?" + paramsURL.toString();
+
+        // Function to update the URL parameters based on the selected month
+        function updateQueryParams(selectedMonth) {
+            const [startDate, endDate] = selectedMonth.split(",");
+            console.log("startDate - ", startDate);
+            const paramsURL = new URLSearchParams({
+                relative: ['current', 'upcoming'],
+                detailed: 1,
+                key: PUBLIC_KEY,
+                size: 100,
+                monolingual: "fr",
+                "timings[gte]": startDate,
+                "timings[lte]": endDate,
+            });
+
+            return URL + "?" + paramsURL.toString();
+        }
 
         // Premier script qui permet de peupler la liste d'événements
-        async function loadEvents() {
+        async function loadEvents(query) {
             const response = await fetch(query);
             const evnts = await response.json();
             let content = "";
             for (let i = 0; i < evnts.events.length; i++) {
                 const kw = evnts.events[i].keywords?.[0] ?? "";
-                content += 
-                `<span class='evenement' title='${evnts.events[i].longDescription ?? evnts.events[i].description}'>
+                content +=
+                    `<span class='evenement' title='${evnts.events[i].longDescription ?? evnts.events[i].description}'>
                     <h2>${evnts.events[i].dateRange}</h2>
                     <h3> ${evnts.events[i].location.name}</h3>
                     <h4><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${evnts.events[i].slug}> ${evnts.events[i].title}</a></h4>
@@ -68,7 +89,16 @@
             }
             document.getElementById("evenements").innerHTML = content
         }
-        loadEvents();
+        loadEvents(defaultQuery);
+
+        // Event listener on select change
+        document.getElementById('monthSelect').addEventListener('change', () => {
+            const selectedMonth = document.getElementById('monthSelect').value;
+            document.getElementById('description').innerText = selectedMonth
+            const query = updateQueryParams(selectedMonth);
+            console.log("query - ", query);
+            loadEvents(query);
+        });
     </script>
 
 
