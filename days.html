@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerlandrier</title>
-    <link rel="stylesheet" href="frugal.css">
+    <link rel="stylesheet" href="frugal_days.css">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,10 +20,9 @@
         <h1>Kerlandrier</h1>
         <p id="description">La culture c'est pas de la confiture</p>
         <p id="edito_link"><a href="month.html">Test éditorial</a></p>
-        <p id="edito_link"><a href="days.html">Test aggrégation jour</a></p>
     </header>
 
-    <section id="evenements">
+    <section id="evenements-container">
         <!-- C'est ici que le premier script JS affiche le flux d'événements -->
     </section>
 
@@ -42,22 +41,42 @@
         const AGENDA_UID = "44891982";
         const PUBLIC_KEY = "886db2f2acd749bc9a4a3eeda9a6d0dc";
 
+        function aggregatePerDay(events) {
+            const days = {};
+            for (let i = 0; i < events.length; i++) {
+                const d = events[i].dateRange.fr.split(",")[0];
+                if (!days[d]) {
+                    days[d] = [];
+                }
+                days[d].push(events[i]);
+            }
+            return days;
+        }
+
         // Premier script qui permet de peupler la liste d'événements
         async function loadEvents() {
             const response = await fetch(`https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events?relative%5B0%5D=current&relative%5B1%5D=upcoming&detailed=1&key=${PUBLIC_KEY}&size=100`);
             const evnts = await response.json();
+            const evntsDays = aggregatePerDay(evnts.events);
+            console.log("evntsDays - ", evntsDays);
             let content = "";
-            for (let i = 0; i < evnts.events.length; i++) {
-                const kw = evnts.events[i].keywords?.fr?.[0] ?? "";
-                content += 
-                `<span class='evenement' title='${evnts.events[i].longDescription.fr ?? evnts.events[i].description.fr}'>
-                    <h2>${evnts.events[i].dateRange.fr}</h2>
-                    <h3> ${evnts.events[i].location.name}</h3>
-                    <h4><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${evnts.events[i].slug}> ${evnts.events[i].title.fr}</a></h4>
-                    ${kw ? `<span class="tag"> ${kw} </span>` : ""}
-                </span>`;
+            for (const d in evntsDays) {
+                console.log("d - ", d);
+                const events = evntsDays[d];
+                content += `<h1 class='date-header'>${d}</h1>`;
+                content += `<div class='evenements'>`
+                    for (let i = 0; i < events.length; i++) {
+                        const kw = events[i].keywords?.fr?.[0] ?? "";
+                        content += 
+                        `<span class='evenement' title='${events[i].longDescription.fr ?? events[i].description.fr}'>
+                            <h3> ${events[i].location.name}</h3>
+                            <h4><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h4>
+                            ${kw ? `<span class="tag"> ${kw} </span>` : ""}
+                            </span>`;
+                    }                
+                content += `</div>`
             }
-            document.getElementById("evenements").innerHTML = content
+            document.getElementById("evenements-container").innerHTML = content
         }
         loadEvents();
     </script>
