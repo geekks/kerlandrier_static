@@ -58,7 +58,8 @@ a:visited {
 
 
 .tag {
-    margin-right: 5px;
+    margin-right: 2px;
+    margin-bottom: 2px;
     padding: 2px 9px;
     background-color: var(--main-color);
     border-radius: 4px;
@@ -69,16 +70,29 @@ a:visited {
 }
 
 
+
 ul, ol {list-style-position: inside;}
 
-#contribution{margin-top: 50px;}
+#contribution{
+    text-align: center;
+    margin-top: 50px;
+}
+
+#contribution ul {
+    list-style-type: none;
+
+}
 
 footer {
     margin-top: 20px;
     padding-top: 10px;
     border-top: 1px solid var(--main-color);
+    text-align: center;
 }
 
+#print-button {
+    cursor: pointer;
+}
 
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
@@ -172,14 +186,21 @@ footer {
 
     .evenements {
         display: grid;
-        grid-template-columns: repeat(auto-fit, 360px);
+        grid-template-columns: repeat(auto-fit, 400px);
         grid-gap: 1.5rem;
     }
-.date-header {
-    padding: 0 0 10px;
-    margin-top: 15px;
-    width: 100%;
-}
+
+    .card-title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .date-header {
+        padding: 0 0 10px;
+        margin-top: 15px;
+        width: 100%;
+    }
 
     .tag{font-size: 1.2rem;}
 

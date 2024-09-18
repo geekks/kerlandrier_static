@@ -18,8 +18,8 @@
 <body>
     <header>
         <h1>Kerlandrier</h1>
-        <p id="description">Le Kerlandrier est un site affiche. Il a vocation à agréger et mettre à disposition les événements sur le territoire de la CCA (et plus si affinités). </p>
-        <p id="edito_link"><a href="month.html">Test éditorial</a></p>
+        <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de la CCA (et plus si affinités).</p>
+        <p onclick="window.print()" id="print-button">Il est prêt à l'impression !</p>
     </header>
 
     <section id="evenements-container">
@@ -27,22 +27,22 @@
     </section>
 
     <section id="contribution">
-        <p>Le projet dit oui à votre assistance si vous :</p>
+        <h3>Le Kerlandrier est un projet collaboratif</h3>
+        <p><i>Le projet dit oui à votre assistance si vous...</i></p>
+        <br/>
         <ul>
-            <li>Êtes au courant de tous les bons plans du territoire,</li>
-            <li>Remplissez l'Openagenda</li>
-            <li>Partagez un Google Agenda personnel que vous remplissez consciencieusement d'événements de la CCA et que vous pouvez partager</li>
-            <li>Scrappez les internets (et surtout les GAFAM) pour en extraire les substantifiques événements</li>
-            <li>Faites de la spéculation sur le marché du nom de domaine pour inonder les internets de Kerlandrier</li>
-            <li>Collez des affiches à vos heures perdues</li>
+            <li>...êtes au courant des bons plans du territoire,</li>
+            <li>...parcourez les internets pour en extraire des pépites,</li>
+            <li>...collez des affiches à vos heures perdues,</li>
+            <li>...souhaitez remplir la <a href="https://openagenda.com/fr/kerlandrier">liste des événements</a> avec nous,</li>
+            <li>...possédez un agenda type Google Agenda que vous pouvez rendre public.</li>
         </ul>
     </section>
 
 
     <footer>
-
         <p id="hentou">Ce site/affiche est un projet Web2Print accompagné par Hentoù. Plus d'information sur le site
-            <a href="https://hentou.cc">hentou.cc/</a>
+            <a href="https://hentou.cc">hentou.cc/</a>.
         </p>
     </footer>
 
@@ -57,9 +57,7 @@
             const days = {};
             for (let i = 0; i < events.length; i++) {
                 const d = events[i].dateRange.fr.split(",")[0];
-                if (!days[d]) {
-                    days[d] = [];
-                }
+                if (!days[d]) days[d] = [];
                 days[d].push(events[i]);
             }
             return days;
@@ -70,22 +68,19 @@
             const response = await fetch(`https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events?relative%5B0%5D=current&relative%5B1%5D=upcoming&detailed=1&key=${PUBLIC_KEY}&size=100`);
             const evnts = await response.json();
             const evntsDays = aggregatePerDay(evnts.events);
-            console.log("evntsDays - ", evntsDays);
             let content = "";
             for (const d in evntsDays) {
-                console.log("d - ", d);
                 const events = evntsDays[d];
                 content += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
                 content += `<div class='evenements'>`
                     for (let i = 0; i < events.length; i++) {
-                        const kw = events[i].keywords?.fr?.[0] ?? "";
+                        const kws = events[i].keywords?.fr.map((k) => `<div class="tag"> #${k} </div>`)
                         content += 
                         `<span class='evenement' title='${events[i].longDescription.fr ?? events[i].description.fr}'>
-                        ${kw ? `<div class="tag"> #${kw} </div>` : ""}
-                            <h2><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h2>
+                            ${kws.join("")}
+                            <h2 class='card-title'><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h2>
                         <h3>⟜${events[i].location.name}</h3>
-
-                            </span>`;
+                        </span>`;
                     }                
                 content += `</div></div>`
             }
