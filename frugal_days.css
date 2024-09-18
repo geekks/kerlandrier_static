@@ -172,7 +172,7 @@ footer {
 
     .evenements {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, 360px);
         grid-gap: 1.5rem;
     }
 .date-header {
