@@ -18,12 +18,24 @@
 <body>
     <header>
         <h1>Kerlandrier</h1>
-        <p id="description">La culture c'est pas de la confiture</p>
+        <p id="description">Le Kerlandrier est un site affiche. Il a vocation à agréger et mettre à disposition les événements sur le territoire de la CCA (et plus si affinités). </p>
         <p id="edito_link"><a href="month.html">Test éditorial</a></p>
     </header>
 
     <section id="evenements-container">
         <!-- C'est ici que le premier script JS affiche le flux d'événements -->
+    </section>
+
+    <section id="contribution">
+        <p>Le projet dit oui à votre assistance si vous :</p>
+        <ul>
+            <li>Êtes au courant de tous les bons plans du territoire,</li>
+            <li>Remplissez l'Openagenda</li>
+            <li>Partagez un Google Agenda personnel que vous remplissez consciencieusement d'événements de la CCA et que vous pouvez partager</li>
+            <li>Scrappez les internets (et surtout les GAFAM) pour en extraire les substantifiques événements</li>
+            <li>Faites de la spéculation sur le marché du nom de domaine pour inonder les internets de Kerlandrier</li>
+            <li>Collez des affiches à vos heures perdues</li>
+        </ul>
     </section>
 
 
@@ -63,18 +75,19 @@
             for (const d in evntsDays) {
                 console.log("d - ", d);
                 const events = evntsDays[d];
-                content += `<h1 class='date-header'>${d}</h1>`;
+                content += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
                 content += `<div class='evenements'>`
                     for (let i = 0; i < events.length; i++) {
                         const kw = events[i].keywords?.fr?.[0] ?? "";
                         content += 
                         `<span class='evenement' title='${events[i].longDescription.fr ?? events[i].description.fr}'>
-                            <h3> ${events[i].location.name}</h3>
-                            <h4><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h4>
-                            ${kw ? `<span class="tag"> ${kw} </span>` : ""}
+                        ${kw ? `<div class="tag"> #${kw} </div>` : ""}
+                            <h2><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h2>
+                        <h3>⟜${events[i].location.name}</h3>
+
                             </span>`;
                     }                
-                content += `</div>`
+                content += `</div></div>`
             }
             document.getElementById("evenements-container").innerHTML = content
         }
