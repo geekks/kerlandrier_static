@@ -71,6 +71,12 @@
 
 
     <script>
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(() => console.log('Service Worker registered'));
+        }
+
         const AGENDA_SLUG = "kerlandrier"
         const AGENDA_UID = "44891982";
         const PUBLIC_KEY = "886db2f2acd749bc9a4a3eeda9a6d0dc";
@@ -93,6 +99,7 @@
             let content = "";
             for (const d in evntsDays) {
                 const events = evntsDays[d];
+                content+=`<div>`
                 content += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
                 content += `<div class='evenements'>`
                     for (let i = 0; i < events.length; i++) {
@@ -104,7 +111,7 @@
                         <h3>⟜${events[i].location.name}</h3>
                         </span>`;
                     }                
-                content += `</div></div>`
+                content += `</div></div></div>`
             }
             document.getElementById("evenements-container").innerHTML = content
         }

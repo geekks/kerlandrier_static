@@ -47,7 +47,8 @@ a:visited {
 }
 
 
-.dateAndEvents{    break-inside: avoid;
+.dateAndEvents{    
+    break-inside: avoid;
 }
 
 .evenements{
@@ -131,6 +132,9 @@ footer {
     padding: 0 0 10px;
     margin-top: 15px;
     width: 100%;
+    position: sticky;
+    top: 0px;
+    background-color: beige;
 }
 
 
@@ -200,6 +204,9 @@ footer {
         padding: 0 0 10px;
         margin-top: 15px;
         width: 100%;
+        position: sticky;
+        top: 0px;
+        background-color: beige;
     }
 
     .tag{font-size: 1.2rem;}
