@@ -41,7 +41,7 @@
     <header>
         <h1>Kerlandrier</h1>
         <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de la CCA (et plus si affinités).</p>
-        <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span> <span> Contact: contact [at] kerlandrier.cc</span>
+        <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span>
     </header>
 
     <section id="evenements-container">
@@ -63,9 +63,9 @@
 
 
     <footer>
-        <p id="hentou">Ce site/affiche est un projet Web2Print accompagné par Hentoù. Plus d'information sur le site
-            <a href="https://hentou.cc">hentou.cc/</a>.
-        </p>
+        <p id="hentou">Ce site/affiche est un projet Web2Print accompagné par Hentoù.</p>
+        <p> Plus d'information sur le site <a href="https://hentou.cc">hentou.cc/</a>.</p>
+        <span> Contact: contact [at] kerlandrier.cc</span>
     </footer>
 
 
@@ -104,9 +104,10 @@
                 content += `<div class='evenements'>`
                     for (let i = 0; i < events.length; i++) {
                         const kws = (events[i].keywords?.fr) ? events[i].keywords.fr.map((k) => `<div class="tag"> #${k} </div>`) : []
+                        const nextTime = events[i].nextTiming.begin.split("T")[1].slice(0,5)
                         content += 
                         `<span class='evenement' title='${events[i].longDescription.fr ?? events[i].description.fr}'>
-                            ${kws.join("")}
+                            ${kws.join("")} <div class="time-tag"> ${nextTime} </div>
                             <h2 class='card-title'><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h2>
                         <h3>⟜${events[i].location.name}</h3>
                         </span>`;
