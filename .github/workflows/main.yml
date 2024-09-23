@@ -1,0 +1,36 @@
+name: 🚀 Deploy website on push
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  web-deploy:
+    environment:
+      name: prod
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v4
+    
+    - name: 🔨 Force reset css cache
+      run: |
+        sed -i "s/href=\"frugal.css?v=100\"/href=\"frugal.css?v=$(date +%s)\"/g" index.html
+        grep frugal.css index.html  
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_HOSTNAME }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: "./www/"
+        state-name: ../.deploy-ftp-sync-state.json
+        exclude: |
+          **/.git*
+          **/.git*/**
+          .env*
+          README.md
