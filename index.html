@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Geekks" links="https://github.com/geekks">
-    <link rel='canonical' href='/'/>
+    <link rel='canonical' href='/' />
 
     <title>Kerlandrier</title>
-    
+
     <!-- Stylesheet, fonts & favicon -->
     <link rel="stylesheet" href="frugal.css?v=100">
     <link rel="icon" type="image/x-icon" href="./favicon-32x32.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
-    
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
 
@@ -24,14 +25,15 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Kerlandrier">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    
+
     <!-- iOS splash screen images -->
     <link rel="apple-touch-icon" href="./favicon-192x192.png">
     <link rel="apple-touch-startup-image" href="./favicon-512x512.png">
 
     <!-- Open Graph meta tags for link preview-->
     <meta property="og:title" content="Kerlandrier" />
-    <meta property="og:description" content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités)." />
+    <meta property="og:description"
+        content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités)." />
     <meta property="og:url" content="https://kerlandrier.cc" />
     <meta property="og:image" content="https://kerlandrier.cc/favicon-192x192.png" />
     <meta property="og:type" content="website" />
@@ -39,17 +41,19 @@
     <meta property="og:locale" content="fr_FR" />
 
     <!-- Indexing-->
-    <meta name= “robots” content=index, nofollow”>
+    <meta name=“robots” content=index, nofollow”>
 
     <!-- Metadata Google -->
-    <meta name="description" content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).">
+    <meta name="description"
+        content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).">
 
 </head>
 
 <body>
     <header>
         <h1>Kerlandrier</h1>
-        <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).</p>
+        <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si
+            affinités).</p>
         <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span>
     </header>
 
@@ -60,12 +64,13 @@
     <section id="contribution">
         <h3>Le Kerlandrier est un projet collaboratif</h3>
         <p><i>Le projet dit oui à votre assistance si vous...</i></p>
-        <br/>
+        <br />
         <ul>
             <li>...êtes au courant des bons plans du territoire,</li>
             <li>...parcourez les internets pour en extraire des pépites,</li>
             <li>...collez des affiches à vos heures perdues,</li>
-            <li>...souhaitez remplir la <a href="https://openagenda.com/fr/kerlandrier">liste des événements</a> avec nous,</li>
+            <li>...souhaitez remplir la <a href="https://openagenda.com/fr/kerlandrier">liste des événements</a> avec
+                nous,</li>
             <li>...possédez un agenda type Google Agenda que vous pouvez rendre public.</li>
         </ul>
         <br />
@@ -107,19 +112,20 @@
             let content = "";
             for (const d in evntsDays) {
                 const events = evntsDays[d];
-                content+=`<div>`
+                content += `<div>`
                 content += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
                 content += `<div class='evenements'>`
-                    for (let i = 0; i < events.length; i++) {
-                        const kws = (events[i].keywords?.fr) ? events[i].keywords.fr.map((k) => `<div class="tag"> #${k} </div>`) : []
-                        const nextTime = events[i].nextTiming.begin.split("T")[1].slice(0,5)
-                        content += 
+                for (let i = 0; i < events.length; i++) {
+                    const kws = (events[i].keywords?.fr) ? events[i].keywords.fr.map((k) => `<div class="tag"> #${k} </div>`) : []
+                    kws.push(`<div class="time-tag"> #${events[i].location.description.fr} </div>`)
+                    const nextTime = events[i].nextTiming.begin.split("T")[1].slice(0, 5)
+                    content +=
                         `<span class='evenement' title='${events[i].longDescription.fr ?? events[i].description.fr}'>
                             ${kws.join("")} <div class="time-tag"> ${nextTime} </div>
                             <h2 class='card-title'><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h2>
                         <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
                         </span>`;
-                    }                
+                }
                 content += `</div></div></div>`
             }
             document.getElementById("evenements-container").innerHTML = content
