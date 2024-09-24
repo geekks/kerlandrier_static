@@ -213,11 +213,11 @@ footer {
         grid-gap: 1.5rem;
     }
 
-    .card-title {
+    /* .card-title {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-    }
+    } */
 
     .date-header {
         padding: 0 0 10px;
@@ -298,11 +298,10 @@ footer {
 
     .time-tag{
         font-size: 1rem;
-        border: none
     }
 
     h2 {
-        margin: 3px 0 7px;
+        margin: 3px 0 4px;
         font-size: 1.4rem;
         line-height: 100%;
     }
@@ -310,6 +309,7 @@ footer {
     h3 {
         font-size: 1rem;
         line-height: 100%;
+        margin-bottom: 2px;
     }
 
     h4 {
@@ -319,6 +319,10 @@ footer {
 
     #print-button {
         display: none;
+    }
+
+    a { 
+        text-decoration: none;
     }
 }
 

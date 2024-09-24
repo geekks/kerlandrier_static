@@ -49,7 +49,7 @@
 <body>
     <header>
         <h1>Kerlandrier</h1>
-        <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de la CCA (et plus si affinités).</p>
+        <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).</p>
         <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span>
     </header>
 
@@ -68,13 +68,12 @@
             <li>...souhaitez remplir la <a href="https://openagenda.com/fr/kerlandrier">liste des événements</a> avec nous,</li>
             <li>...possédez un agenda type Google Agenda que vous pouvez rendre public.</li>
         </ul>
+        <br />
+        <p> Site web : <a href="https://kerlandrier.cc">kerlandrier.cc</a> - Contact : contact [at] kerlandrier.cc</p>
     </section>
 
 
     <footer>
-        <p id="hentou">Ce site/affiche est un projet Web2Print accompagné par Hentoù.</p>
-        <p> Plus d'information sur le site <a href="https://hentou.cc">hentou.cc/</a>.</p>
-        <span> Contact: contact [at] kerlandrier.cc</span>
     </footer>
 
 
@@ -118,7 +117,7 @@
                         `<span class='evenement' title='${events[i].longDescription.fr ?? events[i].description.fr}'>
                             ${kws.join("")} <div class="time-tag"> ${nextTime} </div>
                             <h2 class='card-title'><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title.fr}</a></h2>
-                        <h3>⟜${events[i].location.name}</h3>
+                        <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
                         </span>`;
                     }                
                 content += `</div></div></div>`
