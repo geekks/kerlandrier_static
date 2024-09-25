@@ -179,9 +179,13 @@
 
     // Month filter listener
     document.getElementById('monthSelect').addEventListener('change', () => {
+        let query = defaultQuery
         const selectedMonth = document.getElementById('monthSelect').value;
-        if (!selectedMonth) return
-        const query = updateQueryParams(selectedMonth);
+        if (selectedMonth) query = updateQueryParams(selectedMonth);
+        const filters = document.getElementsByClassName('filter');
+        for (let i = 0; i < filters.length; i++) {
+            filters[i].classList.remove('selected')
+        }
         loadEvents(query);
     });
 
