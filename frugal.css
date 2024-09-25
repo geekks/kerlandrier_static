@@ -92,6 +92,11 @@ ul, ol {list-style-position: inside;}
     margin-top: 50px;
 }
 
+#infos-link a{ 
+    font-style: italic;
+    text-decoration-thickness: 1px;
+}
+
 #contribution ul {
     list-style-type: none;
 
@@ -370,7 +375,7 @@ footer {
         line-height: 100%;
     }
 
-    #print-button {
+    #print-button, #infos-link a {
         display: none;
     }
 
