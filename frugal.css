@@ -148,6 +148,8 @@ footer {
     padding: 10px;
     background-color: var(--lite-bkg);
     border-radius: 10px;
+    border: 1px solid var(--main-color);
+    margin: 2px;
 }
 
 .selected {
