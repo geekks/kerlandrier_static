@@ -166,7 +166,7 @@
                     const nextTime = (events[i].nextTiming) ?  `<div class="time-tag"> ${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </div>` : ""
                     content +=
                         `<span class='evenement' title='${events[i].longDescription ?? events[i].description}'>
-                            ${(kws.length > 0) ? kws.join("") : ""} 
+                            ${(kws.length > 0) ? kws.join("") : ""} ${nextTime}
                             <h2 class='card-title'><a href=https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}> ${events[i].title}</a></h2>
                         <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
                         </span>`;
