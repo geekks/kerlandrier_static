@@ -195,9 +195,7 @@ footer {
     position: sticky;
     top: 0px;
     background-color: beige;
-}
-
-
+    }
 
     .tag{
         font-size: 1.2rem;
@@ -223,7 +221,13 @@ footer {
         line-height: 100%;
     }
 
+    #title {
+        display: inline-block;
+    }
 
+    #filters-container {
+        margin-top: 15px;
+    }
 }
 
 
