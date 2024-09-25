@@ -108,6 +108,53 @@ footer {
     cursor: pointer;
 }
 
+#title {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+#filters-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#monthSelect {
+    color: teal;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px;
+    background-color: var(--lite-bkg);
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.filter {
+    font-family: "Barlow Condensed", sans-serif;
+    color: var(--main-color);
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px;
+    background-color: var(--lite-bkg);
+    border-radius: 10px;
+}
+
+.selected {
+    background-color: var(--main-color);
+    color: var(--lite-bkg);
+}
+
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
     :root {
@@ -323,6 +370,14 @@ footer {
 
     a { 
         text-decoration: none;
+    }
+
+    #monthSelect {
+        display: none;
+    }
+
+    .filter {
+        display: none;
     }
 }
 
