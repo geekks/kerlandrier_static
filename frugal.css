@@ -87,7 +87,7 @@ a:visited {
 
 ul, ol {list-style-position: inside;}
 
-#contribution{
+#contribution, #abonnement{
     text-align: center;
     margin-top: 50px;
 }
@@ -97,9 +97,10 @@ ul, ol {list-style-position: inside;}
     text-decoration-thickness: 1px;
 }
 
-#contribution ul {
-    list-style-type: none;
-
+#contribution,#abonnement{
+    ul {
+        list-style-type: none;
+    }
 }
 
 footer {
@@ -394,14 +395,19 @@ footer {
     .filter {
         display: none;
     }
-        #qr-container {
-            display: block;
-            text-align: center;
-        }
-    
-        #qr {
-            max-height: 100px;
-            margin: 0 5px;
-        }
+
+    #qr-container {
+        display: block;
+        text-align: center;
+    }
+
+    #qr {
+        max-height: 100px;
+        margin: 0 5px;
+    }
+
+    #abonnement {
+        display: none;
+    }
 }
 
