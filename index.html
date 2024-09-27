@@ -54,7 +54,7 @@
         <div id="title">
             <div id="info-container">
                 <h1>Kerlandrier</h1>
-                <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).</p>
+                <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).
                 <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span><br/>
                 <span id="infos-link"> <a href="#contribution">Quelques infos sur le projet...</a> </span>
             </div>
@@ -196,9 +196,9 @@
                 // Message to find other events after maxEvents reached
                 if (d == lastDayKey &&  ! document.getElementById('monthSelect').value ){
                     content +=
-                        `<span class="other-events"> <br\><br\>
-                            <p> .... pour voir plus d'évènements,<a href="#filters-container">sélectionnez un mois </a></p> 
-                        </span>`; 
+                        `<div id="other-events"> <br\><br\>
+                            <p> .... pour voir plus d'évènements, <a href="#filters-container">sélectionnez un mois </a></p> 
+                        </div>`; 
                 }
             }
             document.getElementById("evenements-container").innerHTML = content
