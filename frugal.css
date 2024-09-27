@@ -343,6 +343,10 @@ footer {
         font-size: 40px;
     }
 
+    #contribution {
+        break-inside: avoid;
+    }
+
     .evenements {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -409,5 +413,10 @@ footer {
     #abonnement {
         display: none;
     }
+
+    #other-events{
+        display: none;
+    }
+
 }
 
