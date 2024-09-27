@@ -122,11 +122,12 @@
         const AGENDA_UID = "44891982";
         const PUBLIC_KEY = "886db2f2acd749bc9a4a3eeda9a6d0dc";
         const URL = `https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events`
+        const maxEvents = 100;
             const paramsURL = new URLSearchParams({
                 relative: ['current', 'upcoming'],
                 detailed: 1,
                 key: PUBLIC_KEY,
-                size: 100,
+                size: maxEvents,
                 monolingual: "fr",
             });
         const defaultQuery = URL + "?" + paramsURL.toString();
@@ -139,7 +140,7 @@
                 relative: ['current', 'upcoming'],
                 detailed: 1,
                 key: PUBLIC_KEY,
-                size: 100,
+                size: maxEvents,
                 monolingual: "fr",
                 "timings[gte]": startDate,
                 "timings[lte]": endDate,
@@ -165,6 +166,8 @@
             const evntsDays = aggregatePerDay(evnts.events)
             
             let content = "";
+            const DayKeys = Object.keys(evntsDays);
+            const lastDayKey = DayKeys[DayKeys.length - 1]
             for (const d in evntsDays) {
                 const events = evntsDays[d].filter((d) => {
                     if (filters.length === 0) return true;
@@ -189,6 +192,14 @@
                         </span>`;
                 }
                 content += `</div></div></div>`
+                
+                // Message to find other events after maxEvents reached
+                if (d == lastDayKey &&  ! document.getElementById('monthSelect').value ){
+                    content +=
+                        `<span class="other-events"> <br\><br\>
+                            <p> .... pour voir plus d'évènements,<a href="#filters-container">sélectionnez un mois </a></p> 
+                        </span>`; 
+                }
             }
             document.getElementById("evenements-container").innerHTML = content
         }
