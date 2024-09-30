@@ -125,11 +125,7 @@ footer {
     flex-direction: column;
 }
 
-#filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 #monthSelect {
     color: teal;
@@ -143,6 +139,16 @@ footer {
     border-radius: 10px;
     margin-bottom: 10px;
     text-align: center;
+}
+
+#filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 70px;
+    margin: 0 auto;
 }
 
 .filter {
@@ -161,10 +167,54 @@ footer {
 .selected {
     background-color: var(--main-color);
     color: var(--lite-bkg);
+    border: 1px solid var(--lite-bkg);
 }
 #qr-container {
     display: none;;
 }
+
+#first-zone {
+    position: absolute;
+    z-index: 10000;
+    width: 50px;
+    height: 50px;
+    left: 5px;
+    bottom: 0;
+}
+
+#second-zone {
+    position: absolute;
+    text-align: right;
+    z-index: 5000;
+    width: 135px;
+    height: 60px;
+    left: 0;
+    bottom: 0;
+}
+
+#third-zone {
+    position: absolute;
+    text-align: right;
+    z-index: 1000;
+    width: 200px;
+    height: 70px;
+    left: 0;
+    bottom: 0;
+}
+
+/* #aven {
+} */
+ 
+#cornouaille {
+    position: relative;
+    left: 5px;
+}
+
+#bretagne {
+    position: relative;
+    left: 4px;
+}
+
 
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
@@ -385,7 +435,7 @@ footer {
         line-height: 100%;
     }
 
-    #print-button, #infos-link a {
+    #print-button, #filters, #infos-link a {
         display: none;
     }
 
