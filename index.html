@@ -182,13 +182,17 @@
                 for (let i = 0; i < events.length; i++) {
                     const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`
                     const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink
+                    const cancel = events[i].status === 6 
                     const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : []
                     if (events[i].location.description.fr) kws.push(`<div class="time-tag"> #${events[i].location.description.fr} </div>`)
                     const nextTime = (events[i].nextTiming) ?  `<div class="time-tag"> <a href=${openAgendaLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : ""
                     content +=
                         `<span class='evenement' title='${events[i].longDescription ?? events[i].description}'>
                             ${(kws.length > 0) ? kws.join("") : ""} ${nextTime}
-                            <h2 class='card-title'><a href=${redirectLink} target="_blank"> ${events[i].title}</a></h2>
+                            <h2 class='card-title ${cancel ? "annule": ""}'>
+                                ${cancel ? "<span >[ANNULÉ]</span>": ""}
+                                <a href=${redirectLink} target="_blank"> ${events[i].title} </a>
+                            </h2>
                         <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
                         </span>`;
                 }

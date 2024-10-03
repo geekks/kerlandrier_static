@@ -219,6 +219,11 @@ footer {
     text-decoration: none;
     cursor:default;
 }
+
+.annule > a {
+    text-decoration: line-through
+}
+
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
     :root {
