@@ -1,0 +1,46 @@
+name: Deploy staging on dev & feat branch
+
+on:
+  push:
+    branches:
+      - feat/**
+      - dev/**
+
+jobs:
+  stage-site-deploy:
+    environment:
+      name: prod
+    name: deploy stage
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v4
+    
+    - name: Extract branch name
+      shell: bash
+      run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" | sed "s#/#_#" >> $GITHUB_OUTPUT
+      id: extract_branch
+
+    - name: 🔨 Force reset css cache
+      run: |
+        sed -i "s/href=\"frugal.css?v=100\"/href=\"frugal.css?v=$(date +%s)\"/g" index.html
+        grep frugal.css index.html  
+    
+    - name: index staging folders
+      run: |
+          sed -i "s/href=\"frugal.css?v=100\"/href=\"frugal.css?v=$(date +%s)\"/g" index.html
+          grep frugal.css index.html  
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_HOSTNAME }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: "./www/kerstaging/${{ steps.extract_branch.outputs.branch }}"
+        state-name: ../.deploy-${{ steps.extract_branch.outputs.branch }}-ftp-sync-state.json
+        exclude: |
+          **/.git*
+          **/.git*/**
+          .env*
+          README.md
