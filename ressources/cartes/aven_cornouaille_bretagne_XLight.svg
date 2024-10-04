@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 946.14 724.4"
+   xml:space="preserve"
+   id="svg3"
+   sodipodi:docname="Pays_bretons_kerlandrier_Xsimple.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><sodipodi:namedview
+   id="namedview1"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="1.0311982"
+   inkscape:cx="232.73896"
+   inkscape:cy="208.01045"
+   inkscape:window-width="1920"
+   inkscape:window-height="989"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg3" />
+  <defs
+   id="defs3">
+    <rect
+   x="254.15246"
+   y="233.55776"
+   width="93.356433"
+   height="24.765581"
+   id="rect6" />
+    <rect
+   x="252.65622"
+   y="231.2475"
+   width="100.13218"
+   height="33.297283"
+   id="rect4" />
+
+
+
+  </defs>
+  <metadata
+   id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+   rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+   rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <style
+   id="style1">
+        path {
+            stroke: #008080;
+            stroke-width: 2px;
+        }
+  </style>
+
+  <path
+   d="m 691.10899,148.06964 c -24.47987,-1.20141 -72.5803,-24.88593 -144.74637,3.02847 C 492.94052,139.74037 482.7625,67.657969 429.6697,56.486553 391.59447,53.315975 368.66665,93.08106 331.07835,94.80593 c -58.73174,10.56571 -119.21417,-5.005601 -177.68566,6.65657 -29.64003,8.5409 -64.295895,40.75949 -49.05263,73.92949 7.93232,28.26587 67.63322,15.52476 42.23165,48.65075 23.6587,11.65293 33.62047,40.77377 5.24623,55.60714 -42.78902,26.19888 7.09958,62.26183 35.12484,72.6685 52.02613,19.06421 118.13301,3.33355 158.98819,48.67397 57.09237,33.19266 118.00895,59.16765 179.55093,82.84785 27.83722,26.96599 62.5327,8.72908 100.55911,24.57909 30.42679,5.40282 29.3668,42.33312 60.21085,59.9637"
+   fill="none"
+   stroke="#181818"
+   id="bretagne_contour"
+   style="display:inline;fill:none;fill-opacity:1"
+   sodipodi:nodetypes="ccccccccccccc" />
+
+  <g
+   id="g3"
+   style="fill:none;fill-opacity:1"><path
+     style="display:inline;fill:none;stroke:#008080;stroke-width:2px;fill-opacity:1"
+     d="m 339.21875,393.40625 c 14.19016,-23.91559 2.5252,-60.3831 16.32422,-88.71289 20.13434,-36.7864 67.85113,-33.13914 103.375,-40.71289 37.51437,4.90512 37.93543,-38.87558 14.90625,-57.21485 -40.88531,-31.40862 -95.98837,-28.73956 -144.83008,-32.02343 -49.9793,25.798 -128.35162,2.18556 -178.14062,29.69336"
+     id="path2" /><path
+     style="fill:none;fill-opacity:1;stroke:none;display:inline;stroke-width:2px;stroke-opacity:1"
+     d="m 150.85352,204.43555 c -0.33096,0.18285 6.69246,6.95144 -4.48243,19.63672 12.04003,5.22988 20.45323,15.17797 22.65821,28.85742 -0.15404,31.32616 -32.45404,20.69833 -33.75391,51.38672 6.31662,35.0918 54.26354,52.58241 98.70313,57.92773 42.82538,5.15116 81.77494,9.01932 105.24023,31.16211"
+     id="path1" /></g>
+
+
+  <g
+   id="g4"
+   style="fill:none;fill-opacity:1"><path
+     id="path3"
+     style="fill-opacity:1;display:inline;fill-rule:evenodd;fill:none"
+     d="m 258.60287,365.2673 c 40.41119,5.99309 51.17418,4.80681 80.12915,28.20798 m 0,0 c 6.04457,-11.4635 9.78242,-21.00174 8.952,-44.36046 1.17252,-29.10664 5.70241,-38.7745 5.70241,-38.7745 -8.66052,-15.4895 -24.76715,-23.68927 -43.00643,-25.96032 -34.2179,-4.26061 -56.3971,12.66443 -59.14439,46.42534 -0.87688,10.77582 -4.51973,32.69909 7.36726,34.46196" /></g>
+
+
+  <text
+   x="288.11057"
+   y="336.39182"
+   fill="none"
+   font-family="'Barlow Condensed'"
+   font-size="14.667px"
+   font-stretch="condensed"
+   font-weight="500"
+   letter-spacing="2px"
+   stroke="#ffffff"
+   stroke-width="0.55"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:condensed;font-size:21.3333px;font-family:'Barlow Condensed';-inkscape-font-specification:'Barlow Condensed, Medium Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline"
+   xml:space="preserve"
+   id="aven_text">
+    <tspan
+   x="288.11057"
+   y="336.39182"
+   fill="#000000"
+   font-family="'Barlow Condensed'"
+   font-size="14.667px"
+   font-stretch="condensed"
+   font-weight="500"
+   letter-spacing="2px"
+   stroke="none"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:condensed;font-size:21.3333px;font-family:'Barlow Condensed';-inkscape-font-specification:'Barlow Condensed, Medium Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+   id="tspan1">Aven</tspan>
+  </text>
+
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:condensed;font-size:21.33333333px;font-family:'Barlow Condensed';-inkscape-font-specification:'Barlow Condensed, Medium Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:2px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+   x="498.42816"
+   y="324.88303"
+   id="bretagne_texte">
+    <tspan
+   id="tspan5"
+   x="498.42816"
+   y="324.88303">Bretagne</tspan>
+  </text>
+  
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:condensed;font-size:21.33333333px;font-family:'Barlow Condensed';-inkscape-font-specification:'Barlow Condensed, Medium Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:2px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+   x="262.09109"
+   y="241.09326"
+   id="cornouaille_text">
+    <tspan
+   id="tspan6"
+   x="262.09109"
+   y="241.09326">Cornouaille</tspan>
+  </text>
+</svg>
