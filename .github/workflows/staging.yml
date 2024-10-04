@@ -26,19 +26,14 @@ jobs:
         sed -i "s/href=\"frugal.css?v=100\"/href=\"frugal.css?v=$(date +%s)\"/g" index.html
         grep frugal.css index.html  
     
-    - name: index staging folders
-      run: |
-          sed -i "s/href=\"frugal.css?v=100\"/href=\"frugal.css?v=$(date +%s)\"/g" index.html
-          grep frugal.css index.html  
-    
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_HOSTNAME }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: "./www/kerstaging/${{ steps.extract_branch.outputs.branch }}"
-        state-name: ../.deploy-${{ steps.extract_branch.outputs.branch }}-ftp-sync-state.json
+        server-dir: "./www/kerstaging/${{ steps.extract_branch.outputs.branch }}/"
+        state-name: "./deploy-${{ steps.extract_branch.outputs.branch }}-ftp-sync-state.json"
         exclude: |
           **/.git*
           **/.git*/**
