@@ -187,7 +187,7 @@
                     if (events[i].location.description.fr) kws.push(`<div class="time-tag"> #${events[i].location.description.fr} </div>`)
                     const nextTime = (events[i].nextTiming) ?  `<div class="time-tag"> <a href=${openAgendaLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : ""
                     content +=
-                        `<span class='evenement' title='${events[i].longDescription.replace(/[&<>]/g, " ") ?? events[i].description.replace(/[&<>]/g, " ")}'>
+                        `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
                             ${(kws.length > 0) ? kws.join("") : ""} ${nextTime}
                             <h2 class='card-title ${cancel ? "annule": ""}'>
                                 ${cancel ? "<span >[ANNULÉ]</span>": ""}
