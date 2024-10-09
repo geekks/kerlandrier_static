@@ -155,15 +155,30 @@
             return days;
         }
 
+        // Avoid keeping long events on top during all their duration by moving them bottom list.
+        function longEventsToBottom(evntsDays) {
+            const reorderedDays = {};
+            const rangeDays = [];
+            const singleDay = [];
+            for (const day in evntsDays) {
+                if (day.includes('-') ) rangeDays.push(day);
+                else singleDay.push(day);
+                }
+            singleDay.forEach( day => { reorderedDays[day] = evntsDays[day] });
+            rangeDays.forEach( day => { reorderedDays[day] = evntsDays[day] });
+            return reorderedDays;
+        }
+
         // Premier script qui permet de peupler la liste d'événements
         async function loadEvents(query = defaultQuery, filters = []) {
             const response = await fetch(query);
             const evnts = await response.json();
-            const evntsDays = aggregatePerDay(evnts.events)
-            
+            const evntsDaysNotSorted = aggregatePerDay(evnts.events)
+            const evntsDays = longEventsToBottom(evntsDaysNotSorted)
             let content = "";
             const DayKeys = Object.keys(evntsDays);
             const lastDayKey = DayKeys[DayKeys.length - 1]
+            let firstRange = true
             for (const d in evntsDays) {
                 const events = evntsDays[d].filter((d) => {
                     if (filters.length === 0) return true;
@@ -171,7 +186,10 @@
                 })
 
                 if (events.length === 0) continue
-                
+                if (d.includes('-') && firstRange) {
+                    content += `<div id=exposection> Evenements longs (expo, festivals, ...) </div>`
+                    firstRange = false
+                }
                 content += `<div>`
                 content += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
                 content += `<div class='evenements'>`
@@ -203,6 +221,16 @@
                 }
             }
             document.getElementById("evenements-container").innerHTML = content
+
+            // Add comment link and to reach long events moved to bottom of page 
+            const EventsDivs = document.querySelectorAll('.dateAndEvents');
+            if (EventsDivs.length >= 3) {
+                const advertDiv = document.createElement('div');
+                advertDiv.id = 'expoadvert';
+                advertDiv.innerHTML =  'Les longs evenements (expos, festival) sont <a href="#exposection">en bas de page';
+                const thirdEvent = EventsDivs[2];
+                thirdEvent.insertAdjacentElement('afterend', advertDiv);
+            }
         }
         loadEvents(defaultQuery);
 
@@ -218,6 +246,7 @@
         loadEvents(query);
     });
 
+    // Month filter action
     const filter = document.getElementsByClassName('filter');
     for (let i = 0; i < filter.length; i++) {
         filter[i].addEventListener('click', () => {
