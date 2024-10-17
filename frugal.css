@@ -202,6 +202,20 @@ footer {
     bottom: 0;
 }
 
+#exposection {
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    font-style: bold;
+}
+
+#expoadvert {
+    font-size: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-style: italic;
+}
+
 /* #aven {
 } */
  
@@ -298,6 +312,11 @@ footer {
         margin-top: 15px;
     }
 
+    #expoadvert {
+        font-size: 25px;
+        padding: 15px;
+        text-align: center;
+    }
 }
 
 
@@ -443,20 +462,8 @@ footer {
         line-height: 100%;
     }
 
-    #print-button, #filters, #infos-link a {
-        display: none;
-    }
-
     a { 
         text-decoration: none;
-    }
-
-    #monthSelect {
-        display: none;
-    }
-
-    .filter {
-        display: none;
     }
 
     #qr-container {
@@ -469,11 +476,9 @@ footer {
         margin: 0 5px;
     }
 
-    #abonnement {
-        display: none;
-    }
-
-    #other-events{
+    #print-button, #filters, #infos-link a ,
+    #monthSelect, .filter, #abonnement, #other-events,
+    #expoadvert {
         display: none;
     }
 
