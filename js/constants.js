@@ -5,6 +5,8 @@ const PUBLIC_KEY = "886db2f2acd749bc9a4a3eeda9a6d0dc";
 const URL = `https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events`;
 const maxEvents = 150;
 
+const AREA_FILTERS = ["AVEN", "CORNOUAILLE", "BRETAGNE"];
+
 const defaultParams = {
     relative: ['current', 'upcoming'],
     detailed: 0,
@@ -13,7 +15,7 @@ const defaultParams = {
     monolingual: "fr",
 };
 
-const includeFields = ["slug", "title", "onlineAccessLink", "status", ,"keywords", "dateRange", "location.description", "nextTiming", "longDescription", "description", "location.name", "location.city"]
+const includeFields = ["slug", "title", "onlineAccessLink", "status", "keywords", "dateRange", "location.description", "nextTiming", "longDescription", "description", "location.name", "location.city", "keywords"]
 
 const defaultQuery = URL + "?" 
 + new URLSearchParams(defaultParams).toString()

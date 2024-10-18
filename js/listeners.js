@@ -1,35 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Reset the month selection on page reload
+    // Setup the listener at page load
+    // Build the content with default query
+    // Then the visitor can interact
     const monthSelect = document.getElementById('monthSelect');
-    monthSelect.value = "";  // Reset to default
-
-    // Track selected filters globally (only declared once)
-    let filters = [];
+    monthSelect.value = "";  // Initialize date filter at page load
+    let filters = []; // Initialize area filter at page load
 
     // Load default events without filtering by month
-    loadEvents(defaultQuery, filters);
+    buildCalendar(null, filters);
 
     // Event listener for month selection
     monthSelect.addEventListener('change', () => {
         let query = defaultQuery;
         const selectedMonth = monthSelect.value;
-        if (selectedMonth) query = updateQueryParams(selectedMonth);
         
         // Pass current filters along with the updated query
-        loadEvents(query, filters);
+        buildCalendar(null, filters, selectedMonth);
     });
 
-    // Event listeners for filters
+    // Event listeners for area filters: AVEN, CORNOUAILLE, BRETAGNE
     const filterButtons = document.getElementsByClassName('filter');
     for (let i = 0; i < filterButtons.length; i++) {
         filterButtons[i].addEventListener('click', () => {
-            const selectedMonth = monthSelect.value;
-            let query = defaultQuery;
-
-            // If a month is selected, update query with it
-            if (selectedMonth) query = updateQueryParams(selectedMonth);
-
-            // Update filters: Add or remove the filter as necessary
+            // Toggle active status of the area button
+            // Toggle area in filter used by buildCalendar
             if (filterButtons[i].classList.contains('selected')) {
                 filterButtons[i].classList.remove('selected');
                 filters = filters.filter((f) => f !== filterButtons[i].textContent);
@@ -37,20 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 filterButtons[i].classList.add('selected');
                 filters.push(filterButtons[i].textContent);
             }
-
-            // Load events with both the current query and the updated filters
-            loadEvents(query, filters);
+            // Get the selected month
+            const selectedMonth = monthSelect.value;
+            // Build the content
+            buildCalendar(null, filters, selectedMonth);
         });
     }
 });
-
-function updateQueryParams(selectedMonth = "") {
-    const [startDate, endDate] = selectedMonth.split(",");
-    const paramsURL = new URLSearchParams({
-        ...defaultParams,
-        "timings[gte]": startDate,
-        "timings[lte]": endDate,
-    });
-
-    return URL + "?" + paramsURL.toString();
-}
