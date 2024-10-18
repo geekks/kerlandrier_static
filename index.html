@@ -64,10 +64,10 @@
                     <select id="monthSelect" aria-label="Choisir une date">
                         <option class="month-option" aria-label="Choisir une date" label="Choisir une date" value="">Choisir
                             une date</option>
-                        <option value="2024-10-01:00:00:00.000,2024-11-01:00:00:00.000">Oct-24</option>
-                        <option value="2024-11-01:00:00:00.000,2024-12-01:00:00:00.000">Nov-24</option>
-                        <option value="2024-12-01:00:00:00.000,2025-01-01:00:00:00.000">Déc-24</option>
-                        <option value="2025-01-01:00:00:00.000,2025-02-01:00:00:00.000">Jan-25</option>
+                        <option value="2024-10-01T00:00:00.000Z,2024-11-01T00:00:00.000Z">Oct-24</option>
+                        <option value="2024-11-01T00:00:00.000Z,2024-12-01T00:00:00.000Z">Nov-24</option>
+                        <option value="2024-12-01T00:00:00.000Z,2025-01-01T00:00:00.000Z">Déc-24</option>
+                        <option value="2025-01-01T00:00:00.000Z,2025-02-01T00:00:00.000Z">Jan-25</option>
                     </select>
                     <div id="filters">
                         <button class="filter" id="first-zone" name="aven"><span id="aven">AVEN</span></button>
@@ -81,7 +81,13 @@
         </header>
 
         <section id="evenements-container">
-            <!-- C'est ici que le script JS affiche le flux d'événements -->
+            <!-- C'est ici que le script JS affiche le flux d'événements courts -->
+        </section>
+
+        <h1 id="exposection">Expositions</h1>
+
+        <section id="expositions-container">
+            <!-- C'est ici que le script JS affiche le flux d'événements longs -->
         </section>
 
         <section>
