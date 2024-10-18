@@ -202,19 +202,7 @@ footer {
     bottom: 0;
 }
 
-#exposection {
-    font-size: 50px;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    font-style: bold;
-}
 
-#expoadvert {
-    font-size: 30px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    font-style: italic;
-}
 
 /* #aven {
 } */
@@ -238,6 +226,21 @@ footer {
     text-decoration: line-through
 }
 
+#exposection {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-style: bold;
+}
+
+#expoadvert {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-style: italic;
+    text-align: center;
+}
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
     :root {
