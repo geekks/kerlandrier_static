@@ -24,8 +24,7 @@ jobs:
 
     - name: 🔨 Force reset css cache
       run: |
-        sed -i "s/href=\"frugal.css?v=100\"/href=\"frugal.css?v=$(date +%s)\"/g" index.html
-        grep frugal.css index.html  
+        sed -i "s/href=\"?v=100\"/href=\"?v=$(date +%s)\"/g" index.html
     
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
