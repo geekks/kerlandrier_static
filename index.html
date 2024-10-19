@@ -1,271 +1,131 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Geekks" links="https://github.com/geekks">
-    <link rel='canonical' href='/' />
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Geekks" links="https://github.com/geekks">
+        <link rel='canonical' href='/' />
 
-    <title>Kerlandrier</title>
+        <title>Kerlandrier</title>
 
-    <!-- Stylesheet, fonts & favicon -->
-    <link rel="stylesheet" href="frugal.css?v=100">
-    <link rel="icon" type="image/x-icon" href="./favicon-32x32.png">
+        <!-- Stylesheet, fonts & favicon -->
+        <link rel="stylesheet" href="frugal.css?v=100">
+        <link rel="icon" type="image/x-icon" href="./ressources/favicon-32x32.png">
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="/manifest.json">
 
-    <!-- App name for iOS -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Kerlandrier">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <!-- App name for iOS -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Kerlandrier">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- iOS splash screen images -->
-    <link rel="apple-touch-icon" href="./favicon-192x192.png">
-    <link rel="apple-touch-startup-image" href="./favicon-512x512.png">
+        <!-- iOS splash screen images -->
+        <link rel="apple-touch-icon" href="./ressources/favicon-192x192.png">
+        <link rel="apple-touch-startup-image" href="./ressources/favicon-512x512.png">
 
-    <!-- Open Graph meta tags for link preview-->
-    <meta property="og:title" content="Kerlandrier" />
-    <meta property="og:description"
-        content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités)." />
-    <meta property="og:url" content="https://kerlandrier.cc" />
-    <meta property="og:image" content="https://kerlandrier.cc/favicon-192x192.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Kerlandrier" />
-    <meta property="og:locale" content="fr_FR" />
+        <!-- Open Graph meta tags for link preview-->
+        <meta property="og:title" content="Kerlandrier" />
+        <meta property="og:description"
+            content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités)." />
+        <meta property="og:url" content="https://kerlandrier.cc" />
+        <meta property="og:image" content="https://kerlandrier.cc/favicon-192x192.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Kerlandrier" />
+        <meta property="og:locale" content="fr_FR" />
 
-    <!-- Indexing-->
-    <meta name=“robots” content=index, nofollow”>
+        <!-- Indexing-->
+        <meta name=“robots” content=index, nofollow”>
 
-    <!-- Metadata Google -->
-    <meta name="description"
-        content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).">
+        <!-- Metadata Google -->
+        <meta name="description"
+            content="Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).">
 
-</head>
+    </head>
 
-<body>
-    <header>
-        <div id="title">
-            <div id="info-container">
-                <h1>Kerlandrier</h1>
-                <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).
-                <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span><br/>
-                <span id="infos-link"> <a href="#contribution">Quelques infos sur le projet...</a> </span>
-            </div>
-            <div id="qr-container">
-                <img id="qr" src="./kerlandrier_qr.svg" alt="Kerlandrier QR code" />
-                <br/>
-                <span>kerlandrier.cc</span>
-            </div>
-            <div id="filters-container">
-                <select id="monthSelect" aria-label="Choisir une date">
-                    <option class="month-option"  aria-label="Choisir une date" label="Choisir une date" value="">Choisir une date</option>
-                    <option value="2024-10-01:00:00:00.000,2024-11-01:00:00:00.000">Oct-24</option>
-                    <option value="2024-11-01:00:00:00.000,2024-12-01:00:00:00.000">Nov-24</option>
-                    <option value="2024-12-01:00:00:00.000,2025-01-01:00:00:00.000">Déc-24</option>
-                    <option value="2025-01-01:00:00:00.000,2025-02-01:00:00:00.000">Jan-25</option>
-                </select>
-                <div id="filters">
-                        <button class="filter" id="first-zone" name="aven"><span id="aven">AVEN</span></button>
-                        <button class="filter" id="second-zone" name="cornouaille"><span id="cornouaille">CORNOUAILLE</span></button>
-                        <button class="filter" id="third-zone" name="bretagne"><span id="bretagne">BRETAGNE</span></button>
+    <body>
+        <header>
+            <div id="title">
+                <div id="info-container">
+                    <h1>Kerlandrier</h1>
+                    <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus
+                        si affinités).
+                        <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span><br />
+                        <span id="infos-link"> <a href="#contribution">Quelques infos sur le projet...</a> </span>
                 </div>
+                <div id="qr-container">
+                    <img id="qr" src="./ressources/kerlandrier_qr.svg" alt="Kerlandrier QR code" />
+                    <br />
+                    <span>kerlandrier.cc</span>
+                </div>
+                <div id="filters-container">
+                    <select id="monthSelect" aria-label="Choisir une date">
+                        <option class="month-option" aria-label="Choisir une date" label="Choisir une date" value="">Choisir
+                            une date</option>
+                        <option value="2024-10-01T00:00:00.000Z,2024-11-01T00:00:00.000Z">Oct-24</option>
+                        <option value="2024-11-01T00:00:00.000Z,2024-12-01T00:00:00.000Z">Nov-24</option>
+                        <option value="2024-12-01T00:00:00.000Z,2025-01-01T00:00:00.000Z">Déc-24</option>
+                        <option value="2025-01-01T00:00:00.000Z,2025-02-01T00:00:00.000Z">Jan-25</option>
+                    </select>
+                    <div id="filters">
+                        <button class="filter" id="first-zone" name="aven"><span id="aven">AVEN</span></button>
+                        <button class="filter" id="second-zone" name="cornouaille"><span
+                                id="cornouaille">CORNOUAILLE</span></button>
+                        <button class="filter" id="third-zone" name="bretagne"><span id="bretagne">BRETAGNE</span></button>
+                    </div>
 
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <section id="evenements-container">
-        <!-- C'est ici que le premier script JS affiche le flux d'événements -->
-    </section>
+        <section id="evenements-container">
+            <!-- C'est ici que le script JS affiche le flux d'événements courts -->
+        </section>
 
-    <section>
-        
-        <div id ="abonnement"> 
-            <h3>Mais comment ajouter le Kerlandrier à mon agenda préféré pour ne rien louper?</h3>
-            <br />
-            <p>Simple ! rendez-vous sur la <a href="https://openagenda.com/fr/kerlandrier">page OpenAgenda du Kerlandrier</a>, 
-                cliquez sur <i>Exporter</i>, et choisissez votre agenda <i>(Google Agenda, Outlook, Ical, etc.)</i>. 
-            </p> 
-        </div> 
-        <div id="contribution"> 
-            <h3>Le Kerlandrier est un projet collaboratif</h3>
+        <h1 id="exposection">Expositions</h1>
+
+        <section id="expositions-container">
+            <!-- C'est ici que le script JS affiche le flux d'événements longs -->
+        </section>
+
+        <section>
+            <div id="abonnement">
+                <h3>Mais comment ajouter le Kerlandrier à mon agenda préféré pour ne rien louper?</h3>
+                <br />
+                <p>Simple ! rendez-vous sur la <a href="https://openagenda.com/fr/kerlandrier">page OpenAgenda du
+                        Kerlandrier</a>,
+                    cliquez sur <i>Exporter</i>, et choisissez votre agenda <i>(Google Agenda, Outlook, Ical, etc.)</i>.
+                </p>
+            </div>
+            <div id="contribution">
+                <h3>Le Kerlandrier est un projet collaboratif</h3>
                 <p><i>Le projet dit oui à votre assistance si vous...</i></p>
-            <br />
+                <br />
                 <ul>
                     <li>...êtes au courant des bons plans du territoire,</li>
                     <li>...parcourez les internets pour en extraire des pépites,</li>
                     <li>...collez des affiches à vos heures perdues,</li>
-                    <li>...souhaitez <a href="https://openagenda.com/kerlandrier/contribute">ajouter un évènement non présent</a> dans la 
-                        <a href="https://openagenda.com/fr/kerlandrier">liste des événements</a> (nécessite de créer un compte OpenAgenda)</li>
+                    <li>...souhaitez <a href="https://openagenda.com/kerlandrier/contribute">ajouter un évènement non
+                            présent</a> dans la
+                        <a href="https://openagenda.com/fr/kerlandrier">liste des événements</a> (nécessite de créer un
+                        compte OpenAgenda)
+                    </li>
                     <li>...possédez un agenda type Google Agenda que vous pouvez rendre public.</li>
                 </ul>
-            <br />
-                <p> Site web : <a href="https://kerlandrier.cc">kerlandrier.cc</a> - Contact : contact [at] kerlandrier.cc</p>
-        </div> 
-    </section>
+                <br />
+                <p> Site web : <a href="https://kerlandrier.cc">kerlandrier.cc</a> - Contact : contact [at] kerlandrier.cc
+                </p>
+            </div>
+        </section>
 
 
-    <footer>
-    </footer>
+        <footer>
+        </footer>
 
-
-
-    <script>
-        const AGENDA_SLUG = "kerlandrier"
-        const AGENDA_UID = "44891982";
-        const PUBLIC_KEY = "886db2f2acd749bc9a4a3eeda9a6d0dc";
-        const URL = `https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events`
-        const maxEvents = 150;
-            const paramsURL = new URLSearchParams({
-                relative: ['current', 'upcoming'],
-                detailed: 1,
-                key: PUBLIC_KEY,
-                size: maxEvents,
-                monolingual: "fr",
-            });
-        const defaultQuery = URL + "?" + paramsURL.toString();
-        let filters = [];
-
-        // Function to update the URL parameters based on the selected month
-        function updateQueryParams(selectedMonth = "") {
-            const [startDate, endDate] = selectedMonth.split(",");
-            const paramsURL = new URLSearchParams({
-                relative: ['current', 'upcoming'],
-                detailed: 1,
-                key: PUBLIC_KEY,
-                size: maxEvents,
-                monolingual: "fr",
-                "timings[gte]": startDate,
-                "timings[lte]": endDate,
-            });
-
-            return URL + "?" + paramsURL.toString();
-        }
-
-        function aggregatePerDay(events) {
-            const days = {};
-            for (let i = 0; i < events.length; i++) {
-                const d = events[i].dateRange.split(",")[0];
-                if (!days[d]) days[d] = [];
-                days[d].push(events[i]);
-            }
-            return days;
-        }
-
-        // Avoid keeping long events on top during all their duration by moving them bottom list.
-        function longEventsToBottom(evntsDays) {
-            const reorderedDays = {};
-            const rangeDays = [];
-            const singleDay = [];
-            for (const day in evntsDays) {
-                if (day.includes('-') ) rangeDays.push(day);
-                else singleDay.push(day);
-                }
-            singleDay.forEach( day => { reorderedDays[day] = evntsDays[day] });
-            rangeDays.forEach( day => { reorderedDays[day] = evntsDays[day] });
-            return reorderedDays;
-        }
-
-        // Premier script qui permet de peupler la liste d'événements
-        async function loadEvents(query = defaultQuery, filters = []) {
-            const response = await fetch(query);
-            const evnts = await response.json();
-            const evntsDaysNotSorted = aggregatePerDay(evnts.events)
-            const evntsDays = longEventsToBottom(evntsDaysNotSorted)
-            let content = "";
-            const DayKeys = Object.keys(evntsDays);
-            const lastDayKey = DayKeys[DayKeys.length - 1]
-            let firstRange = true
-            for (const d in evntsDays) {
-                const events = evntsDays[d].filter((d) => {
-                    if (filters.length === 0) return true;
-                    return filters.includes(d.location.description.fr); // Get Aven, Cornouaille or "" from location field
-                })
-
-                if (events.length === 0) continue
-                if (d.includes('-') && firstRange) {
-                    content += `<div id=exposection> Evenements longs (expo, festivals, ...) </div>`
-                    firstRange = false
-                }
-                content += `<div>`
-                content += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
-                content += `<div class='evenements'>`
-                for (let i = 0; i < events.length; i++) {
-                    const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`
-                    const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink
-                    const cancel = events[i].status === 6 
-                    const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : []
-                    if (events[i].location.description.fr) kws.push(`<div class="time-tag"> #${events[i].location.description.fr} </div>`)
-                    const nextTime = (events[i].nextTiming) ?  `<div class="time-tag"> <a href=${openAgendaLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : ""
-                    content +=
-                        `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
-                            ${(kws.length > 0) ? kws.join("") : ""} ${nextTime}
-                            <h2 class='card-title ${cancel ? "annule": ""}'>
-                                ${cancel ? "<span >[ANNULÉ]</span>": ""}
-                                <a href=${redirectLink} target="_blank"> ${events[i].title} </a>
-                            </h2>
-                        <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
-                        </span>`;
-                }
-                content += `</div></div></div>`
-                
-                // Message to find other events after maxEvents reached
-                if (d == lastDayKey &&  ! document.getElementById('monthSelect').value ){
-                    content +=
-                        `<div id="other-events"> <br\><br\>
-                            <p> .... pour voir plus d'évènements, <a href="#filters-container">sélectionnez un mois </a></p> 
-                        </div>`; 
-                }
-            }
-            document.getElementById("evenements-container").innerHTML = content
-
-            // Add comment link and to reach long events moved to bottom of page 
-            const EventsDivs = document.querySelectorAll('.dateAndEvents');
-            if (EventsDivs.length >= 3) {
-                const advertDiv = document.createElement('div');
-                advertDiv.id = 'expoadvert';
-                advertDiv.innerHTML =  'Les longs evenements (expos, festival) sont <a href="#exposection">en bas de page';
-                const thirdEvent = EventsDivs[2];
-                thirdEvent.insertAdjacentElement('afterend', advertDiv);
-            }
-        }
-        loadEvents(defaultQuery);
-
-    // Month filter listener
-    document.getElementById('monthSelect').addEventListener('change', () => {
-        let query = defaultQuery
-        const selectedMonth = document.getElementById('monthSelect').value;
-        if (selectedMonth) query = updateQueryParams(selectedMonth);
-        const filters = document.getElementsByClassName('filter');
-        for (let i = 0; i < filters.length; i++) {
-            filters[i].classList.remove('selected')
-        }
-        loadEvents(query);
-    });
-
-    // Month filter action
-    const filter = document.getElementsByClassName('filter');
-    for (let i = 0; i < filter.length; i++) {
-        filter[i].addEventListener('click', () => {
-            const selectedMonth = document.getElementById('monthSelect').value;
-            let query = defaultQuery
-            if (selectedMonth) query = updateQueryParams(selectedMonth);
-            if (filter[i].classList.contains('selected')) {
-                filter[i].classList.remove('selected')
-                filters = filters.filter((f) => f !== filter[i].textContent)
-            } else {
-                filter[i].classList.add('selected')
-                filters.push(filter[i].textContent)
-            }
-            loadEvents(query, filters)
-        })
-    }
-    </script>
-
-
-</body>
-
+        <script src="./js/constants.js"></script>
+        <script src="./js/loadEvents.js"></script>
+        <script src="./js/listeners.js"></script>
+    </body>
 </html>
