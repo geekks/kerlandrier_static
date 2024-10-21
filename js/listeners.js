@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let filters = []; // Initialize area filter at page load
 
     // Load default events without filtering by month
-    buildCalendar(null, filters);
+    if (localStorage.getItem("events") !== null) buildCalendar(null, filters);
 
     // Event listener for month selection
     monthSelect.addEventListener('change', () => {
