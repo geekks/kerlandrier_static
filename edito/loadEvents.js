@@ -42,7 +42,7 @@ function initTable() {
 
       // Create table header row
       const headerRow = document.createElement("tr");
-      const headers = ["Titre", "Dates", "Prochaine date", "Lien", "Lieu", "Ville", "Keywords"];
+      const headers = ["Uid", "Titre", "Dates", "Prochaine date", "Lien", "Lieu", "Ville", "Keywords"];
 
       headers.forEach(headerText => {
         const th = document.createElement("th");
@@ -60,6 +60,7 @@ function createEventTable(table, event) {
 
   // Fill in event data for each column
   const eventDataArray = [
+    event.uid,
     event.title,
     event.dateRange,
     new Date(event.nextTiming.begin).toLocaleDateString("fr-FR"),
@@ -82,6 +83,13 @@ function createEventTable(table, event) {
   const keywordCell = document.createElement("td");
   keywordCell.style.paddingLeft = "5px";
   keywordCell.style.paddingRight = "5px";
+  keywordCell.addEventListener("click", () => {
+       // Create a new editable tag
+        const newTag = createTagElement(""); // Empty new tag
+        newTag.addEventListener("click", () => makeTagEditable(newTag, keywordCell));
+        keywordCell.appendChild(newTag);
+        makeTagEditable(newTag, keywordCell);
+  })
 
 
   // Create a tag for each keyword
@@ -124,56 +132,76 @@ function makeTagEditable(tag, keywordCell) {
   const input = document.createElement("input");
   input.value = originalText;
   input.type = "text";
-    input.classList.add("tag");
+  input.classList.add("tag");
+
+  let isSaved = false; // Flag to prevent multiple save calls
 
   // Replace tag with input
-  tag.replaceWith(input);
+  if (tag.parentNode) tag.replaceWith(input);
   input.focus();
 
-  // Save changes on Enter key or when losing focus
+  // Save changes on blur
   input.addEventListener("blur", () => {
-    if (input.value.trim() === "") {
-      tag.remove();
-      input.remove();
-    } else saveTagEdit(input, tag)
+    if (!isSaved) {
+      isSaved = true; // Set the flag to prevent further calls
+      if (input.value.trim() === "") {
+        tag.remove();
+        input.remove();
+      } else {
+        saveTagEdit(input, tag);
+      }
+    }
   });
+
+  // Save changes on Enter or handle Tab key
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
+      if (!isSaved) {
+        isSaved = true;
         if (input.value.trim() === "") {
-      tag.remove();
-      input.remove();
-    } else saveTagEdit(input, tag);
-      // Move to the first tag in the keywords cell of the next row
+          tag.remove();
+          input.remove();
+        } else {
+          saveTagEdit(input, tag);
+          
+        }
+      }
+       // Move to the first tag in the keywords cell of the next row
       const currentRow = keywordCell.parentElement;
       const nextRow = currentRow.nextElementSibling;
       if (nextRow) {
-          console.log("nextRow - ", nextRow);
           const nextKeywordCell = nextRow.cells[currentRow.cells.length - 1];
           const firstTagInNextRow = nextKeywordCell.querySelector("span");
           if (firstTagInNextRow) {
-          makeTagEditable(firstTagInNextRow, nextKeywordCell);
+            makeTagEditable(firstTagInNextRow, nextKeywordCell);
+          } else {
+            // Create a new editable tag
+            const newTag = createTagElement(""); // Empty new tag
+            newTag.addEventListener("click", () => makeTagEditable(newTag, nextKeywordCell));
+            nextKeywordCell.appendChild(newTag);
+            makeTagEditable(newTag, nextKeywordCell);
           }
       } else {
           input.blur(); // No next row, let focus exit naturally
       }
     } else if (e.key === "Tab") {
       e.preventDefault();
-      if (input.value.trim() === "") {
-        tag.remove();
-        input.remove();
-      }
-      saveTagEdit(input, tag);
+      if (input.value.trim() === "") return;
+      
+      if (!isSaved) {
+        isSaved = true;
+        saveTagEdit(input, tag);
 
-      // Find the next sibling tag and make it editable
-      const nextTag = tag.nextElementSibling;
-      if (nextTag) {
-        makeTagEditable(nextTag, keywordCell);
-      }  else {
-         // Create a new editable tag
-        const newTag = createTagElement(""); // Empty new tag
-        newTag.addEventListener("click", () => makeTagEditable(newTag, keywordCell));
-        keywordCell.appendChild(newTag);
-        makeTagEditable(newTag, keywordCell); // Immediately make the new tag editable
+        // Find the next sibling tag or create a new one
+        const nextTag = tag.nextElementSibling;
+        if (nextTag) {
+          makeTagEditable(nextTag, keywordCell);
+        } else {
+          const newTag = createTagElement("");
+          newTag.addEventListener("click", () => makeTagEditable(newTag, keywordCell));
+          keywordCell.appendChild(newTag);
+          makeTagEditable(newTag, keywordCell);
+        }
       }
     }
   });
@@ -182,23 +210,17 @@ function makeTagEditable(tag, keywordCell) {
 // Function to save changes and replace input with tag
 function saveTagEdit(input, tag) {
     tag.textContent = input.value || tag.textContent; // Revert to original if input is empty
-    input.replaceWith(tag);
+    if (input.parentNode) input.replaceWith(tag);
+    // input.replaceWith(tag);
 }
 
 function generateUpdatedJSON() {
     const updatedEvents = Array.from(document.querySelectorAll("#table-container tr")).slice(1).map(row => {
     const cells = row.cells;
-    const keywords = Array.from(cells[5].querySelectorAll("span")).map(tag => tag.textContent);
+    const keywords = Array.from(cells[7].querySelectorAll("span")).map(tag => tag.textContent);
 
     return {
-        title: cells[0].textContent,
-        dateRange: cells[1].textContent,
-        onlineAccessLink: cells[2].textContent,
-        location: {
-        name: cells[3].textContent.split(", ")[0],
-        city: cells[3].textContent.split(", ")[1]
-        },
-        postalCode: cells[4].textContent,
+        uid: cells[0].textContent,
         keywords: keywords
     };
     });
