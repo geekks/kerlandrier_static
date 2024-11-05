@@ -101,7 +101,12 @@ function createEventTable(table, event) {
     tag.classList.add("tag");
 
      // Make the tag editable on click
-    tag.addEventListener("click", () => makeTagEditable(tag, keywordCell));
+    tag.addEventListener("click", (event) => {
+        // stop propagation
+        event.stopPropagation();
+        makeTagEditable(tag, keywordCell)
+    }
+);
 
     keywordCell.appendChild(tag);
   });
