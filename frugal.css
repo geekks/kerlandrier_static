@@ -59,6 +59,7 @@ a:visited {
 
 
 .tag {
+    font-family: 'Barlow Condensed', sans-serif;
     margin-right: 2px;
     margin-bottom: 2px;
     padding: 2px 9px;
@@ -162,6 +163,7 @@ footer {
     border-radius: 10px;
     border: 1px solid var(--main-color);
     margin: 2px;
+    cursor: pointer;
 }
 
 .selected {
@@ -241,6 +243,7 @@ footer {
     font-style: italic;
     text-align: center;
 }
+
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
     :root {
