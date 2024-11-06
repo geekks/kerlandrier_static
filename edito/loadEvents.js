@@ -19,14 +19,12 @@ async function loadEvents(query = defaultQuery) {
 
 function buildTable(evnts = null) {
     // Init date filters as Date
-    console.log("localStorage.getItem - ", JSON.parse(localStorage.getItem("events_edit")));
     // Get events from localStorage
     if (evnts === null) evnts = JSON.parse(localStorage.getItem("events_edit"));
     // Filter events: area & date
     const eventsRaw = evnts.events.sort((a, b) => new Date(a.firstTiming.begin) - new Date(b.firstTiming.begin)); // Array of { title, onlineAccessLink... }
     // Build a table from eventsRaw
     const table = initTable();
-    console.log("eventsRaw - ", eventsRaw.length);
     for (let i = 0; i < eventsRaw.length; i++) {
         const event = eventsRaw[i];
         createEventTable(table,event);
