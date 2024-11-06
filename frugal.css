@@ -241,6 +241,31 @@ footer {
     font-style: italic;
     text-align: center;
 }
+.icon-link {
+    width: 20px;
+    height: 20px
+}
+.icon-img {
+    height: 20px;
+    width: 20px;
+    overflow: hidden;
+    margin: 0 auto
+}
+#icon-ical {
+    background: url("./ressources/rss.png");
+    background-position: 0px;
+    background-size: 20px 20px;
+}
+#icon-rss {
+    background: url("./ressources/rss.png");
+    background-position: 0px;
+    background-size: 20px 20px;
+}
+
+#join-us {
+    display: block;
+    margin: 0 auto;
+}
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
     :root {
