@@ -72,15 +72,14 @@ function createEventTable(table, event) {
     const td = document.createElement("td");
     td.textContent = dataText;
     td.style.textAlign = "center";
-    td.style.padding = "5px";
-    td.style.whiteSpace = "nowrap";
+    td.style.paddingLeft = "5px";
+    td.style.paddingRight = "5px";
     dataRow.appendChild(td);
   });
 
   // Create a cell for keywords
   const keywordCell = document.createElement("td");
-  keywordCell.style.paddingLeft = "5px";
-  keywordCell.style.paddingRight = "5px";
+  keywordCell.style.padding = "5px";
   keywordCell.addEventListener("click", () => {
        // Create a new editable tag
         const newTag = createTagElement(""); // Empty new tag
@@ -156,14 +155,20 @@ function makeTagEditable(tag, keywordCell) {
     }
   });
 
+  // On Escape trigger blur event
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      input.blur();
+    }
+  });
+
   // Save changes on Enter or handle Tab key
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       if (!isSaved) {
         isSaved = true;
         if (input.value.trim() === "") {
-          tag.remove();
-          input.remove();
+          input.blur()
         } else {
           saveTagEdit(input, tag);
           
@@ -214,7 +219,6 @@ function makeTagEditable(tag, keywordCell) {
 function saveTagEdit(input, tag) {
     tag.textContent = input.value || tag.textContent; // Revert to original if input is empty
     if (input.parentNode) input.replaceWith(tag);
-    // input.replaceWith(tag);
 }
 
 function generateUpdatedJSON() {
