@@ -144,15 +144,14 @@ function makeTagEditable(tag, keywordCell) {
 
   // Save changes on blur
   input.addEventListener("blur", () => {
-    if (!isSaved) {
-      isSaved = true; // Set the flag to prevent further calls
-      if (input.value.trim() === "") {
+    if (input.value.trim() === "") {
         tag.remove();
         input.remove();
-      } else {
-        saveTagEdit(input, tag);
       }
-    }
+    else if (!isSaved) {
+      isSaved = true; // Set the flag to prevent further calls
+      saveTagEdit(input, tag);
+    } 
   });
 
   // On Escape trigger blur event
