@@ -17,6 +17,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -53,15 +55,16 @@
     <header>
         <div id="title">
             <div id="info-container">
-                <h1>Kerlandrier</h1>
-                <p id="description">Le Kerlandrier est un site affiche des événements sur le territoire de CCA (et plus si affinités).
-                <span onclick="window.print()" id="print-button">Il est prêt à l'impression !</span><br/>
+                <h1>Kerlandrier.cc</h1>
+                <p id="description">Site/affiche des événements sur le territoire <br>
+<!--   Je ne suis pas hyper chaud pour invisibiliser le menu PRINT
+<span onclick="window.print()" id="print-button">Imprimer</span><br/> -->
                 <span id="infos-link"> <a href="#contribution">Quelques infos sur le projet...</a> </span>
             </div>
             <div id="qr-container">
                 <img id="qr" src="./kerlandrier_qr.svg" alt="Kerlandrier QR code" />
                 <br/>
-                <span>kerlandrier.cc</span>
+                <span>Contribution<br> et infos sur le site<br> kerlandrier.cc/</span>
             </div>
             <div id="filters-container">
                 <select id="monthSelect" aria-label="Choisir une date">
@@ -82,19 +85,20 @@
     </header>
 
     <section id="evenements-container">
-        <!-- C'est ici que le premier script JS affiche le flux d'événements -->
+        <!-- C'est ici que le  script JS affiche le flux d'événements -->
     </section>
 
     <section>
-        
-        <div id ="abonnement"> 
+
+        <div id ="abonnement">
             <h3>Mais comment ajouter le Kerlandrier à mon agenda préféré pour ne rien louper?</h3>
             <br />
-            <p>Simple ! rendez-vous sur la <a href="https://openagenda.com/fr/kerlandrier">page OpenAgenda du Kerlandrier</a>, 
-                cliquez sur <i>Exporter</i>, et choisissez votre agenda <i>(Google Agenda, Outlook, Ical, etc.)</i>. 
-            </p> 
-        </div> 
-        <div id="contribution"> 
+            <p>Simple ! rendez-vous sur la <a href="https://openagenda.com/fr/kerlandrier">page OpenAgenda du Kerlandrier</a>,
+                cliquez sur <i>Exporter</i>, et choisissez votre agenda <i>(Google Agenda, Outlook, Ical, etc.)</i>.
+            </p>
+        </div>
+
+        <div id="contribution">
             <h3>Le Kerlandrier est un projet collaboratif</h3>
                 <p><i>Le projet dit oui à votre assistance si vous...</i></p>
             <br />
@@ -102,13 +106,13 @@
                     <li>...êtes au courant des bons plans du territoire,</li>
                     <li>...parcourez les internets pour en extraire des pépites,</li>
                     <li>...collez des affiches à vos heures perdues,</li>
-                    <li>...souhaitez <a href="https://openagenda.com/kerlandrier/contribute">ajouter un évènement non présent</a> dans la 
+                    <li>...souhaitez <a href="https://openagenda.com/kerlandrier/contribute">ajouter un évènement non présent</a> dans la
                         <a href="https://openagenda.com/fr/kerlandrier">liste des événements</a> (nécessite de créer un compte OpenAgenda)</li>
                     <li>...possédez un agenda type Google Agenda que vous pouvez rendre public.</li>
                 </ul>
             <br />
                 <p> Site web : <a href="https://kerlandrier.cc">kerlandrier.cc</a> - Contact : contact [at] kerlandrier.cc</p>
-        </div> 
+        </div>
     </section>
 
 
@@ -164,7 +168,7 @@
             const response = await fetch(query);
             const evnts = await response.json();
             const evntsDays = aggregatePerDay(evnts.events)
-            
+
             let content = "";
             const DayKeys = Object.keys(evntsDays);
             const lastDayKey = DayKeys[DayKeys.length - 1]
@@ -175,9 +179,9 @@
                 })
 
                 if (events.length === 0) continue
-                
+
                 content += `<div>`
-                content += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
+                content += `<div class="dateAndEvents"><div class='date-header'><h4>${d}</h4><p>░░░░░░░░░<p></div>`;
                 content += `<div class='evenements'>`
                 for (let i = 0; i < events.length; i++) {
                     const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`
@@ -192,13 +196,13 @@
                         </span>`;
                 }
                 content += `</div></div></div>`
-                
+
                 // Message to find other events after maxEvents reached
                 if (d == lastDayKey &&  ! document.getElementById('monthSelect').value ){
                     content +=
                         `<div id="other-events"> <br\><br\>
-                            <p> .... pour voir plus d'évènements, <a href="#filters-container">sélectionnez un mois </a></p> 
-                        </div>`; 
+                            <p> .... pour voir plus d'évènements, <a href="#filters-container">sélectionnez un mois </a></p>
+                        </div>`;
                 }
             }
             document.getElementById("evenements-container").innerHTML = content
