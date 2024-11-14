@@ -21,10 +21,10 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Init date filters as Date
     const startDate = dateFilter ? new Date(dateFilter.split(",")[0]) : null;
     const endDate = dateFilter ? new Date(dateFilter.split(",")[1]) : null;
-    
+
     // Get events from localStorage
     if (evnts === null) evnts = JSON.parse(localStorage.getItem("events"));
-    
+
     // Filter events: area & date
     const eventsRaw = evnts.events; // Array of { title, onlineAccessLink... }
     const eventsFiltered = eventsRaw // Array of { title, onlineAccessLink... } but filtered based on location.description and selectedMonth
@@ -35,7 +35,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     .filter((d) => { // Date
         if (dateFilter === "") return true;
         return new Date(d.firstTiming.begin) >= startDate && new Date(d.lastTiming.end) <= endDate;
-    }) 
+    })
 
     // Split shortEvents vs longEvents
     // FIXME: This criterium is shit but will be improved later (e.g. use a specific keyword for longEvents)
@@ -66,7 +66,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     }
     document.getElementById("expositions-container").innerHTML = longContent;
 
-    // Add comment and link  to reach long events moved to bottom of page 
+    // Add comment and link  to reach long events moved to bottom of page
     const EventsDivs = document.querySelectorAll('.dateAndEvents');
     if (EventsDivs.length >= 3) {
         const advertDiv = document.createElement('div');
@@ -89,18 +89,17 @@ function aggregatePerDay(events) {
 
 function addDayContent(events, d) {
         let newContent = `<div>`;
-        newContent += `<div class="dateAndEvents"><h4 class='date-header'>${d}</h4>`;
+        newContent += `<div class="dateAndEvents"><div class='date-header'><h4>${d}</h4><p>░░░░░░░░░<p></div>`;
         newContent += `<div class='evenements'>`;
         for (let i = 0; i < events.length; i++) {
             const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
             const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
             const cancel = events[i].status === 6;
             const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
-            if (events[i].location.description.fr) kws.push(`<div class="time-tag"> #${events[i].location.description.fr} </div>`);
             const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
             // FIXME: Use document.createElement()
             newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
-                            ${(kws.length > 0) ? kws.join("") : ""} ${nextTime}
+                            ${nextTime} ${(kws.length > 0) ? kws.join("") : ""}
                             <h2 class='card-title ${cancel ? "annule" : ""}'>
                                 ${cancel ? "<span >[ANNULÉ]</span>" : ""}
                                 <a href=${redirectLink} target="_blank"> ${events[i].title} </a>
