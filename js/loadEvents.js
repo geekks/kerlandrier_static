@@ -89,7 +89,7 @@ function aggregatePerDay(events) {
 
 function addDayContent(events, d) {
         let newContent = `<div>`;
-        newContent += `<div class="dateAndEvents"><div class='date-header'><h4>${d}</h4><p>░░░░░░░░░<p></div>`;
+        newContent += `<div class="dateAndEvents"><div class='date-header'><div class="sticky-date"><h4 >${d}</h4><p>░░░░░░░░░<p></div></div>`;
         newContent += `<div class='evenements'>`;
         for (let i = 0; i < events.length; i++) {
             const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;

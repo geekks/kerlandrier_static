@@ -55,9 +55,9 @@ a:visited {
     font-family: "League Gothic", sans-serif;
     text-transform:uppercase;
 }
-
-.evenements{
-
+.sticky-date {
+    position: sticky;
+    top: 0px;
 }
 
 
@@ -312,13 +312,11 @@ footer {
 
     .date-header {
         width: 100%;
-        position: sticky;
-        top: 0px;
         background-color: var(--lite-bkg);
     }
     .date-header p{font-size: 0.8rem;}
 
-
+    
     .evenements {
         display: grid;
         grid-template-columns: 1fr;
