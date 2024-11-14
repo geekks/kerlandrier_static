@@ -213,7 +213,7 @@ footer {
 
 /* #aven {
 } */
- 
+
 #cornouaille {
     position: relative;
     left: 5px;
@@ -352,7 +352,6 @@ footer {
 
     #title {
         display: flex;
-        justify-content: space-between;
 
     }
 
@@ -525,14 +524,10 @@ footer {
         line-height: 100%;
     }
 
-    a { 
+    a {
         text-decoration: none;
     }
 
-    #qr-container {
-        display: block;
-        text-align: center;
-    }
 
     #print-button, #filters, #infos-link a ,
     #monthSelect, .filter, #abonnement, #other-events,
@@ -546,7 +541,7 @@ footer {
 
 /* barlow-condensed-200 - latin */
 @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 200;
@@ -554,7 +549,7 @@ footer {
   }
   /* barlow-condensed-200italic - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 200;
@@ -562,7 +557,7 @@ footer {
   }
   /* barlow-condensed-300 - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 300;
@@ -570,7 +565,7 @@ footer {
   }
   /* barlow-condensed-300italic - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 300;
@@ -578,7 +573,7 @@ footer {
   }
   /* barlow-condensed-regular - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 400;
@@ -586,7 +581,7 @@ footer {
   }
   /* barlow-condensed-italic - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 400;
@@ -594,7 +589,7 @@ footer {
   }
   /* barlow-condensed-500 - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 500;
@@ -602,7 +597,7 @@ footer {
   }
   /* barlow-condensed-500italic - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 500;
@@ -610,7 +605,7 @@ footer {
   }
   /* barlow-condensed-600 - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 600;
@@ -618,7 +613,7 @@ footer {
   }
   /* barlow-condensed-600italic - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 600;
@@ -626,7 +621,7 @@ footer {
   }
   /* barlow-condensed-700 - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 700;
@@ -634,7 +629,7 @@ footer {
   }
   /* barlow-condensed-700italic - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 700;
@@ -642,7 +637,7 @@ footer {
   }
   /* barlow-condensed-800 - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 800;
@@ -650,7 +645,7 @@ footer {
   }
   /* barlow-condensed-800italic - latin */
   @font-face {
-    font-display: swap; 
+    font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 800;
