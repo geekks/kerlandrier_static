@@ -95,6 +95,7 @@ function addDayContent(events, d) {
             const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
             const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
             const cancel = events[i].status === 6;
+            const complet = events[i].status === 5;
             const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
             const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
             // FIXME: Use document.createElement()
@@ -102,6 +103,7 @@ function addDayContent(events, d) {
                             ${nextTime} ${(kws.length > 0) ? kws.join("") : ""}
                             <h2 class='card-title ${cancel ? "annule" : ""}'>
                                 ${cancel ? "<span >[ANNULÉ]</span>" : ""}
+                                ${complet ? "<span >[COMPLET]</span>" : ""}
                                 <a href=${redirectLink} target="_blank"> ${events[i].title} </a>
                             </h2>
                         <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
