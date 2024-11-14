@@ -248,22 +248,29 @@ footer {
     font-style: italic;
     text-align: center;
 }
-.icon-link {
+.icon-link-ical {
+    width: 34px;
+    height: 20px
+}
+.icon-link-rss {
     width: 20px;
     height: 20px
 }
-.icon-img {
-    height: 20px;
-    width: 20px;
-    overflow: hidden;
-    margin: 0 auto
-}
+
 #icon-ical {
-    background: url("./ressources/rss.png");
+    height: 20px;
+        width: 34px;
+        overflow: hidden;
+        margin: 0 auto;
+    background: url("./ressources/ical.png");
     background-position: 0px;
-    background-size: 20px 20px;
+    background-size: 34px 20px;
 }
 #icon-rss {
+    height: 20px;
+        width: 20px;
+        overflow: hidden;
+        margin: 0 auto;
     background: url("./ressources/rss.png");
     background-position: 0px;
     background-size: 20px 20px;
