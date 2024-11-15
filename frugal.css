@@ -52,6 +52,8 @@ a:visited {
 
 .date-header {
     text-align:right;
+    position: sticky;
+    top: 0;
     font-family: "League Gothic", sans-serif;
     text-transform:uppercase;
 }
