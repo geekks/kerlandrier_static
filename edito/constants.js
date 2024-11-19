@@ -3,7 +3,8 @@ const AGENDA_SLUG = "kerlandrier";
 const AGENDA_UID = "44891982";
 const PUBLIC_KEY = "886db2f2acd749bc9a4a3eeda9a6d0dc";
 const URL = `https://api.openagenda.com/v2/agendas/${AGENDA_UID}/events`;
-const maxEvents = 50;
+const PUBLIC_URL = "https://openagenda.com/fr/kerlandrier/events"
+const maxEvents = 10;
 
 const AREA_FILTERS = ["AVEN", "CORNOUAILLE", "BRETAGNE"];
 
