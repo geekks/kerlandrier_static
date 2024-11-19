@@ -44,7 +44,16 @@ function initTable() {
     const th = document.createElement("th");
     th.textContent = headerText;
     th.style.fontWeight = "bold";
-    th.title = "Cliquer sur un mot pour éditer\nTab mot suivant\nEntrer ligne suivante";
+    if (headerText === "Keywords ❔") {
+      th.title = "Cliquer sur un mot pour éditer\nTab mot suivant\nEntrer ligne suivante";
+      const span = document.createElement("p");
+      span.textContent = "Cliquer sur un mot pour éditer\nTab mot suivant\nEntrer ligne suivante";
+      span.style.fontFamily = "monospace";
+      span.style.fontSize = "12px";
+      span.style.whiteSpace = "pre";
+      th.appendChild(document.createElement("br"));
+      th.appendChild(span);
+    }
     headerRow.appendChild(th);
   });
   table.appendChild(headerRow);
