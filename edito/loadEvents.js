@@ -39,11 +39,12 @@ function initTable() {
 
   // Create table header row
   const headerRow = document.createElement("tr");
-  const headers = ["Slug", "Uid", "Titre", "Dates", "Prochaine date", "Lien", "Lieu", "Ville", "Keywords"];
+  const headers = ["Slug", "Uid", "Titre", "Dates", "Prochaine date", "Lien", "Lieu", "Ville", "Keywords ❔"];
   headers.forEach(headerText => {
     const th = document.createElement("th");
     th.textContent = headerText;
     th.style.fontWeight = "bold";
+    th.title = "Cliquer sur un mot pour éditer\nTab mot suivant\nEntrer ligne suivante";
     headerRow.appendChild(th);
   });
   table.appendChild(headerRow);
