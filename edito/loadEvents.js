@@ -40,7 +40,6 @@ function initTable() {
   // Create table header row
   const headerRow = document.createElement("tr");
   const headers = ["Slug", "Uid", "Titre", "Dates", "Prochaine date", "Lien", "Lieu", "Ville", "Keywords"];
-
   headers.forEach(headerText => {
     const th = document.createElement("th");
     th.textContent = headerText;
@@ -52,10 +51,10 @@ function initTable() {
 }
 
 function createEventTable(table, event) {
-  // Create event data row
+  // Init event data row
   const dataRow = document.createElement("tr");
 
-  // Fill in event data for each column
+  // Fill in row data for each column
   const eventDataArray = [
     event.slug,
     event.uid,
@@ -88,16 +87,16 @@ function createEventTable(table, event) {
   const keywordCell = document.createElement("td");
   keywordCell.style.padding = "5px";
   // Enable the user to add a keyword if the list is empty
-    if (!event.keywords || event.keywords?.length === 0) {
-
-  keywordCell.addEventListener("click", () => {
-    // Create a new editable tag
-    const newTag = createTagElement(""); // Empty new tag
-    newTag.addEventListener("click", () => makeTagEditable(newTag, keywordCell));
-    keywordCell.appendChild(newTag);
-    makeTagEditable(newTag, keywordCell);
-  }, { once: true });
-}
+  // i.e. add an event listener that adds a tag on first click
+  if (!event.keywords || event.keywords?.length === 0) {
+    keywordCell.addEventListener("click", () => {
+      // Create a new editable tag
+      const newTag = createTagElement(""); // Empty new tag
+      newTag.addEventListener("click", () => makeTagEditable(newTag, keywordCell));
+      keywordCell.appendChild(newTag);
+      makeTagEditable(newTag, keywordCell);
+    }, { once: true });
+  }
 
   // Create a tag for each keyword
   event.keywords?.forEach(keyword => {
@@ -111,9 +110,7 @@ function createEventTable(table, event) {
     tag.addEventListener("click", (event) => {
       event.stopPropagation();
       makeTagEditable(tag, keywordCell)
-    }
-    );
-
+    });
     keywordCell.appendChild(tag);
   });
 
@@ -130,7 +127,6 @@ function createTagElement(text) {
   const tag = document.createElement("span");
   tag.textContent = text;
   tag.style.display = "inline-block";
-  tag.style.display = "inline-block";
   tag.style.cursor = "pointer";
   tag.classList.add("tag");
   return tag;
@@ -145,7 +141,7 @@ function makeTagEditable(tag, keywordCell) {
   input.type = "text";
   input.classList.add("tag");
 
-  let isSaved = false; // Flag to prevent multiple save calls
+  let isSaved = false; // Flag to prevent multiple save calls and conflict between onBlur, onTab...
 
   // Replace tag with input
   if (tag.parentNode) tag.replaceWith(input);
@@ -170,9 +166,9 @@ function makeTagEditable(tag, keywordCell) {
     }
   });
 
-  // Save changes on Enter or handle Tab key
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
+      // Save changes on and go to next row Enter
       if (!isSaved) {
         isSaved = true;
         if (input.value.trim() === "") {
@@ -200,6 +196,7 @@ function makeTagEditable(tag, keywordCell) {
         input.blur(); // No next row, let focus exit naturally
       }
     } else if (e.key === "Tab") {
+      // Save changes on and go to next tag on Tab
       e.preventDefault();
       const nextInput = input.nextElementSibling;
       if (input.value.trim() === "" && !nextInput) return;
@@ -250,18 +247,17 @@ async function generateUpdatedJSON() {
     };
   });
 
-  const updatedJSON = { events: updatedEvents };
   document.getElementById("json-output").textContent = "Work in progress...";
   const patch = await axios.patch(
     `http://localhost:8001/events/keywords`,
-    updatedJSON,
+    { events: updatedEvents },
     {
       headers: {
         "Content-Type": "application/json"
       }
     }
   );
-  document.getElementById("json-output").textContent = JSON.stringify(patch, null, 2);
+  document.getElementById("json-output").textContent = JSON.stringify(patch.data, null, 2);
 }
 
 // Add event listener to button to generate JSON
