@@ -96,9 +96,9 @@ function createEventTable(table, event) {
   // Create a cell for keywords
   const keywordCell = document.createElement("td");
   keywordCell.style.padding = "5px";
-  // Enable the user to add a keyword if the list is empty
-  // i.e. add an event listener that adds a tag on first click
-  if (!event.keywords || event.keywords?.length === 0) {
+  // // Enable the user to add a keyword if the list is empty
+  // // i.e. add an event listener that adds a tag on first click
+  // if (!event.keywords || event.keywords?.length === 0) {
     keywordCell.addEventListener("click", () => {
       // Create a new editable tag
       const newTag = createTagElement(""); // Empty new tag
@@ -106,7 +106,7 @@ function createEventTable(table, event) {
       keywordCell.appendChild(newTag);
       makeTagEditable(newTag, keywordCell);
     }, { once: true });
-  }
+  // }
 
   // Create a tag for each keyword
   event.keywords?.forEach(keyword => {
