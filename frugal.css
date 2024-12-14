@@ -176,7 +176,7 @@ footer {
     border: 1px solid var(--lite-bkg);
 }
 #qr-container {
-    display: none;;
+    display: none;
 }
 
 #first-zone {
@@ -281,6 +281,16 @@ footer {
 }
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
+    #easter-egg {
+        font-family: "Almonte", sans-serif;
+        font-size: 30px;
+        position: absolute;
+        left: 250px;
+        top: 20px;
+        transform: rotate(20deg);
+        white-space: nowrap;
+    }
+
     :root {
         --main-color: #333;
         --lite-bkg: ivory;
@@ -368,6 +378,14 @@ footer {
 
 
 @media screen and (min-width: 800px) /*DESKTOP*/ {
+    #easter-egg {
+        font-family: "Almonte", sans-serif;
+        font-size: 40px;
+        position: absolute;
+        left: 400px;
+        top: 30px;
+        transform: rotate(20deg);
+    }
     :root {
         --main-color: #333;
         --lite-bkg: ivory;
@@ -466,6 +484,14 @@ footer {
 
 
 @media print /*PRINT*/ {
+    #easter-egg {
+        font-family: "Almonte", sans-serif;
+        font-size: 40px;
+        position: absolute;
+        left: 480px;
+        top: 25px;
+        transform: rotate(20deg);
+    }
     :root {
         --main-color: black;
         --lite-bkg: white;
@@ -580,6 +606,10 @@ footer {
 }
 
 /* Local Google fonts */
+@font-face {
+    font-family: Almonte;
+    src: url("ressources/fonts/Almonte\ Snow.otf") format("opentype");
+}
 
 /* barlow-condensed-200 - latin */
 @font-face {
