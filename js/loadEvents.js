@@ -80,7 +80,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
 function aggregatePerDay(events) {
     const days = {};
     for (let i = 0; i < events.length; i++) {
-        const d = events[i].dateRange.split(",")[0];
+        const d = events[i].dateRange.split(",")[0].replace(/\s\d{4}$/g, "");
         if (!days[d]) days[d] = [];
         days[d].push(events[i]);
     }
