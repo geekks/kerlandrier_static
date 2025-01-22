@@ -34,7 +34,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     })
     .filter((d) => { // Date
         if (dateFilter === "") return true;
-        return new Date(d.firstTiming.begin) >= startDate && new Date(d.lastTiming.end) <= endDate;
+        return startDate <= new Date(d.lastTiming.end) && endDate >= new Date(d.firstTiming.begin);
     })
 
     // Split shortEvents vs longEvents
