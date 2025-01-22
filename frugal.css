@@ -292,8 +292,8 @@ footer {
     }
 
     :root {
-        --main-color: #333;
-        --lite-bkg: ivory;
+        --main-color: #008080;
+        --lite-bkg: beige;
     }
 
     body {
@@ -391,8 +391,8 @@ footer {
         transform: rotate(20deg);
     }
     :root {
-        --main-color: #333;
-        --lite-bkg: ivory;
+        --main-color: teal;
+        --lite-bkg: beige;
     }
 
     body {
