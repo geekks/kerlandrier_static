@@ -92,7 +92,7 @@ function addDayContent(events, d) {
         newContent += `<div class="dateAndEvents"><div class='date-header'><div class="sticky-date"><h4 >${d}</h4><p>░░░░░░░░░<p></div></div>`;
         newContent += `<div class='evenements'>`;
         for (let i = 0; i < events.length; i++) {
-            const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
+            const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/contribute/event/${events[i].uid}`;
             const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
             const cancel = events[i].status === 6;
             const complet = events[i].status === 5;

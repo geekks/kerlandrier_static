@@ -15,7 +15,7 @@ const defaultParams = {
     monolingual: "fr",
 };
 
-const includeFields = ["slug", "title", "onlineAccessLink", "status", "keywords", "dateRange", "location.description", "nextTiming", "longDescription", "description", "location.name", "location.city", "keywords"]
+const includeFields = ["uid","slug", "title", "onlineAccessLink", "status", "keywords", "dateRange", "location.description", "nextTiming", "longDescription", "description", "location.name", "location.city", "keywords"]
 
 const defaultQuery = URL + "?" 
 + new URLSearchParams(defaultParams).toString()
