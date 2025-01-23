@@ -278,6 +278,8 @@ footer {
 #join-us {
     display: block;
     margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
 }
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px) /*HANDHELD*/ {
