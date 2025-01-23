@@ -92,12 +92,18 @@ function addDayContent(events, d) {
         newContent += `<div class="dateAndEvents"><div class='date-header'><div class="sticky-date"><h4 >${d}</h4><p>░░░░░░░░░<p></div></div>`;
         newContent += `<div class='evenements'>`;
         for (let i = 0; i < events.length; i++) {
-            const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/contribute/event/${events[i].uid}`;
+            // Main link
+            const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
             const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
+            // Event status
             const cancel = events[i].status === 6;
             const complet = events[i].status === 5;
+            // Keywords
             const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
-            const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
+            // Timing and hidden OA link
+            const openAgendaEditLink = `https://openagenda.com/fr/${AGENDA_SLUG}/contribute/event/${events[i].uid}`;
+            const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaEditLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
+            // Main title
             const eventTitle = events[i].title.toLowerCase().toTitleCase()
             newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
                             ${nextTime} ${(kws.length > 0) ? kws.join("") : ""}
