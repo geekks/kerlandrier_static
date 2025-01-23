@@ -28,6 +28,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Filter events: area & date
     const eventsRaw = evnts.events; // Array of { title, onlineAccessLink... }
     const eventsFiltered = eventsRaw // Array of { title, onlineAccessLink... } but filtered based on location.description and selectedMonth
+    .filter((d) => d.nextTiming) // Make sure no shitty events gets displayed
     .filter((d) => { // Area (Aven, Cornouaille, Bretagne)
         if (areaFilters.length === 0) return true;
         return areaFilters.includes(d.location.description.fr);

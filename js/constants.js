@@ -8,7 +8,7 @@ const maxEvents = 400;
 const AREA_FILTERS = ["AVEN", "CORNOUAILLE", "BRETAGNE"];
 
 const defaultParams = {
-    relative: ['current', 'upcoming'],
+    // relative: ['current', 'upcoming'], // Do not use this, OpenAgenda params are not standard
     detailed: 0,
     key: PUBLIC_KEY,
     size: maxEvents,
@@ -19,6 +19,7 @@ const includeFields = ["uid","slug", "title", "onlineAccessLink", "status", "key
 
 const defaultQuery = URL + "?" 
 + new URLSearchParams(defaultParams).toString()
++ "&" + "relative[]=current&relative[]=upcoming"
 // includeFields params are not standard, build it manually
 + "&" + includeFields.map(field => `includeFields[]=${field}`).join("&");
 let filters = [];
