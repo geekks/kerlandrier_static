@@ -9,6 +9,7 @@ const AREA_FILTERS = ["AVEN", "CORNOUAILLE", "BRETAGNE"];
 
 const defaultParams = {
     // relative: ['current', 'upcoming'], // Do not use this, OpenAgenda params are not standard
+    sort: 'timings.asc',
     detailed: 0,
     key: PUBLIC_KEY,
     size: maxEvents,
