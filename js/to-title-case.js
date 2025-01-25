@@ -3,12 +3,17 @@
 // eslint-disable-next-line no-extend-native
 String.prototype.toTitleCase = function () {
   'use strict'
-  var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|v.?|vs.?|via|le|la|les|du|de|des|un|une)$/i
+  var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|or|per|the|to|v.?|vs.?|via|le|la|les|du|de|des|un|une|ou|où|or|ni|car|sans|avec|ce|ces|cet|cette|d|l|et|à|dans|nos|vos|notre|votre|mon|ton|ta|ma|tes|mes|son|sa|ses|pour|se|par)$/i
+  var upperWords = /^(FC)$/i
   var alphanumericPattern = /([A-Za-z0-9\u00C0-\u00FF])/
-  var wordSeparators = /([ :–—-])/
+  var wordSeparators = /([ :’–—-])/
 
   return this.split(wordSeparators)
     .map(function (current, index, array) {
+      console.log("current - ", current);
+      if (current.search(upperWords) > -1) {
+        return current.toUpperCase()
+      }
       if (
         /* Check for small words */
         current.search(smallWords) > -1 &&
