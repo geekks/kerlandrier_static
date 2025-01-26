@@ -93,6 +93,13 @@ ul, ol {list-style-position: inside;}
 #contribution, #abonnement{
     text-align: center;
     margin-top: 50px;
+    h3 {
+        font-size: 1.9rem;
+    }
+    p, ul, li { 
+        font-size: 1.3rem;;
+        line-height: 1.8rem;
+    }
 }
 
 
@@ -314,7 +321,23 @@ footer {
 
     #description {
         font-size: 24px;
-        line-height: 100%;
+        line-height: 90%;
+        margin-bottom: 15px;
+    }
+
+    #info-container {
+        p{
+            margin-right: 4rem;
+        }
+        #infos-link{
+            display: block;
+            width : 70%;
+            line-height: 1.3rem;
+        }
+        
+    }
+    #monthSelect {
+        width : 70%;
     }
 
     .dateAndEvents{
@@ -368,7 +391,8 @@ footer {
     }
 
     #filters-container {
-        margin-top: 15px;
+        margin-top: 30px;
+        align-items: center;
     }
 
     #expoadvert {
@@ -422,6 +446,7 @@ footer {
         max-width: 1080px;
         font-size: 2.6rem;
         line-height: 100%;
+        margin-bottom: 20px;
     }
 
     #filters-container {
