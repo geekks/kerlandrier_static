@@ -72,7 +72,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     if (EventsDivs.length >= 3) {
         const advertDiv = document.createElement('div');
         advertDiv.id = 'expoadvert';
-        advertDiv.innerHTML = 'Les longs évènements (expos, festival) sont <a href="#exposection">en bas de page';
+        advertDiv.innerHTML = 'Les longs évènements (expos, festivals) sont <a href="#exposection">en bas de page';
         const thirdEvent = EventsDivs[2];
         thirdEvent.insertAdjacentElement('afterend', advertDiv);
     }
