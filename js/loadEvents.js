@@ -95,7 +95,9 @@ function addDayContent(events, d) {
         for (let i = 0; i < events.length; i++) {
             // Main link
             const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
-            const redirectLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
+            const registrationLink = events[i].registration?.find(item => item.value?.includes("https://"))?.value;
+            const onlineAccessLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
+            const redirectLink = registrationLink ? registrationLink : onlineAccessLink;
             // Event status
             const cancel = events[i].status === 6;
             const complet = events[i].status === 5;

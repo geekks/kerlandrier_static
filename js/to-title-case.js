@@ -10,7 +10,7 @@ String.prototype.toTitleCase = function () {
 
   return this.split(wordSeparators)
     .map(function (current, index, array) {
-      console.log("current - ", current);
+      // console.log("current - ", current);
       if (current.search(upperWords) > -1) {
         return current.toUpperCase()
       }
