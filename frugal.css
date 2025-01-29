@@ -558,8 +558,8 @@ footer {
     }
 
     #description {
-        font-size: 31pt;
-        line-height: 100%;
+        font-size: 24pt;
+        line-height: 120%;
     }
 
     #qr-container {
