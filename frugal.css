@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +18,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-style: normal;
+    font-style: normal;
 
 }
 
@@ -36,7 +35,7 @@ h3 {
 }
 
 h4 {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 
@@ -46,17 +45,18 @@ a:visited {
 }
 
 
-.dateAndEvents{
-  break-inside: avoid;
+.dateAndEvents {
+    break-inside: avoid;
 }
 
 .date-header {
-    text-align:right;
+    text-align: right;
     position: sticky;
     top: 0;
     font-family: "League Gothic", sans-serif;
-    text-transform:uppercase;
+    text-transform: uppercase;
 }
+
 .sticky-date {
     position: sticky;
     top: 0px;
@@ -88,32 +88,42 @@ a:visited {
 }
 
 
-ul, ol {list-style-position: inside;}
+ul,
+ol {
+    list-style-position: inside;
+}
 
-#contribution, #abonnement{
+#contribution,
+#abonnement {
     text-align: center;
     margin-top: 50px;
+
     h3 {
         font-size: 1.9rem;
     }
-    p, ul, li { 
-        font-size: 1.3rem;;
+
+    p,
+    ul,
+    li {
+        font-size: 1.3rem;
+        ;
         line-height: 1.8rem;
     }
 }
 
 
 #infos-link {
-    font-size:1.5rem;
-    line-height:1rem;
+    font-size: 1.5rem;
+    line-height: 1rem;
 }
 
-#infos-link a{
+#infos-link a {
     font-style: italic;
     text-decoration-thickness: 1px;
 }
 
-#contribution,#abonnement{
+#contribution,
+#abonnement {
     ul {
         list-style-type: none;
     }
@@ -174,7 +184,7 @@ footer {
     border-radius: 10px;
     border: 1px solid var(--main-color);
     margin: 2px;
-    cursor: pointer ;
+    cursor: pointer;
 }
 
 .selected {
@@ -182,6 +192,7 @@ footer {
     color: var(--lite-bkg);
     border: 1px solid var(--lite-bkg);
 }
+
 #qr-container {
     display: none;
 }
@@ -232,10 +243,10 @@ footer {
 
 .hidden-link {
     text-decoration: none;
-    cursor:default;
+    cursor: default;
 }
 
-.annule > a {
+.annule>a {
     text-decoration: line-through
 }
 
@@ -254,10 +265,12 @@ footer {
     font-style: italic;
     text-align: center;
 }
+
 .icon-link-ical {
     width: 34px;
     height: 20px
 }
+
 .icon-link-rss {
     width: 20px;
     height: 20px
@@ -265,18 +278,19 @@ footer {
 
 #icon-ical {
     height: 20px;
-        width: 34px;
-        overflow: hidden;
-        margin: 0 auto;
+    width: 34px;
+    overflow: hidden;
+    margin: 0 auto;
     background: url("./ressources/ical.png");
     background-position: 0px;
     background-size: 34px 20px;
 }
+
 #icon-rss {
     height: 20px;
-        width: 20px;
-        overflow: hidden;
-        margin: 0 auto;
+    width: 20px;
+    overflow: hidden;
+    margin: 0 auto;
     background: url("./ressources/rss.png");
     background-position: 0px;
     background-size: 20px 20px;
@@ -288,8 +302,11 @@ footer {
     width: 100%;
     max-width: 600px;
 }
+
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
-@media only screen and (max-width: 799px) /*HANDHELD*/ {
+@media only screen and (max-width: 799px)
+/*HANDHELD*/
+    {
     #easter-egg {
         font-family: "Almonte", sans-serif;
         font-size: 30px;
@@ -326,29 +343,34 @@ footer {
     }
 
     #info-container {
-        p{
+        p {
             margin-right: 4rem;
         }
-        #infos-link{
+
+        #infos-link {
             display: block;
-            width : 70%;
+            width: 70%;
             line-height: 1.3rem;
         }
-        
-    }
-    #monthSelect {
-        width : 70%;
+
     }
 
-    .dateAndEvents{
-      margin-bottom: 30px;
+    #monthSelect {
+        width: 70%;
+    }
+
+    .dateAndEvents {
+        margin-bottom: 30px;
     }
 
     .date-header {
         width: 100%;
         background-color: var(--lite-bkg);
     }
-    .date-header p{font-size: 0.8rem;}
+
+    .date-header p {
+        font-size: 0.8rem;
+    }
 
 
     .evenements {
@@ -358,16 +380,16 @@ footer {
 
     }
 
-    .tag{
-      margin-right: 2px;
-      margin-bottom: 2px;
-      font-size: 1.3rem;
+    .tag {
+        margin-right: 2px;
+        margin-bottom: 2px;
+        font-size: 1.3rem;
     }
 
-    .time-tag{
-      margin-right: 2px;
-      margin-bottom: 2px;
-      font-size: 1.3rem;
+    .time-tag {
+        margin-right: 2px;
+        margin-bottom: 2px;
+        font-size: 1.3rem;
     }
 
     h2 {
@@ -407,7 +429,9 @@ footer {
 }
 
 
-@media screen and (min-width: 800px) /*DESKTOP*/ {
+@media screen and (min-width: 800px)
+/*DESKTOP*/
+    {
     #easter-egg {
         font-family: "Almonte", sans-serif;
         font-size: 40px;
@@ -416,6 +440,7 @@ footer {
         top: 30px;
         transform: rotate(20deg);
     }
+
     :root {
         --main-color: teal;
         --lite-bkg: beige;
@@ -454,15 +479,15 @@ footer {
 
     }
 
-    .dateAndEvents{
-      margin-bottom: 30px;
+    .dateAndEvents {
+        margin-bottom: 30px;
         display: flex;
-        gap:1.5rem;
+        gap: 1.5rem;
     }
 
 
     .evenements {
-        flex:auto;
+        flex: auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, 400px);
         grid-gap: 1.5rem;
@@ -481,18 +506,20 @@ footer {
         top: 0px;
     }
 
-    .date-header p{font-size: 2rem;}
-
-    .tag{
-      margin-right: 2px;
-      margin-bottom: 2px;
-      font-size: 1.3rem;
+    .date-header p {
+        font-size: 2rem;
     }
 
-    .time-tag{
-      margin-right: 2px;
-      margin-bottom: 2px;
-      font-size: 1.3rem;
+    .tag {
+        margin-right: 2px;
+        margin-bottom: 2px;
+        font-size: 1.3rem;
+    }
+
+    .time-tag {
+        margin-right: 2px;
+        margin-bottom: 2px;
+        font-size: 1.3rem;
     }
 
     h2 {
@@ -518,7 +545,9 @@ footer {
 
 
 
-@media print /*PRINT*/ {
+@media print
+/*PRINT*/
+    {
     #easter-egg {
         font-family: "Almonte", sans-serif;
         font-size: 40px;
@@ -527,19 +556,20 @@ footer {
         top: 25px;
         transform: rotate(20deg);
     }
+
     :root {
         --main-color: black;
         --lite-bkg: white;
     }
 
-    @page{
-      margin:5mm;
+    @page {
+        margin: 5mm;
     }
 
     body {
-      max-width: 21cm;
-      font-size: 12pt;
-      line-height: 12pt;
+        max-width: 21cm;
+        font-size: 12pt;
+        line-height: 12pt;
     }
 
     header {
@@ -552,7 +582,7 @@ footer {
     }
 
     h1 {
-      margin-bottom: 3mm;
+        margin-bottom: 3mm;
         font-size: 86pt;
         line-height: 70%;
     }
@@ -563,12 +593,12 @@ footer {
     }
 
     #qr-container {
-      flex:auto;
+        flex: auto;
         display: block;
         text-align: right;
-        font-size:9pt;
+        font-size: 9pt;
         word-spacing: normal;
-      }
+    }
 
     #qr {
         max-width: 16mm;
@@ -578,35 +608,41 @@ footer {
         break-inside: avoid;
     }
 
-    .dateAndEvents{
-      margin-bottom:4mm;
-      display: flex;
-      gap:3mm;
+    .dateAndEvents {
+        margin-bottom: 4mm;
+        display: flex;
+        gap: 3mm;
     }
 
     .date-header {
-      width: 4.7cm;
-      font-size: 12pt;
-      line-height: 14pt;
+        width: 4.7cm;
+        font-size: 12pt;
+        line-height: 14pt;
     }
 
     .evenements {
-      flex:auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, 4.8cm);
-      grid-gap: 1mm;
-      line-height: 100%;
+        flex: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 4.8cm);
+        grid-gap: 1mm;
+        line-height: 100%;
     }
 
-    .evenement{
-      line-height:6pt;
+    .evenement {
+        line-height: 6pt;
     }
 
-    .tag, .time-tag{
-      margin-right: 1px;
-      margin-bottom: 0;
-      font-size: 7pt;
-      line-height:7pt;
+    .tag-container {
+        overflow: hidden;
+        max-height: 1.56rem;
+    }
+
+    .tag,
+    .time-tag {
+        margin-right: 1px;
+        margin-bottom: 0;
+        font-size: 7pt;
+        line-height: 7pt;
     }
 
 
@@ -632,14 +668,21 @@ footer {
     }
 
 
-    #print-button, #filters, #infos-link a ,
-    #monthSelect, .filter, #abonnement, #other-events,
+    #print-button,
+    #filters,
+    #infos-link a,
+    #monthSelect,
+    .filter,
+    #abonnement,
+    #other-events,
     #expoadvert {
         display: none;
     }
-#title-text {
+
+    #title-text {
         font-size: 12vw;
     }
+
 }
 
 /* Local Google fonts */
@@ -655,115 +698,129 @@ footer {
     font-style: normal;
     font-weight: 200;
     src: url('ressources/fonts/barlow-condensed-v12-latin-200.woff2') format('woff2');
-  }
-  /* barlow-condensed-200italic - latin */
-  @font-face {
+}
+
+/* barlow-condensed-200italic - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 200;
     src: url('ressources/fonts/barlow-condensed-v12-latin-200italic.woff2') format('woff2');
-  }
-  /* barlow-condensed-300 - latin */
-  @font-face {
+}
+
+/* barlow-condensed-300 - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 300;
     src: url('ressources/fonts/barlow-condensed-v12-latin-300.woff2') format('woff2');
-  }
-  /* barlow-condensed-300italic - latin */
-  @font-face {
+}
+
+/* barlow-condensed-300italic - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 300;
     src: url('ressources/fonts/barlow-condensed-v12-latin-300italic.woff2') format('woff2');
-  }
-  /* barlow-condensed-regular - latin */
-  @font-face {
+}
+
+/* barlow-condensed-regular - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 400;
     src: url('ressources/fonts/barlow-condensed-v12-latin-regular.woff2') format('woff2');
-  }
-  /* barlow-condensed-italic - latin */
-  @font-face {
+}
+
+/* barlow-condensed-italic - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 400;
     src: url('ressources/fonts/barlow-condensed-v12-latin-italic.woff2') format('woff2');
-  }
-  /* barlow-condensed-500 - latin */
-  @font-face {
+}
+
+/* barlow-condensed-500 - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 500;
     src: url('ressources/fonts/barlow-condensed-v12-latin-500.woff2') format('woff2');
-  }
-  /* barlow-condensed-500italic - latin */
-  @font-face {
+}
+
+/* barlow-condensed-500italic - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 500;
     src: url('ressources/fonts/barlow-condensed-v12-latin-500italic.woff2') format('woff2');
-  }
-  /* barlow-condensed-600 - latin */
-  @font-face {
+}
+
+/* barlow-condensed-600 - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 600;
     src: url('ressources/fonts/barlow-condensed-v12-latin-600.woff2') format('woff2');
-  }
-  /* barlow-condensed-600italic - latin */
-  @font-face {
+}
+
+/* barlow-condensed-600italic - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 600;
     src: url('ressources/fonts/barlow-condensed-v12-latin-600italic.woff2') format('woff2');
-  }
-  /* barlow-condensed-700 - latin */
-  @font-face {
+}
+
+/* barlow-condensed-700 - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 700;
     src: url('ressources/fonts/barlow-condensed-v12-latin-700.woff2') format('woff2');
-  }
-  /* barlow-condensed-700italic - latin */
-  @font-face {
+}
+
+/* barlow-condensed-700italic - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 700;
     src: url('ressources/fonts/barlow-condensed-v12-latin-700italic.woff2') format('woff2');
-  }
-  /* barlow-condensed-800 - latin */
-  @font-face {
+}
+
+/* barlow-condensed-800 - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: 800;
     src: url('ressources/fonts/barlow-condensed-v12-latin-800.woff2') format('woff2');
-  }
-  /* barlow-condensed-800italic - latin */
-  @font-face {
+}
+
+/* barlow-condensed-800italic - latin */
+@font-face {
     font-display: swap;
     font-family: 'Barlow Condensed';
     font-style: italic;
     font-weight: 800;
     src: url('ressources/fonts/barlow-condensed-v12-latin-800italic.woff2') format('woff2');
-  }
-  @font-face {
+}
+
+@font-face {
     font-display: swap;
     font-family: 'League Gothic';
     font-style: normal;
     font-weight: 400;
     src: url('ressources/fonts/LeagueGothic-Regular-VariableFont_wdth.ttf') format('truetype');
-  }
+}

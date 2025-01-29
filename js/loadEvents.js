@@ -109,7 +109,7 @@ function addDayContent(events, d) {
             // Main title
             const eventTitle = events[i].title.toLowerCase().toTitleCase()
             newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
-                            ${nextTime} ${(kws.length > 0) ? kws.join("") : ""}
+                            <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
                             <h2 class='card-title ${cancel ? "annule" : ""}'>
                                 ${cancel ? "<span >[ANNULÉ]</span>" : ""}
                                 ${complet ? "<span >[COMPLET]</span>" : ""}
