@@ -1,5 +1,5 @@
 loadEvents()
-
+const DateTime = luxon.DateTime;
 
 /**
  * Charge les événements sur la page. Ceci est fait uniquement au chargement initial de la page
@@ -40,9 +40,26 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
 
     // Split shortEvents vs longEvents
     // FIXME: This criterium is shit but will be improved later (e.g. use a specific keyword for longEvents)
-    const shortEvents = eventsFiltered.filter((d) => !d.dateRange.includes("-"));
+    // Short events have no "-" in their dateRange, long events (3+ days) have
+    let shortEvents = eventsFiltered.filter((d) => !d.dateRange.includes("-"));
     const longEvents = eventsFiltered.filter((d) => d.dateRange.includes("-"));
-
+    // Feat: we use the next timing of long events to add one occurrence of it in short events list
+    const longEventsNextTiming = longEvents.map((d) => {
+        let newDateRange = DateTime.fromISO(d.nextTiming.begin, { zone: 'Europe/Paris' })
+            .setLocale('fr')
+            .toFormat("cccc d LLLL")
+        newDateRange = newDateRange.charAt(0).toUpperCase() + newDateRange.slice(1);
+        return ({...d, dateRange: newDateRange})
+    }
+    );
+    shortEvents.push(...longEventsNextTiming);
+    shortEvents = shortEvents.sort((a, b) => {
+        const dateA = new Date(a.nextTiming.begin);
+        const dateB = new Date(b.nextTiming.begin);
+        return dateA - dateB;
+    });
+    
+    // Turn the array into an object, the key is the event date range
     const shortEventsDayAgg = aggregatePerDay(shortEvents); // Object of { "Vendredi 18 octobre": [ { title, onlineAccessLink... } ] }
     const longEventsDayAgg = aggregatePerDay(longEvents); // Object of { "Vendredi 18 octobre - Lundi...": [ { title, onlineAccessLink... } ] }
 
