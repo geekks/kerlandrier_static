@@ -1,0 +1,105 @@
+<!-- diwar-benn = à propos -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Geekks" links="https://github.com/geekks">
+    <link rel='canonical' href='https://kerlandrier.cc/' />
+
+    <title>Kerlandrier</title>
+
+    <!-- Stylesheet, fonts & favicon -->
+    <link rel="stylesheet" href="frugal.css?v=100">
+    <link rel="icon" type="image/x-icon" href="./ressources/favicon.ico">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- App name for iOS -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Kerlandrier">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- iOS splash screen images -->
+    <link rel="apple-touch-icon" href="./ressources/favicon-192x192.png">
+    <link rel="apple-touch-startup-image" href="./ressources/favicon-512x512.png">
+
+    <!-- Open Graph meta tags for link preview-->
+    <meta property="og:title" content="Kerlandrier" />
+    <meta property="og:description"
+        content="Prenez soin de vos événements." />
+    <meta property="og:url" content="https://kerlandrier.cc" />
+    <meta property="og:image" content="https://kerlandrier.cc/favicon-192x192.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kerlandrier" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Indexing-->
+    <meta name=“robots” content=index, nofollow”>
+
+    <!-- Metadata Google -->
+    <meta name="description"
+        content="Agenda collaboratif des évènements autour de Concarneau">
+
+</head>
+
+<body>
+    <header>
+        <div id="title">
+            <div id="info-container">
+                <h1>Kerlandrier.cc</h1>
+                <p id="description">Festivals de l'été - Abadennoù sonerezh ha gouelioù</p>
+                <span id="infos-link"> <a href="/">Retour kerlandrier</a> </span>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div id="goueliou">
+            
+        </div>
+    </section>
+
+
+    <footer>
+    </footer>
+    <script type="module">
+        import gouelioù from './js/goueliou.js';
+        const gouelioùElement = document.getElementById("goueliou");
+        Object.entries(gouelioù).forEach(([key, value]) => {
+            if (!["06","07","08","09"].includes(key)) return;
+            console.log(key, value);
+            const container = document.createElement('div');
+            container.classList.add('month');
+            const title = document.createElement('h2');
+            title.classList.add('gouel-title');
+            title.textContent = key;
+            container.appendChild(title);
+            for (let i = 0; i < value.length; i++) {
+                const div = document.createElement('div');
+                div.classList.add('gouel');
+                div.style.height = `${value[i].duration * 100}px`;
+                div.innerHTML = `
+                    <h2 id="gouel-title">${value[i].title}</h2>
+                    <p>${value[i].start_date} - ${value[i].end_date}</p>
+                `;
+                container.appendChild(div);
+            }
+            gouelioùElement.appendChild(container);
+        })
+        // gouelioù.forEach(gouel => {
+        //     const div = document.createElement('div');
+        //     div.classList.add('gouel');
+        //     div.innerHTML = `
+        //         <h2>${gouel.title}</h2>
+        //         <p>${gouel.start_date}</p>
+        //     `;
+        //     gouelioùElement.appendChild(div);
+        // });
+    </script>
+</body>
+
+</html>
