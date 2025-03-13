@@ -303,6 +303,11 @@ footer {
     max-width: 600px;
 }
 
+#matomo-opt-out {
+    margin: 30px auto;
+    width: 50%;
+}
+
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px)
 /*HANDHELD*/
