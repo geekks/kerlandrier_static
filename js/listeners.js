@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     monthSelect.addEventListener('change', () => {
         let query = defaultQuery;
         const selectedMonth = monthSelect.value;
-        
+        _paq.push(['trackEvent', 'Filtre mensuel', 'Changement', monthSelect.options[monthSelect.selectedIndex].text]);
         // Pass current filters along with the updated query
         buildCalendar(null, filters, selectedMonth);
     });
@@ -25,9 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Toggle active status of the area button
             // Toggle area in filter used by buildCalendar
             if (filterButtons[i].classList.contains('selected')) {
+                _paq.push(['trackEvent', 'Filtre géographique', 'Déselection zone', filterButtons[i].textContent]);
                 filterButtons[i].classList.remove('selected');
                 filters = filters.filter((f) => f !== filterButtons[i].textContent);
             } else {
+                _paq.push(['trackEvent', 'Filtre géographique', 'Sélection zone', filterButtons[i].textContent]);
                 filterButtons[i].classList.add('selected');
                 filters.push(filterButtons[i].textContent);
             }
