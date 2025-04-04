@@ -31,7 +31,9 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     .filter((d) => d.nextTiming) // Make sure no shitty events gets displayed
     .filter((d) => { // Area (Aven, Cornouaille, Bretagne)
         if (areaFilters.length === 0) return true;
-        return areaFilters.includes(d.location.description.fr);
+        if (!d.location?.description) return false;
+        console.log("d.location.description - ", d.location.description);
+        return areaFilters.includes(d.location.description);
     })
     .filter((d) => { // Date
         if (dateFilter === "") return true;
