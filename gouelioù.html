@@ -29,8 +29,7 @@
 
     <!-- Open Graph meta tags for link preview-->
     <meta property="og:title" content="Kerlandrier" />
-    <meta property="og:description"
-        content="Prenez soin de vos événements." />
+    <meta property="og:description" content="Prenez soin de vos événements." />
     <meta property="og:url" content="https://kerlandrier.cc" />
     <meta property="og:image" content="https://kerlandrier.cc/favicon-192x192.png" />
     <meta property="og:type" content="website" />
@@ -41,8 +40,7 @@
     <meta name=“robots” content=index, nofollow”>
 
     <!-- Metadata Google -->
-    <meta name="description"
-        content="Agenda collaboratif des évènements autour de Concarneau">
+    <meta name="description" content="Agenda collaboratif des évènements autour de Concarneau">
 
 </head>
 
@@ -59,7 +57,7 @@
 
     <section>
         <div id="goueliou">
-            
+
         </div>
     </section>
 
@@ -70,7 +68,7 @@
         import gouelioù from './js/goueliou.js';
         const gouelioùElement = document.getElementById("goueliou");
         Object.entries(gouelioù).forEach(([key, value]) => {
-            if (!["06","07","08","09"].includes(key)) return;
+            if (!["Juin", "Juillet", "Août", "Septembre", "Octobre"].includes(key)) return;
             console.log(key, value);
             const container = document.createElement('div');
             container.classList.add('month');
@@ -81,24 +79,21 @@
             for (let i = 0; i < value.length; i++) {
                 const div = document.createElement('div');
                 div.classList.add('gouel');
-                div.style.height = `${value[i].duration * 100}px`;
+                div.style.height = `${value[i].duration * 140}px`;
                 div.innerHTML = `
                     <h2 id="gouel-title">${value[i].title}</h2>
+                    <a href="${value[i].website_url}" target="_blank" rel="noopener noreferrer">
+                        Billeterie
+                    </a> <p> ${"  "} </p>
+                    <a href="${value[i].url}" target="_blank" rel="noopener noreferrer">
+                        Source (Ty Zicos ou Festival-Bretagne)
+                    </a>
                     <p>${value[i].start_date} - ${value[i].end_date}</p>
                 `;
                 container.appendChild(div);
             }
             gouelioùElement.appendChild(container);
         })
-        // gouelioù.forEach(gouel => {
-        //     const div = document.createElement('div');
-        //     div.classList.add('gouel');
-        //     div.innerHTML = `
-        //         <h2>${gouel.title}</h2>
-        //         <p>${gouel.start_date}</p>
-        //     `;
-        //     gouelioùElement.appendChild(div);
-        // });
     </script>
 </body>
 

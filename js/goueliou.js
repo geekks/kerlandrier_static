@@ -1,36 +1,36 @@
 const gouelioù = {
-    "03": [
+    "Mars": [
         {
-            "title": "Soir�e St Patrick � Plouguerneau",
+            "title": "Soirée St Patrick à Plouguerneau",
             "city": "Port du Korejou, 29880 Plouguerneau, France",
             "zipcode": "29880",
             "start_date": "15/03/2025",
             "end_date": "15/03/2025",
             "url": "https://www.festival-bretagne.fr/festival/soiree-st-patrick-a-plouguerneau/",
             "website_url": "https://www.facebook.com/profile.php?id=100065026653025",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 1
         },
         {
             "title": "Concert/Bal tango argentin",
-            "city": "Bar Restaurant La Chope, Rue de la R�publique, Tr�gueux, France",
+            "city": "Bar Restaurant La Chope, Rue de la R�publique, Trégueux, France",
             "zipcode": "",
             "start_date": "15/03/2025",
             "end_date": "15/03/2025",
             "url": "https://www.festival-bretagne.fr/festival/concert-bal-tango-argentin/",
             "website_url": "https://tango-de-la-bahia.fr/index.php/2025/02/05/milonga-concert-power-tango-trio/",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 1
         },
         {
-            "title": "Quartiers en sc�ne",
+            "title": "Quartiers en scène",
             "city": "RENNES",
             "zipcode": "35000",
             "start_date": "15/03/2025",
             "end_date": "23/03/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/quartiers-en-scene",
             "website_url": "http://www.cerclepaulbert.asso.fr/qes/?page=1",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 9
         },
         {
@@ -41,7 +41,7 @@ const gouelioù = {
             "end_date": "23/03/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/opera-ds-tous-ses-etats",
             "website_url": "http://www.musique-maternelle.com/Festival.html",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 7
         },
         {
@@ -52,7 +52,7 @@ const gouelioù = {
             "end_date": "21/03/2025",
             "url": "https://www.festival-bretagne.fr/festival/fete-du-court-metrage/",
             "website_url": "https://www.festival-armoricourt.com",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 3
         },
         {
@@ -63,7 +63,7 @@ const gouelioù = {
             "end_date": "06/04/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/mythos",
             "website_url": "http://www.festival-mythos.com",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 18
         },
         {
@@ -74,7 +74,7 @@ const gouelioù = {
             "end_date": "23/03/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/jazz-l-etage",
             "website_url": "https://www.facebook.com/jazz.aletage",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 4
         },
         {
@@ -85,7 +85,7 @@ const gouelioù = {
             "end_date": "27/03/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/dooinit",
             "website_url": "http://www.dooinit-festival.com",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 8
         },
         {
@@ -96,7 +96,7 @@ const gouelioù = {
             "end_date": "22/03/2025",
             "url": "https://www.festival-bretagne.fr/festival/bouge-ton-cube/",
             "website_url": "http://www.myspace.com/lafabrique",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 2
         },
         {
@@ -107,7 +107,7 @@ const gouelioù = {
             "end_date": "22/03/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/guitar-rance",
             "website_url": "",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 2
         },
         {
@@ -118,7 +118,7 @@ const gouelioù = {
             "end_date": "22/03/2025",
             "url": "https://www.festival-bretagne.fr/festival/planguenoual-fete-la-saint-patrick/",
             "website_url": "https://urls.fr/Ni8we-",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 1
         },
         {
@@ -129,7 +129,7 @@ const gouelioù = {
             "end_date": "22/03/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/festi-halles",
             "website_url": "",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 1
         },
         {
@@ -140,11 +140,11 @@ const gouelioù = {
             "end_date": "06/04/2025",
             "url": "https://www.festival-bretagne.fr/festival/mythos/",
             "website_url": "https://www.festival-mythos.com/",
-            "mois": "03",
+            "mois": "Mars",
             "duration": 10
         }
     ],
-    "04": [
+    "Avril": [
         {
             "title": "Panoramas",
             "city": "Morlaix, France",
@@ -153,7 +153,7 @@ const gouelioù = {
             "end_date": "06/04/2025",
             "url": "https://www.festival-bretagne.fr/festival/panoramas/",
             "website_url": "https://www.festivalpanoramas.com",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 4
         },
         {
@@ -164,7 +164,7 @@ const gouelioù = {
             "end_date": "05/04/2025",
             "url": "https://www.festival-bretagne.fr/festival/la-corde-raide/",
             "website_url": "https://www.festival-lacorderaide.fr/",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 3
         },
         {
@@ -175,7 +175,7 @@ const gouelioù = {
             "end_date": "06/04/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/panoramas",
             "website_url": "http://www.festivalpanoramas.com",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 4
         },
         {
@@ -186,7 +186,7 @@ const gouelioù = {
             "end_date": "06/04/2025",
             "url": "https://www.festival-bretagne.fr/festival/blues-en-rade/",
             "website_url": "https://sites.google.com/view/bluesenrade",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 3
         },
         {
@@ -197,7 +197,7 @@ const gouelioù = {
             "end_date": "06/04/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/blues-en-rade",
             "website_url": "https://www.facebook.com/bluesenrade?locale=fr_FR",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 3
         },
         {
@@ -208,7 +208,7 @@ const gouelioù = {
             "end_date": "13/04/2025",
             "url": "https://www.festival-bretagne.fr/festival/reggae-breizh-party/",
             "website_url": "https://www.facebook.com/events/405959952578796/",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 2
         },
         {
@@ -219,7 +219,7 @@ const gouelioù = {
             "end_date": "12/04/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/reggae-breizh-party",
             "website_url": "https://m.facebook.com/people/Reggae-Breizh-Party/100069384422079/",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 1
         },
         {
@@ -230,7 +230,7 @@ const gouelioù = {
             "end_date": "19/04/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/dystopia",
             "website_url": "https://www.facebook.com/festivaldystopia",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 2
         },
         {
@@ -241,7 +241,7 @@ const gouelioù = {
             "end_date": "25/04/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/l-embellie",
             "website_url": "",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 1
         },
         {
@@ -252,11 +252,11 @@ const gouelioù = {
             "end_date": "26/04/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/raptown-6",
             "website_url": "https://www.facebook.com/profile.php?id=100094865653728",
-            "mois": "04",
+            "mois": "Avril",
             "duration": 1
         }
     ],
-    "05": [
+    "Mai": [
         {
             "title": "Re-Animator Festival",
             "city": "Kerboulard, Saint-Nolff, France",
@@ -265,7 +265,7 @@ const gouelioù = {
             "end_date": "10/05/2025",
             "url": "https://www.festival-bretagne.fr/festival/re-animator-festival/",
             "website_url": "https://www.motocultor-festival.com/re-animator-festival/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -276,7 +276,7 @@ const gouelioù = {
             "end_date": "10/05/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/re-animator",
             "website_url": "https://www.facebook.com/ReAnimatorFestival/?locale=fr_FR",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -287,7 +287,7 @@ const gouelioù = {
             "end_date": "11/05/2025",
             "url": "https://www.festival-bretagne.fr/festival/kleg-festival/",
             "website_url": "https://festivaldekleg.fr/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -298,7 +298,7 @@ const gouelioù = {
             "end_date": "11/05/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/kleg",
             "website_url": "https://www.facebook.com/festival.kleg",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -309,7 +309,7 @@ const gouelioù = {
             "end_date": "17/05/2025",
             "url": "https://www.festival-bretagne.fr/festival/andelir/",
             "website_url": "https://festivalandelir.com/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 2
         },
         {
@@ -320,7 +320,7 @@ const gouelioù = {
             "end_date": "17/05/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/andel-ir",
             "website_url": "https://www.facebook.com/profile.php?id=100063542170338",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 2
         },
         {
@@ -331,7 +331,7 @@ const gouelioù = {
             "end_date": "24/05/2025",
             "url": "https://www.festival-bretagne.fr/festival/courts-of-chaos/",
             "website_url": "https://www.courtsofchaos.fr/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 2
         },
         {
@@ -342,7 +342,7 @@ const gouelioù = {
             "end_date": "25/05/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/courts-chaos",
             "website_url": "https://www.facebook.com/courtsofchaosfestival",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -353,7 +353,7 @@ const gouelioù = {
             "end_date": "01/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/semaine-du-golfe-du-morbihan/",
             "website_url": "https://www.semainedugolfe.com/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 7
         },
         {
@@ -364,7 +364,7 @@ const gouelioù = {
             "end_date": "31/05/2025",
             "url": "https://www.festival-bretagne.fr/festival/soul-moon-festival/",
             "website_url": "https://musicsoul.fr/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -375,7 +375,7 @@ const gouelioù = {
             "end_date": "31/05/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/soul-moon",
             "website_url": "https://www.facebook.com/festivalsoulmoon",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -386,7 +386,7 @@ const gouelioù = {
             "end_date": "01/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/evol-festival/",
             "website_url": "https://www.evolfestival.fr/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 3
         },
         {
@@ -397,7 +397,7 @@ const gouelioù = {
             "end_date": "31/05/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/festi-coat",
             "website_url": "https://www.facebook.com/profile.php?id=100077574616278",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 2
         },
         {
@@ -408,11 +408,11 @@ const gouelioù = {
             "end_date": "31/05/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/evol-festival",
             "website_url": "https://www.evolfestival.fr/",
-            "mois": "05",
+            "mois": "Mai",
             "duration": 2
         }
     ],
-    "06": [
+    "Juin": [
         {
             "title": "Art Rock",
             "city": "12 Rue de Brest, 22000 Saint-Brieuc, France",
@@ -421,7 +421,7 @@ const gouelioù = {
             "end_date": "08/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/art-rock/",
             "website_url": "https://www.artrock.org/",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 3
         },
         {
@@ -432,18 +432,7 @@ const gouelioù = {
             "end_date": "08/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/les-nuits-vilaines/",
             "website_url": "https://www.les-nuits-vilaines.com/",
-            "mois": "06",
-            "duration": 3
-        },
-        {
-            "title": "Art Rock",
-            "city": "SAINT-BRIEUC",
-            "zipcode": "22000",
-            "start_date": "06/06/2025",
-            "end_date": "08/06/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/art-rock",
-            "website_url": "http://www.artrock.org",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 3
         },
         {
@@ -454,7 +443,7 @@ const gouelioù = {
             "end_date": "08/06/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/petites-folies",
             "website_url": "https://www.lespetitesfolies-iroise.com/",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 3
         },
         {
@@ -465,29 +454,18 @@ const gouelioù = {
             "end_date": "08/06/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/papillons-de-nuit",
             "website_url": "https://www.facebook.com/papillonsdenuit",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 3
         },
         {
-            "title": "Nuits Vilaines",
-            "city": "P�AULE",
-            "zipcode": "56130",
-            "start_date": "06/06/2025",
-            "end_date": "07/06/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/nuits-vilaines",
-            "website_url": "https://www.les-nuits-vilaines.com/",
-            "mois": "06",
-            "duration": 2
-        },
-        {
-            "title": "Les Vaches Folks, printemps 2025",
+            "title": "Les Vaches Folks",
             "city": "Cast, France",
             "zipcode": "",
             "start_date": "07/06/2025",
             "end_date": "07/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/les-vaches-folks/",
             "website_url": "https://www.instagram.com/les_vaches_folks",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 1
         },
         {
@@ -498,19 +476,8 @@ const gouelioù = {
             "end_date": "08/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/festival-profil-bas-03/",
             "website_url": "https://linktr.ee/profil_bas",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 2
-        },
-        {
-            "title": "Vaches Folks",
-            "city": "CAST",
-            "zipcode": "29150",
-            "start_date": "07/06/2025",
-            "end_date": "07/06/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/vaches-folks",
-            "website_url": "http://www.les-vaches-folks.fr",
-            "mois": "06",
-            "duration": 1
         },
         {
             "title": "God Save the Kouign",
@@ -520,7 +487,7 @@ const gouelioù = {
             "end_date": "14/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/god-save-the-kouign/",
             "website_url": "https://www.godsavethekouign.bzh/",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 2
         },
         {
@@ -531,51 +498,18 @@ const gouelioù = {
             "end_date": "14/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/summer-palets-fest/",
             "website_url": "https://www.helloasso.com/associations/association-les-surfeurs-du-kreiz-breizh",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 2
         },
         {
-            "title": "Summer Palets Fest",
-            "city": "LANRIVAIN",
-            "zipcode": "22480",
-            "start_date": "13/06/2025",
-            "end_date": "14/06/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/summer-palets-fest",
-            "website_url": "https://www.facebook.com/profile.php?id=100071044780463",
-            "mois": "06",
-            "duration": 2
-        },
-        {
-            "title": "God save the Kouign",
-            "city": "PENMARCH",
-            "zipcode": "29760",
-            "start_date": "13/06/2025",
-            "end_date": "14/06/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/god-save-kouign",
-            "website_url": "https://www.facebook.com/godsavethekouign/",
-            "mois": "06",
-            "duration": 2
-        },
-        {
-            "title": "XL�AiR 2025",
-            "city": "Talensac, France",
-            "zipcode": "",
-            "start_date": "14/06/2025",
-            "end_date": "15/06/2025",
-            "url": "https://www.festival-bretagne.fr/festival/xlair-2025/",
-            "website_url": "https://www.festivalxlair.fr/",
-            "mois": "06",
-            "duration": 2
-        },
-        {
-            "title": "Festival XL�AiR",
+            "title": "Festival XL AiR",
             "city": "TALENSAC",
             "zipcode": "35160",
             "start_date": "14/06/2025",
             "end_date": "15/06/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/festival-xl-air",
             "website_url": "https://www.facebook.com/festivalxlair",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 2
         },
         {
@@ -586,7 +520,7 @@ const gouelioù = {
             "end_date": "22/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/hellfest/",
             "website_url": "https://www.hellfest.fr",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 4
         },
         {
@@ -597,18 +531,18 @@ const gouelioù = {
             "end_date": "29/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/festival-bobital/",
             "website_url": "https://www.bobital-festival.fr/",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 3
         },
         {
-            "title": "M�gasc�ne",
+            "title": "Mégascène",
             "city": "La Moucheti�re, 44310 Saint-Colomban, France",
             "zipcode": "44310",
             "start_date": "27/06/2025",
             "end_date": "29/06/2025",
             "url": "https://www.festival-bretagne.fr/festival/megascene/",
             "website_url": "http://www.megascene.org/",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 3
         },
         {
@@ -619,42 +553,31 @@ const gouelioù = {
             "end_date": "28/06/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/p-tit-ouestival",
             "website_url": "https://www.facebook.com/profile.php?id=61555917969573",
-            "mois": "06",
+            "mois": "Juin",
             "duration": 2
         }
     ],
-    "07": [
+    "Juillet": [
         {
-            "title": "La Nuit de l�Erdre",
+            "title": "La Nuit de l'Erdre",
             "city": "Parc du Port Mulon, 44390 Nort-sur-Erdre, France",
             "zipcode": "44390",
             "start_date": "03/07/2025",
             "end_date": "06/07/2025",
             "url": "https://www.festival-bretagne.fr/festival/la-nuit-de-lerdre/",
             "website_url": "https://www.lanuitdelerdre.fr/",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 4
         },
         {
-            "title": "Festidreuz",
-            "city": "Hent Kerchann, Fouesnant, France",
-            "zipcode": "",
-            "start_date": "04/07/2025",
-            "end_date": "06/07/2025",
-            "url": "https://www.festival-bretagne.fr/festival/festidreuz/",
-            "website_url": "https://www.festidreuz.fr/",
-            "mois": "07",
-            "duration": 3
-        },
-        {
-            "title": "F�te du Bruit dans Saint-Nolff",
+            "title": "Fête du Bruit dans Saint-Nolff",
             "city": "Kerboulard, Saint-Nolff, France",
             "zipcode": "",
             "start_date": "04/07/2025",
             "end_date": "06/07/2025",
             "url": "https://www.festival-bretagne.fr/festival/fete-du-bruit-dans-saint-nolff/",
             "website_url": "https://stnolff.festival-fetedubruit.com/",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 3
         },
         {
@@ -665,7 +588,7 @@ const gouelioù = {
             "end_date": "06/07/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/gbb",
             "website_url": "https://www.facebook.com/gbbfest",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 3
         },
         {
@@ -676,18 +599,7 @@ const gouelioù = {
             "end_date": "06/07/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/festidreuz",
             "website_url": "http://www.festidreuz.fr",
-            "mois": "07",
-            "duration": 3
-        },
-        {
-            "title": "F�te du Bruit",
-            "city": "SAINT-NOLFF",
-            "zipcode": "56250",
-            "start_date": "04/07/2025",
-            "end_date": "06/07/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/fete-du-bruit-0",
-            "website_url": "https://festival-fetedubruit.com",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 3
         },
         {
@@ -698,18 +610,18 @@ const gouelioù = {
             "end_date": "05/07/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/au-foin-de-la-rue",
             "website_url": "https://www.facebook.com/aufoindelarue",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 2
         },
         {
-            "title": "Lorient Oc�ans",
+            "title": "Lorient Océans",
             "city": "LORIENT",
             "zipcode": "56100",
             "start_date": "05/07/2025",
             "end_date": "06/07/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/lorient-oceans",
             "website_url": "",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 2
         },
         {
@@ -720,30 +632,8 @@ const gouelioù = {
             "end_date": "13/07/2025",
             "url": "https://www.festival-bretagne.fr/festival/dub-camp-festival/",
             "website_url": "https://www.dubcampfestival.com/",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 3
-        },
-        {
-            "title": "Dub Camp",
-            "city": "JOU�-SUR-ERDRE",
-            "zipcode": "44440",
-            "start_date": "11/07/2025",
-            "end_date": "13/07/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/dub-camp",
-            "website_url": "https://www.facebook.com/DubCampFestival",
-            "mois": "07",
-            "duration": 3
-        },
-        {
-            "title": "Les Vieilles Charrues",
-            "city": "Kerampuilh, Carhaix-Plouguer, France",
-            "zipcode": "",
-            "start_date": "17/07/2025",
-            "end_date": "20/07/2025",
-            "url": "https://www.festival-bretagne.fr/festival/les-vieilles-charrues/",
-            "website_url": "https://www.vieillescharrues.asso.fr/",
-            "mois": "07",
-            "duration": 4
         },
         {
             "title": "Vieilles Charrues",
@@ -753,7 +643,7 @@ const gouelioù = {
             "end_date": "20/07/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/vieilles-charrues",
             "website_url": "http://www.vieillescharrues.asso.fr",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 4
         },
         {
@@ -764,7 +654,7 @@ const gouelioù = {
             "end_date": "26/07/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/festival-de-la-mer",
             "website_url": "https://www.facebook.com/events/1375673633026425/?acontext=%7B%22event_action_history%22%3A[]%7D",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 2
         },
         {
@@ -775,7 +665,7 @@ const gouelioù = {
             "end_date": "26/07/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/sea-fest-n-sound",
             "website_url": "",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 2
         },
         {
@@ -786,22 +676,11 @@ const gouelioù = {
             "end_date": "27/07/2025",
             "url": "https://www.festival-bretagne.fr/festival/festi-rance/",
             "website_url": "https://festi-rance.s2.yapla.com/fr/accueil",
-            "mois": "07",
-            "duration": 2
-        },
-        {
-            "title": "Festi Rance",
-            "city": "SAINT-SAMSON-SUR-RANCE",
-            "zipcode": "22100",
-            "start_date": "26/07/2025",
-            "end_date": "27/07/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/festi-rance-1",
-            "website_url": "",
-            "mois": "07",
+            "mois": "Juillet",
             "duration": 2
         }
     ],
-    "08": [
+    "Août": [
         {
             "title": "Bout du Monde",
             "city": "CROZON",
@@ -810,7 +689,7 @@ const gouelioù = {
             "end_date": "03/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/bout-du-monde",
             "website_url": "http://www.festivalduboutdumonde.com",
-            "mois": "08",
+            "mois": "Août",
             "duration": 3
         },
         {
@@ -821,18 +700,18 @@ const gouelioù = {
             "end_date": "02/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/au-pont-du-rock",
             "website_url": "http://www.aupontdurock.com",
-            "mois": "08",
+            "mois": "Août",
             "duration": 2
         },
         {
-            "title": "F�te du bruit dans Landerneau",
+            "title": "Fête du bruit dans Landerneau",
             "city": "Jardin de la Palud, Rue de la Petite Palud, Landerneau, France",
             "zipcode": "",
             "start_date": "08/08/2025",
             "end_date": "10/08/2025",
             "url": "https://www.festival-bretagne.fr/festival/fete-du-bruit-dans-landerneau/",
             "website_url": "https://landerneau.festival-fetedubruit.com/",
-            "mois": "08",
+            "mois": "Août",
             "duration": 3
         },
         {
@@ -843,29 +722,7 @@ const gouelioù = {
             "end_date": "10/08/2025",
             "url": "https://www.festival-bretagne.fr/festival/festival-du-chant-de-marin/",
             "website_url": "https://paimpol-festival.bzh/",
-            "mois": "08",
-            "duration": 3
-        },
-        {
-            "title": "No Logo BZH",
-            "city": "Fort de Saint P�re, Chemin Bertrand du Guesclin, Saint-P�re-Marc-en-Poulet, France",
-            "zipcode": "",
-            "start_date": "08/08/2025",
-            "end_date": "10/08/2025",
-            "url": "https://www.festival-bretagne.fr/festival/no-logo-bzh/",
-            "website_url": "https://nologofestival.fr/",
-            "mois": "08",
-            "duration": 3
-        },
-        {
-            "title": "Chant de Marin",
-            "city": "PAIMPOL",
-            "zipcode": "22500",
-            "start_date": "08/08/2025",
-            "end_date": "10/08/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/chant-de-marin",
-            "website_url": "https://www.facebook.com/paimpolfestival",
-            "mois": "08",
+            "mois": "Août",
             "duration": 3
         },
         {
@@ -876,29 +733,18 @@ const gouelioù = {
             "end_date": "10/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/no-logo-bzh",
             "website_url": "http://nologobzh.com/",
-            "mois": "08",
+            "mois": "Août",
             "duration": 3
         },
         {
-            "title": "F�te du Bruit",
-            "city": "LANDERNEAU",
-            "zipcode": "29800",
-            "start_date": "08/08/2025",
-            "end_date": "10/08/2025",
-            "url": "http://www.tyzicos.com/lieu-concerts/fete-du-bruit",
-            "website_url": "http://www.festival-fetedubruit.com",
-            "mois": "08",
-            "duration": 3
-        },
-        {
-            "title": "D�l�-Terre Mini",
+            "title": "Délé-Terre Mini",
             "city": "PL�GUIEN",
             "zipcode": "22290",
             "start_date": "10/08/2025",
             "end_date": "10/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/dele-terre-mini",
             "website_url": "",
-            "mois": "08",
+            "mois": "Août",
             "duration": 1
         },
         {
@@ -909,7 +755,7 @@ const gouelioù = {
             "end_date": "17/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/les-filets-bleus",
             "website_url": "https://www.festivaldesfiletsbleus.bzh/",
-            "mois": "08",
+            "mois": "Août",
             "duration": 5
         },
         {
@@ -920,7 +766,7 @@ const gouelioù = {
             "end_date": "17/08/2025",
             "url": "https://www.festival-bretagne.fr/festival/motocultor-festival/",
             "website_url": "http://www.motocultor-festival.com/",
-            "mois": "08",
+            "mois": "Août",
             "duration": 4
         },
         {
@@ -931,7 +777,7 @@ const gouelioù = {
             "end_date": "15/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/la-nuit-des-etoiles",
             "website_url": "https://www.facebook.com/lanuitdesetoiles",
-            "mois": "08",
+            "mois": "Août",
             "duration": 2
         },
         {
@@ -942,7 +788,7 @@ const gouelioù = {
             "end_date": "24/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/roi-arthur",
             "website_url": "http://www.festivalduroiarthur.fr",
-            "mois": "08",
+            "mois": "Août",
             "duration": 3
         },
         {
@@ -953,11 +799,11 @@ const gouelioù = {
             "end_date": "24/08/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/les-galettes-du-monde",
             "website_url": "https://www.facebook.com/FestivalLesGalettesDuMonde",
-            "mois": "08",
+            "mois": "Août",
             "duration": 2
         }
     ],
-    "09": [
+    "Septembre": [
         {
             "title": "Claie de Sol",
             "city": "PLUMELEC",
@@ -966,11 +812,11 @@ const gouelioù = {
             "end_date": "05/09/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/claie-de-sol",
             "website_url": " https://www.claiedesol.fr/",
-            "mois": "09",
+            "mois": "Septembre",
             "duration": 1
         }
     ],
-    "10": [
+    "Octobre": [
         {
             "title": "Le Grand Soufflet",
             "city": "RENNES",
@@ -979,7 +825,7 @@ const gouelioù = {
             "end_date": "01/10/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/le-grand-soufflet",
             "website_url": "http://www.legrandsoufflet.fr",
-            "mois": "10",
+            "mois": "Octobre",
             "duration": 1
         },
         {
@@ -990,7 +836,7 @@ const gouelioù = {
             "end_date": "18/10/2025",
             "url": "http://www.tyzicos.com/lieu-concerts/carnavalorock",
             "website_url": "https://www.carnavalorock.com/",
-            "mois": "10",
+            "mois": "Octobre",
             "duration": 2
         }
     ]
