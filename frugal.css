@@ -303,6 +303,27 @@ footer {
     max-width: 600px;
 }
 
+#goueliou {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gouel {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--main-color);
+    width: 300px;
+}
+
+.gouel-title {
+        position: sticky;
+        top: 0px;
+        background-color: var(--lite-bkg);
+        padding: 10px 0;
+        text-align: center;
+        border-bottom: 1px solid var(--main-color);
+    }
+
 #matomo-opt-out {
     margin: 30px auto;
     width: 50%;
@@ -430,6 +451,27 @@ footer {
 
     #title-text {
         font-size: 12vw;
+    }
+
+    #goueliou {
+    display: block;
+    justify-content: space-around;
+    }
+
+    .gouel {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid var(--main-color);
+        width: 100%;
+    }
+
+    .gouel-title {
+        position: sticky;
+        top: 0px;
+        background-color: var(--lite-bkg);
+        padding: 10px 0;
+        text-align: center;
+        border-bottom: 1px solid var(--main-color);
     }
 }
 
