@@ -3,11 +3,21 @@
 <html lang="fr">
 
 <head>
+    <!-- Matomo Tag Manager -->
+    <script>
+        var _mtm = window._mtm = window._mtm || [];
+        _mtm.push({ 'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start' });
+        (function () {
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = 'https://matomo.kerlandrier.cc/js/container_4t71ICVH.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Tag Manager -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Geekks" links="https://github.com/geekks">
-    <link rel='canonical' href='https://kerlandrier.cc/' />
+    <link rel='canonical' href='https://kerlandrier.cc/goueliou' />
 
     <title>Kerlandrier</title>
 
@@ -29,8 +39,8 @@
 
     <!-- Open Graph meta tags for link preview-->
     <meta property="og:title" content="Kerlandrier" />
-    <meta property="og:description" content="Prenez soin de vos événements." />
-    <meta property="og:url" content="https://kerlandrier.cc" />
+    <meta property="og:description" content="Festivals de l'été" />
+    <meta property="og:url" content="https://kerlandrier.cc/goueliou" />
     <meta property="og:image" content="https://kerlandrier.cc/favicon-192x192.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Kerlandrier" />
@@ -41,7 +51,21 @@
 
     <!-- Metadata Google -->
     <meta name="description" content="Agenda collaboratif des évènements autour de Concarneau">
-
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//matomo.kerlandrier.cc/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
 </head>
 
 <body>
@@ -65,9 +89,9 @@
     <footer>
     </footer>
     <script type="module">
-        import gouelioù from './js/goueliou.js';
-        const gouelioùElement = document.getElementById("goueliou");
-        Object.entries(gouelioù).forEach(([key, value]) => {
+        import goueliou from './js/goueliou.js';
+        const goueliouElement = document.getElementById("goueliou");
+        Object.entries(goueliou).forEach(([key, value]) => {
             if (!["Juin", "Juillet", "Août", "Septembre", "Octobre"].includes(key)) return;
             console.log(key, value);
             const container = document.createElement('div');
@@ -92,7 +116,7 @@
                 `;
                 container.appendChild(div);
             }
-            gouelioùElement.appendChild(container);
+            goueliouElement.appendChild(container);
         })
     </script>
 </body>

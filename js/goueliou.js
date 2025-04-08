@@ -1,4 +1,4 @@
-const gouelioù = {
+const goueliou = {
     "Mars": [
         {
             "title": "Soirée St Patrick à Plouguerneau",
@@ -842,4 +842,4 @@ const gouelioù = {
     ]
 }
 
-export default gouelioù
+export default goueliou
