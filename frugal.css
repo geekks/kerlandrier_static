@@ -313,16 +313,43 @@ footer {
     margin-bottom: 10px;
     border: 1px solid var(--main-color);
     width: 300px;
+    font-size: 20px;
+}
+
+.gouel a,
+p {
+    margin-top: 6px;
+}
+
+.gouel p.source {
+    font-size: 16px;
+}
+
+.gouel-tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gouel-tag {
+    margin-right: 4px;
+    margin-bottom: 3px;
+    padding: 0 5px;
+    background-color: var(--main-color);
+    border-radius: 4px;
+    color: var(--lite-bkg);
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
 .gouel-title {
-        position: sticky;
-        top: 0px;
-        background-color: var(--lite-bkg);
-        padding: 10px 0;
-        text-align: center;
-        border-bottom: 1px solid var(--main-color);
-    }
+    position: sticky;
+    top: 0px;
+    background-color: var(--lite-bkg);
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--main-color);
+}
 
 #matomo-opt-out {
     margin: 30px auto;
@@ -454,8 +481,8 @@ footer {
     }
 
     #goueliou {
-    display: block;
-    justify-content: space-around;
+        display: block;
+        justify-content: space-around;
     }
 
     .gouel {
