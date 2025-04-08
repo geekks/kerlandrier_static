@@ -22,11 +22,11 @@
     <title>Kerlandrier</title>
 
     <!-- Stylesheet, fonts & favicon -->
-    <link rel="stylesheet" href="frugal.css?v=100">
-    <link rel="icon" type="image/x-icon" href="./ressources/favicon.ico">
+    <link rel="stylesheet" href="../frugal.css?v=100">
+    <link rel="icon" type="image/x-icon" href="../ressources/favicon.ico">
 
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="../manifest.json">
 
     <!-- App name for iOS -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -34,8 +34,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!-- iOS splash screen images -->
-    <link rel="apple-touch-icon" href="./ressources/favicon-192x192.png">
-    <link rel="apple-touch-startup-image" href="./ressources/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="../ressources/favicon-192x192.png">
+    <link rel="apple-touch-startup-image" href="../ressources/favicon-512x512.png">
 
     <!-- Open Graph meta tags for link preview-->
     <meta property="og:title" content="Kerlandrier" />
@@ -89,7 +89,8 @@
     <footer>
     </footer>
     <script type="module">
-        import goueliou from './js/goueliou.js';
+        const response = await fetch('./goueliou.json');
+        const goueliou = await response.json();
         const goueliouElement = document.getElementById("goueliou");
         Object.entries(goueliou).forEach(([key, value]) => {
             if (!["Juin", "Juillet", "Août", "Septembre", "Octobre"].includes(key)) return;

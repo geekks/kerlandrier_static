@@ -1,4 +1,4 @@
-const goueliou = {
+{
     "Mars": [
         {
             "title": "Soirée St Patrick à Plouguerneau",
@@ -9,7 +9,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/soiree-st-patrick-a-plouguerneau/",
             "website_url": "https://www.facebook.com/profile.php?id=100065026653025",
             "mois": "Mars",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Concert/Bal tango argentin",
@@ -20,7 +21,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/concert-bal-tango-argentin/",
             "website_url": "https://tango-de-la-bahia.fr/index.php/2025/02/05/milonga-concert-power-tango-trio/",
             "mois": "Mars",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Quartiers en scène",
@@ -31,7 +33,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/quartiers-en-scene",
             "website_url": "http://www.cerclepaulbert.asso.fr/qes/?page=1",
             "mois": "Mars",
-            "duration": 9
+            "duration": 9,
+            "keywords": ""
         },
         {
             "title": "Op�ra ds tous ses �tats",
@@ -42,7 +45,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/opera-ds-tous-ses-etats",
             "website_url": "http://www.musique-maternelle.com/Festival.html",
             "mois": "Mars",
-            "duration": 7
+            "duration": 7,
+            "keywords": ""
         },
         {
             "title": "FETE DU COURT METRAGE",
@@ -53,7 +57,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/fete-du-court-metrage/",
             "website_url": "https://www.festival-armoricourt.com",
             "mois": "Mars",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Mythos",
@@ -64,7 +69,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/mythos",
             "website_url": "http://www.festival-mythos.com",
             "mois": "Mars",
-            "duration": 18
+            "duration": 18,
+            "keywords": ""
         },
         {
             "title": "Jazz � l'Etage",
@@ -75,7 +81,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/jazz-l-etage",
             "website_url": "https://www.facebook.com/jazz.aletage",
             "mois": "Mars",
-            "duration": 4
+            "duration": 4,
+            "keywords": ""
         },
         {
             "title": "Dooinit ",
@@ -86,7 +93,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/dooinit",
             "website_url": "http://www.dooinit-festival.com",
             "mois": "Mars",
-            "duration": 8
+            "duration": 8,
+            "keywords": ""
         },
         {
             "title": "Bouge ton Cube",
@@ -97,7 +105,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/bouge-ton-cube/",
             "website_url": "http://www.myspace.com/lafabrique",
             "mois": "Mars",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Guitar & Rance",
@@ -108,7 +117,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/guitar-rance",
             "website_url": "",
             "mois": "Mars",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Soir�e Saint Patrick � Planguenoual",
@@ -119,7 +129,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/planguenoual-fete-la-saint-patrick/",
             "website_url": "https://urls.fr/Ni8we-",
             "mois": "Mars",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Festi'Halles",
@@ -130,7 +141,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/festi-halles",
             "website_url": "",
             "mois": "Mars",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Mythos",
@@ -154,7 +166,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/panoramas/",
             "website_url": "https://www.festivalpanoramas.com",
             "mois": "Avril",
-            "duration": 4
+            "duration": 4,
+            "keywords": ""
         },
         {
             "title": "La Corde Raide",
@@ -165,7 +178,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/la-corde-raide/",
             "website_url": "https://www.festival-lacorderaide.fr/",
             "mois": "Avril",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Panoramas",
@@ -176,7 +190,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/panoramas",
             "website_url": "http://www.festivalpanoramas.com",
             "mois": "Avril",
-            "duration": 4
+            "duration": 4,
+            "keywords": ""
         },
         {
             "title": "Blues En Rade",
@@ -187,7 +202,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/blues-en-rade/",
             "website_url": "https://sites.google.com/view/bluesenrade",
             "mois": "Avril",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Blues en Rade",
@@ -198,7 +214,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/blues-en-rade",
             "website_url": "https://www.facebook.com/bluesenrade?locale=fr_FR",
             "mois": "Avril",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Reggae Breizh Party",
@@ -209,7 +226,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/reggae-breizh-party/",
             "website_url": "https://www.facebook.com/events/405959952578796/",
             "mois": "Avril",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Reggae Breizh Party",
@@ -220,7 +238,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/reggae-breizh-party",
             "website_url": "https://m.facebook.com/people/Reggae-Breizh-Party/100069384422079/",
             "mois": "Avril",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Dystopia",
@@ -231,7 +250,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/dystopia",
             "website_url": "https://www.facebook.com/festivaldystopia",
             "mois": "Avril",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "L'Embellie",
@@ -242,7 +262,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/l-embellie",
             "website_url": "",
             "mois": "Avril",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Raptown #6",
@@ -266,7 +287,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/re-animator-festival/",
             "website_url": "https://www.motocultor-festival.com/re-animator-festival/",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Re-Animator",
@@ -277,7 +299,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/re-animator",
             "website_url": "https://www.facebook.com/ReAnimatorFestival/?locale=fr_FR",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Kleg Festival",
@@ -288,7 +311,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/kleg-festival/",
             "website_url": "https://festivaldekleg.fr/",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Kleg",
@@ -299,7 +323,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/kleg",
             "website_url": "https://www.facebook.com/festival.kleg",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Andel�ir",
@@ -310,7 +335,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/andelir/",
             "website_url": "https://festivalandelir.com/",
             "mois": "Mai",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Andel'ir",
@@ -321,7 +347,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/andel-ir",
             "website_url": "https://www.facebook.com/profile.php?id=100063542170338",
             "mois": "Mai",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Courts Of Chaos",
@@ -332,7 +359,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/courts-of-chaos/",
             "website_url": "https://www.courtsofchaos.fr/",
             "mois": "Mai",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Courts of Chaos",
@@ -343,7 +371,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/courts-chaos",
             "website_url": "https://www.facebook.com/courtsofchaosfestival",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Semaine du Golfe du Morbihan",
@@ -354,7 +383,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/semaine-du-golfe-du-morbihan/",
             "website_url": "https://www.semainedugolfe.com/",
             "mois": "Mai",
-            "duration": 7
+            "duration": 7,
+            "keywords": ""
         },
         {
             "title": "Soul Moon Festival",
@@ -365,7 +395,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/soul-moon-festival/",
             "website_url": "https://musicsoul.fr/",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Soul Moon",
@@ -376,7 +407,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/soul-moon",
             "website_url": "https://www.facebook.com/festivalsoulmoon",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Evol Festival",
@@ -387,7 +419,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/evol-festival/",
             "website_url": "https://www.evolfestival.fr/",
             "mois": "Mai",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Festi'Coat",
@@ -398,7 +431,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/festi-coat",
             "website_url": "https://www.facebook.com/profile.php?id=100077574616278",
             "mois": "Mai",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Evol Festival",
@@ -422,7 +456,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/art-rock/",
             "website_url": "https://www.artrock.org/",
             "mois": "Juin",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Les Nuits Vilaines",
@@ -433,7 +468,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/les-nuits-vilaines/",
             "website_url": "https://www.les-nuits-vilaines.com/",
             "mois": "Juin",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": " Petites Folies",
@@ -444,7 +480,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/petites-folies",
             "website_url": "https://www.lespetitesfolies-iroise.com/",
             "mois": "Juin",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Papillons de Nuit",
@@ -455,7 +492,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/papillons-de-nuit",
             "website_url": "https://www.facebook.com/papillonsdenuit",
             "mois": "Juin",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Les Vaches Folks",
@@ -466,7 +504,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/les-vaches-folks/",
             "website_url": "https://www.instagram.com/les_vaches_folks",
             "mois": "Juin",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Festival Profil Bas #03",
@@ -477,7 +516,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/festival-profil-bas-03/",
             "website_url": "https://linktr.ee/profil_bas",
             "mois": "Juin",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "God Save the Kouign",
@@ -488,7 +528,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/god-save-the-kouign/",
             "website_url": "https://www.godsavethekouign.bzh/",
             "mois": "Juin",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Summer Palets Fest",
@@ -499,7 +540,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/summer-palets-fest/",
             "website_url": "https://www.helloasso.com/associations/association-les-surfeurs-du-kreiz-breizh",
             "mois": "Juin",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Festival XL AiR",
@@ -510,7 +552,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/festival-xl-air",
             "website_url": "https://www.facebook.com/festivalxlair",
             "mois": "Juin",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Hellfest 2025",
@@ -521,7 +564,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/hellfest/",
             "website_url": "https://www.hellfest.fr",
             "mois": "Juin",
-            "duration": 4
+            "duration": 4,
+            "keywords": ""
         },
         {
             "title": "Festival Bobital",
@@ -532,7 +576,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/festival-bobital/",
             "website_url": "https://www.bobital-festival.fr/",
             "mois": "Juin",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Mégascène",
@@ -543,7 +588,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/megascene/",
             "website_url": "http://www.megascene.org/",
             "mois": "Juin",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "P'tit Ouestival",
@@ -567,7 +613,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/la-nuit-de-lerdre/",
             "website_url": "https://www.lanuitdelerdre.fr/",
             "mois": "Juillet",
-            "duration": 4
+            "duration": 4,
+            "keywords": ""
         },
         {
             "title": "Fête du Bruit dans Saint-Nolff",
@@ -578,7 +625,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/fete-du-bruit-dans-saint-nolff/",
             "website_url": "https://stnolff.festival-fetedubruit.com/",
             "mois": "Juillet",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "GBB",
@@ -589,7 +637,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/gbb",
             "website_url": "https://www.facebook.com/gbbfest",
             "mois": "Juillet",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Festidreuz",
@@ -600,7 +649,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/festidreuz",
             "website_url": "http://www.festidreuz.fr",
             "mois": "Juillet",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Au Foin de la Rue",
@@ -611,7 +661,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/au-foin-de-la-rue",
             "website_url": "https://www.facebook.com/aufoindelarue",
             "mois": "Juillet",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Lorient Océans",
@@ -622,7 +673,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/lorient-oceans",
             "website_url": "",
             "mois": "Juillet",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Dub Camp Festival",
@@ -633,7 +685,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/dub-camp-festival/",
             "website_url": "https://www.dubcampfestival.com/",
             "mois": "Juillet",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Vieilles Charrues",
@@ -644,7 +697,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/vieilles-charrues",
             "website_url": "http://www.vieillescharrues.asso.fr",
             "mois": "Juillet",
-            "duration": 4
+            "duration": 4,
+            "keywords": ""
         },
         {
             "title": "Festival de la Mer ",
@@ -655,7 +709,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/festival-de-la-mer",
             "website_url": "https://www.facebook.com/events/1375673633026425/?acontext=%7B%22event_action_history%22%3A[]%7D",
             "mois": "Juillet",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Sea Fest N' Sound",
@@ -666,7 +721,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/sea-fest-n-sound",
             "website_url": "",
             "mois": "Juillet",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Festi-Rance",
@@ -690,7 +746,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/bout-du-monde",
             "website_url": "http://www.festivalduboutdumonde.com",
             "mois": "Août",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Au Pont du Rock",
@@ -701,7 +758,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/au-pont-du-rock",
             "website_url": "http://www.aupontdurock.com",
             "mois": "Août",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Fête du bruit dans Landerneau",
@@ -712,7 +770,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/fete-du-bruit-dans-landerneau/",
             "website_url": "https://landerneau.festival-fetedubruit.com/",
             "mois": "Août",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Festival du Chant de Marin",
@@ -723,7 +782,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/festival-du-chant-de-marin/",
             "website_url": "https://paimpol-festival.bzh/",
             "mois": "Août",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "No Logo BZH",
@@ -734,7 +794,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/no-logo-bzh",
             "website_url": "http://nologobzh.com/",
             "mois": "Août",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Délé-Terre Mini",
@@ -745,7 +806,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/dele-terre-mini",
             "website_url": "",
             "mois": "Août",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Les Filets Bleus",
@@ -756,7 +818,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/les-filets-bleus",
             "website_url": "https://www.festivaldesfiletsbleus.bzh/",
             "mois": "Août",
-            "duration": 5
+            "duration": 5,
+            "keywords": ""
         },
         {
             "title": "Motocultor Festival",
@@ -767,7 +830,8 @@ const goueliou = {
             "url": "https://www.festival-bretagne.fr/festival/motocultor-festival/",
             "website_url": "http://www.motocultor-festival.com/",
             "mois": "Août",
-            "duration": 4
+            "duration": 4,
+            "keywords": ""
         },
         {
             "title": "La Nuit des Etoiles",
@@ -778,7 +842,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/la-nuit-des-etoiles",
             "website_url": "https://www.facebook.com/lanuitdesetoiles",
             "mois": "Août",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         },
         {
             "title": "Roi Arthur",
@@ -789,7 +854,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/roi-arthur",
             "website_url": "http://www.festivalduroiarthur.fr",
             "mois": "Août",
-            "duration": 3
+            "duration": 3,
+            "keywords": ""
         },
         {
             "title": "Les Galettes du Monde",
@@ -800,7 +866,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/les-galettes-du-monde",
             "website_url": "https://www.facebook.com/FestivalLesGalettesDuMonde",
             "mois": "Août",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         }
     ],
     "Septembre": [
@@ -813,7 +880,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/claie-de-sol",
             "website_url": " https://www.claiedesol.fr/",
             "mois": "Septembre",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         }
     ],
     "Octobre": [
@@ -826,7 +894,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/le-grand-soufflet",
             "website_url": "http://www.legrandsoufflet.fr",
             "mois": "Octobre",
-            "duration": 1
+            "duration": 1,
+            "keywords": ""
         },
         {
             "title": "Carnavalorock",
@@ -837,9 +906,8 @@ const goueliou = {
             "url": "http://www.tyzicos.com/lieu-concerts/carnavalorock",
             "website_url": "https://www.carnavalorock.com/",
             "mois": "Octobre",
-            "duration": 2
+            "duration": 2,
+            "keywords": ""
         }
     ]
 }
-
-export default goueliou
