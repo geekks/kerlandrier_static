@@ -89,6 +89,9 @@
     <footer>
     </footer>
     <script type="module">
+        const grist = await fetch('https://grist.numerique.gouv.fr/api/docs/68gXbYioe7dj/tables/Festivals/records');
+        const gristData = await grist.json();
+        console.log(gristData);
         const response = await fetch('./goueliou.json');
         const goueliou = await response.json();
         const goueliouElement = document.getElementById("goueliou");
