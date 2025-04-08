@@ -95,7 +95,7 @@
         function formatDate(dateString) {
             const [day, month, year] = dateString.split('/');
             const date = new Date(`${year}-${month}-${day}`);
-            const options = { weekday: 'long', day: 'numeric', month: 'long' };
+            const options = { weekday: 'long', day: 'numeric', month: 'short' };
             return date.toLocaleDateString('fr-FR', options);
         }
         Object.entries(goueliou).forEach(([key, value]) => {
