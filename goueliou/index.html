@@ -91,32 +91,42 @@
     <script type="module">
         const grist = await fetch('https://grist.numerique.gouv.fr/api/docs/68gXbYioe7dj/tables/Festivals/records');
         const gristData = await grist.json();
-        console.log(gristData);
-        const response = await fetch('./goueliou.json');
-        const goueliou = await response.json();
+        // Transformation des lignes Grist pour les regrouper par Mois
+        const goueliou = gristData.records.reduce((acc, record) => {
+            const month = record.fields.Mois;
+            if (!acc[month]) {
+                acc[month] = [];
+            }
+            acc[month].push(record.fields);
+            return acc;
+        }, {})
+        console.log(goueliou);
         const goueliouElement = document.getElementById("goueliou");
-        function formatDate(dateString) {
-            const [day, month, year] = dateString.split('/');
-            const date = new Date(`${year}-${month}-${day}`);
+        function formatDate(timestamp) {
+            const date_formatted = new Date(timestamp * 1000);
             const options = { weekday: 'long', day: 'numeric', month: 'short' };
-            return date.toLocaleDateString('fr-FR', options);
+            return date_formatted.toLocaleDateString('fr-FR', options);
         }
-        Object.entries(goueliou).forEach(([key, value]) => {
-            if (!["Juin", "Juillet", "Août", "Septembre", "Octobre"].includes(key)) return;
+        Object.entries(goueliou).forEach(([month, fest]) => {
+            // Creation des colonnes Mois
+            if (!["Avril", "Mai", "Juin", "Juillet", "Août"].includes(month)) return;
             const container = document.createElement('div');
             container.classList.add('month');
             const title = document.createElement('h2');
             title.classList.add('gouel-title');
-            title.textContent = key;
+            title.textContent = month;
             container.appendChild(title);
-            for (let i = 0; i < value.length; i++) {
+            // Ajout de chaque festival dans la colonne Mois
+            for (let i = 0; i < fest.length; i++) {
                 const div = document.createElement('div');
                 div.classList.add('gouel');
                 div.style.height = `${value[i].duration * 140}px`;
                 const tagsdiv = document.createElement('div');
+
+                // Mots clés en style Kerlandrier
                 let keywords = []
-                if (value[i].keywords && value[i].keywords.length > 0) {
-                    keywords = value[i].keywords.split(',')
+                if (fest[i].Mots_cles && fest[i].Mots_cles.length > 0) {
+                    keywords = fest[i].Mots_cles.split(',')
                 }
                 if (keywords.length > 0) {
                     for (const keyword of keywords) {
@@ -126,12 +136,16 @@
                         tagsdiv.appendChild(tagdiv);
                     }
                 }
+
+                // Construction du contenu de la div du festival
+
+                // Lien vers le site du festival
                 div.innerHTML = `
-                    <h2 id="gouel-title">${value[i].title}</h2>
-                    <a href="${value[i].website_url}" target="_blank" rel="noopener noreferrer">
+                    <h2 id="gouel-title">${fest[i].Nom}</h2>
+                    <a href="${fest[i].Website}" target="_blank" rel="noopener noreferrer">
                         Billeterie
                     </a>`
-
+                // Mots clés
                 if (keywords.length > 0) {
                     div.innerHTML += `
                         <div class="gouel-tags">
@@ -143,9 +157,11 @@
                 div.innerHTML += `
                     <p>${formatDate(value[i].start_date)} - ${formatDate(value[i].end_date)}</p>
                 `;
+
+                // Url source de l'info
                 div.innerHTML += `
                     <p class="source"> 
-                        <a href="${value[i].url}" target="_blank" rel="noopener noreferrer">
+                        <a href="${fest[i].Source}" target="_blank" rel="noopener noreferrer">
                             Source
                         </a>
                     </p>
