@@ -360,6 +360,10 @@ span.gouel-ville-proche {
     font-size: 18px;
 }
 
+.goueliou-page #question {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
 
 #matomo-opt-out {
     margin: 30px auto;
@@ -509,6 +513,14 @@ span.gouel-ville-proche {
         padding: 10px 0;
         text-align: center;
         border-bottom: 1px solid var(--main-color);
+    }
+
+    .goueliou-page #description {
+        font-size: 30px;
+    }
+
+    .goueliou-page #question {
+        font-size: 20px;
     }
 }
 
