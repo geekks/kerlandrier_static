@@ -625,6 +625,11 @@ span.gouel-ville-proche {
     #title-text {
         font-size: 7vw;
     }
+
+    .gouel {
+        min-height: calc(var(--duree) * 100px);
+    }
+
 }
 
 
