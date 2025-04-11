@@ -154,9 +154,26 @@
                     `;
 
                 }
-                div.innerHTML += `
-                    <p>${formatDate(value[i].start_date)} - ${formatDate(value[i].end_date)}</p>
+                // Dates
+                if (fest[i].Duree > 1) {
+                    div.innerHTML += `
+                    <p>${formatDate(fest[i].Date_debut)} - ${formatDate(fest[i].Date_fin)}</p>
+                    `;
+                } else {
+                    div.innerHTML += `
+                    <p>${formatDate(fest[i].Date_debut)}</p>
+                    `;
+                }
+                // Lieu
+                if (fest[i].VilleProche != fest[i].Ville) {
+                    div.innerHTML += `
+                    <p>Lieu : <span class="gouel-ville">${fest[i].Ville} </span><span class="gouel-ville-proche"> (proche de ${fest[i].VilleProche}) </span></p>
                 `;
+                } else {
+                    div.innerHTML += `
+                    <p>Lieu : <span class="gouel-ville">${fest[i].Ville} </span></p>
+                `;
+                }
 
                 // Url source de l'info
                 div.innerHTML += `

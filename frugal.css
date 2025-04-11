@@ -351,6 +351,16 @@ p {
     border-bottom: 1px solid var(--main-color);
 }
 
+span.gouel-ville {
+    font-weight: bold;
+}
+
+span.gouel-ville-proche {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+
 #matomo-opt-out {
     margin: 30px auto;
     width: 50%;
