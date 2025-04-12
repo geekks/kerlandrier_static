@@ -28,17 +28,17 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Filter events: area & date
     const eventsRaw = evnts.events; // Array of { title, onlineAccessLink... }
     const eventsFiltered = eventsRaw // Array of { title, onlineAccessLink... } but filtered based on location.description and selectedMonth
-    .filter((d) => d.nextTiming) // Make sure no shitty events gets displayed
-    .filter((d) => { // Area (Aven, Cornouaille, Bretagne)
-        if (areaFilters.length === 0) return true;
-        if (!d.location?.description) return false;
-        console.log("d.location.description - ", d.location.description);
-        return areaFilters.includes(d.location.description);
-    })
-    .filter((d) => { // Date
-        if (dateFilter === "") return true;
-        return startDate <= new Date(d.lastTiming.end) && endDate >= new Date(d.firstTiming.begin);
-    })
+        .filter((d) => d.nextTiming) // Make sure no shitty events gets displayed
+        .filter((d) => { // Area (Aven, Cornouaille, Bretagne)
+            if (areaFilters.length === 0) return true;
+            if (!d.location?.description) return false;
+            console.log("d.location.description - ", d.location.description);
+            return areaFilters.includes(d.location.description);
+        })
+        .filter((d) => { // Date
+            if (dateFilter === "") return true;
+            return startDate <= new Date(d.lastTiming.end) && endDate >= new Date(d.firstTiming.begin);
+        })
 
     // Split shortEvents vs longEvents
     // FIXME: This criterium is shit but will be improved later (e.g. use a specific keyword for longEvents)
@@ -51,7 +51,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
             .setLocale('fr')
             .toFormat("cccc d LLLL")
         newDateRange = newDateRange.charAt(0).toUpperCase() + newDateRange.slice(1);
-        return ({...d, dateRange: newDateRange})
+        return ({ ...d, dateRange: newDateRange })
     }
     );
     shortEvents.push(...longEventsNextTiming);
@@ -60,7 +60,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
         const dateB = new Date(b.nextTiming.begin);
         return dateA - dateB;
     });
-    
+
     // Turn the array into an object, the key is the event date range
     const shortEventsDayAgg = aggregatePerDay(shortEvents); // Object of { "Vendredi 18 octobre": [ { title, onlineAccessLink... } ] }
     const longEventsDayAgg = aggregatePerDay(longEvents); // Object of { "Vendredi 18 octobre - Lundi...": [ { title, onlineAccessLink... } ] }
@@ -108,26 +108,26 @@ function aggregatePerDay(events) {
 }
 
 function addDayContent(events, d) {
-        let newContent = `<div>`;
-        newContent += `<div class="dateAndEvents"><div class='date-header'><div class="sticky-date"><h4 >${d}</h4><p>░░░░░░░░░<p></div></div>`;
-        newContent += `<div class='evenements'>`;
-        for (let i = 0; i < events.length; i++) {
-            // Main link
-            const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
-            const registrationLink = events[i].registration?.find(item => item.value?.includes("https://"))?.value;
-            const onlineAccessLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
-            const redirectLink = registrationLink ? registrationLink : onlineAccessLink;
-            // Event status
-            const cancel = events[i].status === 6;
-            const complet = events[i].status === 5;
-            // Keywords
-            const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
-            // Timing and hidden OA link
-            const openAgendaEditLink = `https://openagenda.com/fr/${AGENDA_SLUG}/contribute/event/${events[i].uid}`;
-            const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaEditLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
-            // Main title
-            const eventTitle = events[i].title.toLowerCase().toTitleCase()
-            newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
+    let newContent = `<div>`;
+    newContent += `<div class="dateAndEvents"><div class='date-header'><div class="sticky-date"><h4 >${d}</h4><p>░░░░░░░░░<p></div></div>`;
+    newContent += `<div class='evenements'>`;
+    for (let i = 0; i < events.length; i++) {
+        // Main link
+        const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
+        const registrationLink = events[i].registration?.find(item => item.value?.includes("https://"))?.value;
+        const onlineAccessLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
+        const redirectLink = registrationLink ? registrationLink : onlineAccessLink;
+        // Event status
+        const cancel = events[i].status === 6;
+        const complet = events[i].status === 5;
+        // Keywords
+        const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
+        // Timing and hidden OA link
+        const openAgendaEditLink = `https://openagenda.com/fr/${AGENDA_SLUG}/contribute/event/${events[i].uid}`;
+        const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaEditLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
+        // Main title
+        const eventTitle = events[i].title.toLowerCase().toTitleCase()
+        newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
                             <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
                             <h2 class='card-title ${cancel ? "annule" : ""}'>
                                 ${cancel ? "<span >[ANNULÉ]</span>" : ""}
@@ -136,7 +136,7 @@ function addDayContent(events, d) {
                             </h2>
                         <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
                         </span>`;
-        }
-        newContent += `</div></div></div>`;
-        return newContent;
+    }
+    newContent += `</div></div></div>`;
+    return newContent;
 }
