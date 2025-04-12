@@ -17,6 +17,23 @@ async function loadEvents(query = defaultQuery) {
     buildCalendar(evnts);
 }
 
+const aven_cities = [
+    "Bannalec", "Beg-Meil", "Concarneau", "Elliant", "LaForêt-Fouesnant", "Pleuven",
+    "Pont-Aven", "Rosporden", "Fouesnant", "Melgven", "Moelansurmer", "Moëlan-sur-Mer",
+    "Kervaziou", "Scaër", "Névez", "Nizon", "Port-la-Forêt", "Quimperlé", "Saint-Philibert",
+    "Saint-Yvi", "Tourch", "Trégunc", "La Forêt-Fouesnant", "Mellac", "Querrien", "Autre"
+]
+
+// Add missing location description for cities in Aven, aggregated from other OACalendars out of Kerlandrier
+function addLocDescription(evnts) {
+    evnts.events.forEach((evnt) => {
+        if (!evnt.location.description && aven_cities.some(city => evnt.location.city?.includes(city))) {
+            evnt.location.description = "AVEN";
+        }
+    });
+    return evnts;
+}
+
 function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Init date filters as Date
     const startDate = dateFilter ? new Date(dateFilter.split(",")[0]) : null;
@@ -24,6 +41,9 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
 
     // Get events from localStorage
     if (evnts === null) evnts = JSON.parse(localStorage.getItem("events"));
+
+    // Add missing location description
+    evnts = addLocDescription(evnts);
 
     // Filter events: area & date
     const eventsRaw = evnts.events; // Array of { title, onlineAccessLink... }
