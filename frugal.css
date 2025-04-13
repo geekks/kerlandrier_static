@@ -358,6 +358,10 @@ p {
     justify-content: space-between;
 }
 
+#gouel-fest-header #gouel-title {
+    width: 80%;
+}
+
 span.gouel-ville {
     font-weight: bold;
 }
