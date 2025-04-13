@@ -103,6 +103,10 @@
             acc[month].push(record.fields);
             return acc;
         }, {})
+        // Trier chaque liste de chaque mois par "Date_debut"
+        for (const month in goueliou) {
+            goueliou[month].sort((a, b) => new Date(a.Date_debut) - new Date(b.Date_debut));
+        }
         const goueliouElement = document.getElementById("goueliou");
         // Grist Timestamp to Readable Date
         function formatDate(timestamp, options) {
