@@ -66,6 +66,7 @@
         })();
     </script>
     <!-- End Matomo Code -->
+    <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 </head>
 
 <body class="goueliou-page">
@@ -104,9 +105,13 @@
         }, {})
         const goueliouElement = document.getElementById("goueliou");
         // Grist Timestamp to Readable Date
-            const date_formatted = new Date(timestamp * 1000);
-            const options = { weekday: 'long', day: 'numeric', month: 'short' };
-            return date_formatted.toLocaleDateString('fr-FR', options);
+        function formatDate(timestamp, options) {
+            const date = new Date(timestamp * 1000);
+            const style = { weekday: 'long', day: 'numeric', month: 'short' };
+            if (options == "calendar") {
+                return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+            }
+            return date.toLocaleDateString('fr-FR', style);
         }
         Object.entries(goueliou).forEach(([month, fest]) => {
             // Creation des colonnes Mois
@@ -143,7 +148,31 @@
 
                 // Nom du festival
                 div.innerHTML = `
-                    <h2 id="gouel-title">${fest[i].Nom}</h2>
+                    <div id="gouel-fest-header">
+                        <h2 id="gouel-title">${fest[i].Nom}</h2>
+
+                        <add-to-calendar-button
+                            styleLight="--btn-background: unset; 
+                                        --btn-text: unset; 
+                                        --font: "Barlow Condensed", sans-serif; 
+
+                            id="goueliou-calendar-button"
+                            name="[Festival] ${fest[i].Nom}"
+                            description=
+                            "<p>Ajouté depuis https://kerlandrier.cc/goueliou/\nWebsite: ${fest[i].Website}\nDescription: ${fest[i].Mots_cles}"
+                            startDate="${formatDate(fest[i].Date_debut, "calendar")}"
+                            endDate="${formatDate(fest[i].Date_fin, "calendar")}"
+                            location="${fest[i].Ville}"
+                            options="['Apple','Google','iCal']"
+                            timeZone="Europe/Paris"
+                            trigger="click"
+                            hideBackground="true"
+                            iCalFileName="Reminder-Event"
+                            hideTextLabelButton	= "true"
+                            size="3"
+                            language="fr"
+                        />
+                    </div>
                 `;
                 // Lien vers le site du festival
                 if (fest[i].Website) {

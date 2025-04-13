@@ -343,12 +343,19 @@ p {
 }
 
 .gouel-title {
+    width: 101%;
+    z-index: 10;
     position: sticky;
     top: 0px;
     background-color: var(--lite-bkg);
     padding: 10px 0;
     text-align: center;
     border-bottom: 1px solid var(--main-color);
+}
+
+#gouel-fest-header {
+    display: flex;
+    justify-content: space-between;
 }
 
 span.gouel-ville {
@@ -522,8 +529,22 @@ span.gouel-ville-proche {
     .goueliou-page #question {
         font-size: 20px;
     }
-}
 
+    /* add-to-calendar-button  */
+
+    add-to-calendar-button#goueliou-calendar-button::part(.atcb-button) {
+        color: unset;
+        background: unset;
+    }
+
+    add-to-calendar-button#goueliou-calendar-button::part(.atcb-icon) {
+        margin-left: 20px;
+        margin-right: 20px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: auto;
+    }
+}
 
 @media screen and (min-width: 800px)
 /*DESKTOP*/
