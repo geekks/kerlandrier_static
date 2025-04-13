@@ -102,9 +102,8 @@
             acc[month].push(record.fields);
             return acc;
         }, {})
-        console.log(goueliou);
         const goueliouElement = document.getElementById("goueliou");
-        function formatDate(timestamp) {
+        // Grist Timestamp to Readable Date
             const date_formatted = new Date(timestamp * 1000);
             const options = { weekday: 'long', day: 'numeric', month: 'short' };
             return date_formatted.toLocaleDateString('fr-FR', options);
@@ -122,12 +121,11 @@
             for (let i = 0; i < fest.length; i++) {
                 const div = document.createElement('div');
                 div.classList.add('gouel');
-                // Hauteur de div selon la duree du festival
+                // Hauteur de div selon la duree du festival (dynamic css variable)
                 div.style.setProperty('--duree', fest[i].Duree);
-                //div.style.minHeight = `${fest[i].Duree * 100}px`;
-                const tagsdiv = document.createElement('div');
 
                 // Mots clés en style Kerlandrier
+                const tagsdiv = document.createElement('div');
                 let keywords = []
                 if (fest[i].Mots_cles && fest[i].Mots_cles.length > 0) {
                     keywords = fest[i].Mots_cles.split(',')
