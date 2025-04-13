@@ -141,12 +141,17 @@
 
                 // Construction du contenu de la div du festival
 
-                // Lien vers le site du festival
+                // Nom du festival
                 div.innerHTML = `
                     <h2 id="gouel-title">${fest[i].Nom}</h2>
-                    <a href="${fest[i].Website}" target="_blank" rel="noopener noreferrer">
-                        Billeterie
-                    </a>`
+                `;
+                // Lien vers le site du festival
+                if (fest[i].Website) {
+                    div.innerHTML += `
+                        <a href="${fest[i].Website}" target="_blank" rel="noopener noreferrer">
+                            Site du festival
+                        </a>`;
+                }
                 // Mots clés
                 if (keywords.length > 0) {
                     div.innerHTML += `
@@ -178,13 +183,48 @@
                 }
 
                 // Url source de l'info
-                div.innerHTML += `
-                    <p class="source"> 
-                        <a href="${fest[i].Source}" target="_blank" rel="noopener noreferrer">
-                            Source
-                        </a>
-                    </p>
-                `;
+                if (fest[i].Source != "") {
+                    let sourceName = null
+                    let sourceUrl = null
+                    if (fest[i].Source.toLowerCase().includes("tyzicos.com")) {
+                        sourceName = "Tyzicos";
+                        sourceUrl = fest[i].Source;
+                    }
+                    else if (fest[i].Source.toLowerCase().includes("festival-bretagne.fr")) {
+                        sourceName = "Festival Bretagne";
+                        sourceUrl = fest[i].Source;
+                    }
+                    else if (fest[i].Source.toLowerCase().includes("facebook.com")) {
+                        sourceName = "Facebook";
+                        sourceUrl = fest[i].Source;
+                    }
+                    else if (fest[i].Source.toLowerCase().includes("instagram.com")) {
+                        sourceName = "Instagram";
+                        sourceUrl = fest[i].Source;
+                    }
+                    else if (fest[i].Source.toLowerCase().includes("https://", "http://")) {
+                        sourceName = "Site web";
+                        sourceUrl = fest[i].Source;
+                    }
+                    if (sourceUrl && sourceName) {
+                        div.innerHTML += `
+                                <p class="source"> 
+                                    Source : 
+                                    <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">
+                                        ${sourceName}
+                                    </a>
+                                </p>
+                            `;
+                    }
+                    else {
+                        div.innerHTML += `
+                                <p class="source">
+                                    Source : ${fest[i].Source}
+                                </p>
+                            `;
+                    }
+                }
+
                 container.appendChild(div);
             }
             goueliouElement.appendChild(container);
