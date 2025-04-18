@@ -306,6 +306,7 @@ footer {
 #goueliou {
     display: flex;
     justify-content: space-around;
+    gap: 1rem;
 }
 
 .gouel {
@@ -313,6 +314,7 @@ footer {
     margin-bottom: 10px;
     border: 1px solid var(--main-color);
     width: 300px;
+    /* width: 100%; */
     font-size: 20px;
 }
 
@@ -374,6 +376,22 @@ span.gouel-ville-proche {
 .goueliou-page #question {
     font-size: 25px;
     margin-bottom: 20px;
+}
+
+#goueiliou-container {
+    font-size: x-large;
+}
+
+#goueiliou-container #nouveau {
+    /* transform: rotate(-20deg); */
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 2px;
+    font-size: x-large;
+    /* margin-left: 20px; */
+    font-weight: bold;
+    border: 2px solid;
+    padding: 5px;
 }
 
 #matomo-opt-out {
@@ -547,6 +565,25 @@ span.gouel-ville-proche {
         flex-grow: 1;
         flex-shrink: 1;
         width: auto;
+    }
+
+    #goueiliou-container {
+        font-size: x-large;
+        display: flex;
+        margin-top: 20px;
+    }
+
+    #goueiliou-container #nouveau {
+        transform: rotate(-20deg);
+        width: fit-content;
+        height: fit-content;
+        margin-bottom: 0px;
+        font-size: small;
+        margin-left: 0px;
+        margin-right: 20px;
+        font-weight: bold;
+        border: 1px solid;
+        padding: 2px
     }
 }
 
@@ -809,6 +846,54 @@ span.gouel-ville-proche {
         font-size: 12vw;
     }
 
+}
+
+@media screen and (min-width: 800px) and (max-width: 1300px) {
+    #goueliou {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .gouel {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--main-color);
+    /* width: 300px; */
+    width: 100%;
+    font-size: 20px;
+}
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1300px) {
+    #goueliou {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    .gouel {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--main-color);
+    /* width: 300px; */
+    width: 100%;
+    font-size: 20px;
+}
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1600px) {
+    #goueliou {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+    .gouel {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--main-color);
+    /* width: 300px; */
+    width: 100%;
+    font-size: 20px;
+}
 }
 
 /* Local Google fonts */
