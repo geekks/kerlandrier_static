@@ -379,15 +379,16 @@ span.gouel-ville-proche {
 }
 
 #goueiliou-container {
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 #goueiliou-container #nouveau {
-    transform: rotate(-20deg);
+    /* transform: rotate(-20deg); */
     width: fit-content;
-    margin-bottom: 20px;
+    height: fit-content;
+    margin-bottom: 2px;
     font-size: x-large;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     font-weight: bold;
     border: 2px solid;
     padding: 5px;
@@ -575,13 +576,14 @@ span.gouel-ville-proche {
     #goueiliou-container #nouveau {
         transform: rotate(-20deg);
         width: fit-content;
+        height: fit-content;
         margin-bottom: 0px;
         font-size: small;
         margin-left: 0px;
         margin-right: 20px;
         font-weight: bold;
         border: 1px solid;
-        padding: 2px;
+        padding: 2px
     }
 }
 
