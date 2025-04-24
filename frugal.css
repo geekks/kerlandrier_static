@@ -846,6 +846,9 @@ span.gouel-ville-proche {
         font-size: 12vw;
     }
 
+    #goueiliou-container {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 800px) and (max-width: 1300px) {
