@@ -119,7 +119,7 @@
         }
         Object.entries(goueliou).forEach(([month, fest]) => {
             // Creation des colonnes Mois
-            if (!["Avril", "Mai", "Juin", "Juillet", "Août"].includes(month)) return;
+            if (![ "Juin", "Juillet", "Août"].includes(month)) return;
             const container = document.createElement('div');
             container.classList.add('month');
             const title = document.createElement('h2');

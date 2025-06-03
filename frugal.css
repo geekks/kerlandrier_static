@@ -305,15 +305,15 @@ footer {
 
 #goueliou {
     display: flex;
-    justify-content: space-around;
-    gap: 1rem;
+    justify-content: center;
+    gap: 3rem;
 }
 
 .gouel {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid var(--main-color);
-    width: 300px;
+    width: 480px;
     /* width: 100%; */
     font-size: 20px;
 }
@@ -383,12 +383,12 @@ span.gouel-ville-proche {
 }
 
 #goueiliou-container #nouveau {
-    /* transform: rotate(-20deg); */
+    transform: rotate(-10deg);
     width: fit-content;
     height: fit-content;
     margin-bottom: 2px;
     font-size: x-large;
-    /* margin-left: 20px; */
+    margin-left: 20px;
     font-weight: bold;
     border: 2px solid;
     padding: 5px;
@@ -574,13 +574,13 @@ span.gouel-ville-proche {
     }
 
     #goueiliou-container #nouveau {
-        transform: rotate(-20deg);
+        transform: rotate(-10deg);
         width: fit-content;
         height: fit-content;
         margin-bottom: 0px;
         font-size: small;
         margin-left: 0px;
-        margin-right: 20px;
+        margin-right: 35px;
         font-weight: bold;
         border: 1px solid;
         padding: 2px
@@ -854,7 +854,7 @@ span.gouel-ville-proche {
 @media screen and (min-width: 800px) and (max-width: 1300px) {
     #goueliou {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         gap: 1rem;
     }
     .gouel {
@@ -870,7 +870,7 @@ span.gouel-ville-proche {
 @media screen and (min-width: 1000px) and (max-width: 1300px) {
     #goueliou {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
     .gouel {
@@ -886,7 +886,7 @@ span.gouel-ville-proche {
 @media screen and (min-width: 1300px) and (max-width: 1600px) {
     #goueliou {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
     }
     .gouel {
