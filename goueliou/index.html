@@ -76,6 +76,7 @@
                 <h1>Kerlandrier.cc</h1>
                 <p id="description">Festivals de l'été - Abadennoù sonerezh ha gouelioù</p>
                 <p id="question">un oubli ? une erreur ? <a href="/diwar-benn.html#join-us">contactez nous ! </a></p>
+                <p id="question">Données disponibles sur <a href="https://grist.numerique.gouv.fr/o/docs/68gXbYioe7dj/goueliou/p/3" target="_blank">Grist</a></p>
 
                 <span id="infos-link"> <a href="/">Retour kerlandrier</a> </span>
             </div>
@@ -119,7 +120,7 @@
         }
         Object.entries(goueliou).forEach(([month, fest]) => {
             // Creation des colonnes Mois
-            if (![ "Juin", "Juillet", "Août"].includes(month)) return;
+            if (![ "Juillet", "Août", "Septembre"].includes(month)) return;
             const container = document.createElement('div');
             container.classList.add('month');
             const title = document.createElement('h2');
