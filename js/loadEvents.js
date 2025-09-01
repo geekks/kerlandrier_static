@@ -11,8 +11,8 @@ const DateTime = luxon.DateTime;
 async function loadEvents(query = defaultQuery) {
     const response = await fetch(query);
     const evnts = await response.json();
-    console.log("evnts", evnts)
-    const grist = await fetch('https://grist.numerique.gouv.fr/api/docs/68gXbYioe7dj/tables/Kerlandrier/records');
+    
+    const grist = await fetch('https://grist.hentou.org/api/docs/fRo9SxKZ7NnJnN4vkNrg1s/tables/Kerlandrier/records')
     const gristData = await grist.json();
     const gristEvnts = gristData.records.map((data) =>
         data.fields
