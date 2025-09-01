@@ -11,10 +11,27 @@ const DateTime = luxon.DateTime;
 async function loadEvents(query = defaultQuery) {
     const response = await fetch(query);
     const evnts = await response.json();
-    // Store in local storage
-    localStorage.setItem("events", JSON.stringify(evnts));
+    
+    const grist = await fetch('https://grist.hentou.org/api/docs/fRo9SxKZ7NnJnN4vkNrg1s/tables/Kerlandrier/records')
+    const gristData = await grist.json();
+    const gristEvnts = gristData.records.map((data) =>
+        data.fields
+    )
 
-    buildCalendar(evnts);
+    const upcomingGristEvnts = gristEvnts.filter((e) => new Date <= new Date(e.end_date_time * 1000))
+
+    const allEvnts = [...evnts.events, ...upcomingGristEvnts]
+
+    const sortedAllEvnts = allEvnts.sort((a, b) => {
+        const dateA = new Date(a.nextTiming?.begin ?? a.start_date_time * 1000);
+        const dateB = new Date(b.nextTiming?.begin ?? b.start_date_time * 1000);
+        return dateA - dateB;
+    });
+
+    // Store in local storage
+    localStorage.setItem("events", JSON.stringify(sortedAllEvnts));
+
+    buildCalendar(sortedAllEvnts);
 }
 
 const aven_cities = [
@@ -26,7 +43,7 @@ const aven_cities = [
 
 // Add missing location description for cities in Aven, aggregated from other OACalendars out of Kerlandrier
 function addLocDescription(evnts) {
-    evnts.events.forEach((evnt) => {
+    evnts.forEach((evnt) => {
         if (!evnt.location.description && aven_cities.some(city => evnt.location.city?.includes(city))) {
             evnt.location.description = "AVEN";
         }
@@ -46,9 +63,9 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     evnts = addLocDescription(evnts);
 
     // Filter events: area & date
-    const eventsRaw = evnts.events; // Array of { title, onlineAccessLink... }
+    const eventsRaw = evnts; // Array of { title, onlineAccessLink... }
     const eventsFiltered = eventsRaw // Array of { title, onlineAccessLink... } but filtered based on location.description and selectedMonth
-        .filter((d) => d.nextTiming) // Make sure no shitty events gets displayed
+        .filter((d) => d.nextTiming || d.origin_agenda === "GRIST") // Make sure no shitty events gets displayed + shitty identification of Grist events
         .filter((d) => { // Area (Aven, Cornouaille, Bretagne)
             if (areaFilters.length === 0) return true;
             if (!d.location?.description) return false;
@@ -57,7 +74,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
         })
         .filter((d) => { // Date
             if (dateFilter === "") return true;
-            return startDate <= new Date(d.lastTiming.end) && endDate >= new Date(d.firstTiming.begin);
+            return startDate <= new Date(d.lastTiming.end ?? d.end_date_time * 1000) && endDate >= new Date(d.firstTiming.begin ?? d.start_date_time * 1000);
         })
 
     // Split shortEvents vs longEvents
@@ -67,6 +84,7 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     const longEvents = eventsFiltered.filter((d) => d.dateRange.includes("-"));
     // Feat: we use the next timing of long events to add one occurrence of it in short events list
     const longEventsNextTiming = longEvents.map((d) => {
+        if (d.origin_agenda === "GRIST") return null;
         let newDateRange = DateTime.fromISO(d.nextTiming.begin, { zone: 'Europe/Paris' })
             .setLocale('fr')
             .toFormat("cccc d LLLL")
@@ -76,8 +94,8 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     );
     shortEvents.push(...longEventsNextTiming);
     shortEvents = shortEvents.sort((a, b) => {
-        const dateA = new Date(a.nextTiming.begin);
-        const dateB = new Date(b.nextTiming.begin);
+        const dateA = new Date(a.nextTiming?.begin ?? a.start_date_time * 1000);
+        const dateB = new Date(b.nextTiming?.begin ?? b.start_date_time * 1000);
         return dateA - dateB;
     });
 
@@ -133,29 +151,50 @@ function addDayContent(events, d) {
     newContent += `<div class='evenements'>`;
     for (let i = 0; i < events.length; i++) {
         // Main link
-        const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
-        const registrationLink = events[i].registration?.find(item => item.value?.includes("https://"))?.value;
-        const onlineAccessLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
-        const redirectLink = registrationLink ? registrationLink : onlineAccessLink;
-        // Event status
-        const cancel = events[i].status === 6;
-        const complet = events[i].status === 5;
-        // Keywords
-        const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
-        // Timing and hidden OA link
-        const openAgendaEditLink = `https://openagenda.com/fr/${AGENDA_SLUG}/contribute/event/${events[i].uid}`;
-        const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaEditLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
-        // Main title
-        const eventTitle = events[i].title.toLowerCase().toTitleCase()
-        newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
-                            <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
-                            <h2 class='card-title ${cancel ? "annule" : ""}'>
-                                ${cancel ? "<span >[ANNULÉ]</span>" : ""}
-                                ${complet ? "<span >[COMPLET]</span>" : ""}
-                                <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
-                            </h2>
-                        <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
-                        </span>`;
+        const originAgenda = (events[i].origin_agenda) ? "GRIST" : "OPEN_AGENDA"
+        if (originAgenda !== "GRIST") {
+            const openAgendaLink = `https://openagenda.com/fr/${AGENDA_SLUG}/events/${events[i].slug}`;
+            const registrationLink = events[i].registration?.find(item => item.value?.includes("https://"))?.value;
+            const onlineAccessLink = (events[i].onlineAccessLink) ? events[i].onlineAccessLink : openAgendaLink;
+            const redirectLink = registrationLink ? registrationLink : onlineAccessLink;
+            // Event status
+            const cancel = events[i].status === 6;
+            const complet = events[i].status === 5;
+            // Keywords
+            const kws = (events[i].keywords) ? events[i].keywords.map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
+            // Timing and hidden OA link
+            const openAgendaEditLink = `https://openagenda.com/fr/${AGENDA_SLUG}/contribute/event/${events[i].uid}`;
+            const nextTime = (events[i].nextTiming) ? `<div class="time-tag"> <a href=${openAgendaEditLink} class="hidden-link" target="_blank">${events[i].nextTiming.begin.split("T")[1].slice(0, 5)} </a></div>` : "";
+            // Main title
+            const eventTitle = events[i].title.toLowerCase().toTitleCase()
+            newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
+                                <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
+                                <h2 class='card-title ${cancel ? "annule" : ""}'>
+                                    ${cancel ? "<span >[ANNULÉ]</span>" : ""}
+                                    ${complet ? "<span >[COMPLET]</span>" : ""}
+                                    <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
+                                </h2>
+                            <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
+                            </span>`;
+        } else {
+            // GRIST
+            const redirectLink = events[i].registration ?? "https://grist.numerique.gouv.fr/o/docs/68gXbYioe7dj/goueliou/p/4";
+            const cancel = events[i].status === "ANNULE"
+            const complet = events[i].status === "COMPLET"
+            const dateTime = DateTime.fromMillis(events[i].start_date_time * 1000)
+            const nextTime = (events[i].start_date_time) ? `<div class="time-tag"> <a href=${"https://grist.numerique.gouv.fr/o/docs/68gXbYioe7dj/goueliou/p/4"} class="hidden-link" target="_blank">${dateTime.toFormat("hh:mm")} </a></div>` : "";
+            const kws = (events[i].keywords) ? events[i].keywords.split(",").map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
+            const eventTitle = events[i].title.toLowerCase().toTitleCase()
+            newContent += `<span class='evenement' title='${events[i].description?.replace(/[&<>]/g, " ")}'>
+                                <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
+                                <h2 class='card-title ${cancel ? "annule" : ""}'>
+                                    ${cancel ? "<span >[ANNULÉ]</span>" : ""}
+                                    ${complet ? "<span >[COMPLET]</span>" : ""}
+                                    <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
+                                </h2>
+                            <h3>⟜${events[i].location_name}, ${events[i].location_city}</h3>
+                            </span>`;
+        }
     }
     newContent += `</div></div></div>`;
     return newContent;
