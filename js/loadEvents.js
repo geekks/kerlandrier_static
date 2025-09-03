@@ -12,16 +12,20 @@ async function loadEvents(query = defaultQuery) {
     const response = await fetch(query);
     const evnts = await response.json();
     
-    const grist = await fetch('https://grist.hentou.org/api/docs/fRo9SxKZ7NnJnN4vkNrg1s/tables/Kerlandrier/records')
-    const gristData = await grist.json();
-    const gristEvnts = gristData.records.map((data) =>
-        data.fields
-    )
+    const grist = await fetch('https://grist.hentou.org/api/docs/fRo9SxKZ7NnJnN4vkNrg1s/tables/Kerlandrier/records');
+    const gristData = grist.status === 200 
+        ? await grist.json() 
+        : null;
+    const gristEvnts = (gristData && gristData.records)
+        ? gristData.records.map((data) => data.fields)
+        : {};
+    const upcomingGristEvnts = (gristEvnts.length > 0)
+        ? gristEvnts.filter((e) => new Date() <= new Date(e.end_date_time * 1000))
+        : [];
 
-    const upcomingGristEvnts = gristEvnts.filter((e) => new Date <= new Date(e.end_date_time * 1000))
-
-    const allEvnts = [...evnts.events, ...upcomingGristEvnts]
-
+        // Merge OA events with Grist events
+        const allEvnts = [...evnts.events, ...upcomingGristEvnts];
+        
     const sortedAllEvnts = allEvnts.sort((a, b) => {
         const dateA = new Date(a.nextTiming?.begin ?? a.start_date_time * 1000);
         const dateB = new Date(b.nextTiming?.begin ?? b.start_date_time * 1000);
