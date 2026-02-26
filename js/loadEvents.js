@@ -34,26 +34,50 @@ async function loadEvents(query = defaultQuery) {
 
     // Store in local storage
     localStorage.setItem("events", JSON.stringify(sortedAllEvnts));
-
+    console.log(sortedAllEvnts)
     buildCalendar(sortedAllEvnts);
 }
 
-const aven_cities = [
-    "Bannalec", "Beg-Meil", "Concarneau", "Elliant", "LaForêt-Fouesnant", "Pleuven",
-    "Pont-Aven", "Rosporden", "Fouesnant", "Melgven", "Moelansurmer", "Moëlan-sur-Mer",
-    "Kervaziou", "Scaër", "Névez", "Nizon", "Port-la-Forêt", "Quimperlé", "Saint-Philibert",
-    "Saint-Yvi", "Tourch", "Trégunc", "La Forêt-Fouesnant", "Mellac", "Querrien", "Autre"
-]
+// ---------------------------------------------------------------------------
+// distance helpers – calculate how far an event is from the reference point
+// ---------------------------------------------------------------------------
 
-// Add missing location description for cities in Aven, aggregated from other OACalendars out of Kerlandrier
-function addLocDescription(evnts) {
-    evnts.forEach((evnt) => {
-        if (!evnt.location.description && aven_cities.some(city => evnt.location.city?.includes(city))) {
-            evnt.location.description = "AVEN";
-        }
-    });
-    return evnts;
+/**
+ * Haversine formula – distance between two lat/lon points in kilometres
+ */
+function distanceKm(lat1, lon1, lat2 = 0, lon2 = 0) {
+    const R = 6371; // earth radius in km
+    const toRad = x => x * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
 }
+
+/**
+ * Returns "TRES PROCHE", "PROCHE" or "MOINS PROCHE" for an event.  If the
+ * event lacks coordinates the result is null.
+ */
+function getDistanceCategory(event) {
+    // if (!event.location ||
+    //     typeof event.location.latitude !== 'number' ||
+    //     typeof event.location.longitude !== 'number' ||
+    //     typeof event.location_latitude !== 'number' ||
+    //     typeof event.location.longitude !== 'number') {
+    //     return null;
+    // }
+    const dist = distanceKm(
+        REFERENCE_COORDS.latitude, REFERENCE_COORDS.longitude,
+        event.location.latitude ?? event.location_latitude, event.location.longitude ?? event.location_longitude
+    );
+    if (dist < DISTANCE_THRESHOLDS.TRES_PROCHE) return 'TRES PROCHE';
+    if (dist < DISTANCE_THRESHOLDS.PROCHE) return 'PROCHE';
+    return 'MOINS PROCHE';
+}
+
 
 function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Init date filters as Date
@@ -63,18 +87,15 @@ function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Get events from localStorage
     if (evnts === null) evnts = JSON.parse(localStorage.getItem("events"));
 
-    // Add missing location description
-    evnts = addLocDescription(evnts);
-
     // Filter events: area & date
     const eventsRaw = evnts; // Array of { title, onlineAccessLink... }
     const eventsFiltered = eventsRaw // Array of { title, onlineAccessLink... } but filtered based on location.description and selectedMonth
         .filter((d) => d.nextTiming || d.origin_agenda === "GRIST") // Make sure no shitty events gets displayed + shitty identification of Grist events
-        .filter((d) => { // Area (Aven, Cornouaille, Bretagne)
+        .filter((d) => {
+            // distance-category filter (TRES PROCHE / PROCHE / MOINS PROCHE)
             if (areaFilters.length === 0) return true;
-            if (!d.location?.description) return false;
-            console.log("d.location.description - ", d.location.description);
-            return areaFilters.includes(d.location.description);
+            const cat = getDistanceCategory(d);
+            return cat && areaFilters.includes(cat);
         })
         .filter((d) => { // Date
             if (dateFilter === "") return true;
