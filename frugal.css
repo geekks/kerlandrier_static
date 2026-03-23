@@ -200,7 +200,7 @@ footer {
 #first-zone {
     position: absolute;
     z-index: 10000;
-    width: 50px;
+    width: 70px;
     height: 50px;
     left: 5px;
     bottom: 0;
@@ -397,6 +397,79 @@ span.gouel-ville-proche {
 #matomo-opt-out {
     margin: 30px auto;
     width: 50%;
+}
+
+.header-title {
+    white-space: nowrap;
+    padding-left: 30px;
+}
+
+.deuil-ribbon {
+    display: inline-block;
+    width: 12px;
+    height: 24px;
+    background-color: #000; /* Noir profond */
+    margin-left: 15px;      /* Espacement avec le texte */
+    vertical-align: middle;
+    position: relative;
+    /* Création de la forme en "V" inversé au bas du ruban */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%);
+    opacity: 0.8;
+    /* Animation de pulsation */
+    animation: pulseDeuil 3s ease-in-out infinite;
+}
+
+@keyframes pulseDeuil {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(0.98);
+    }
+}
+
+header {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.deuil-corner-ribbon {
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    width: 232px;       /* Longueur de la bande */
+    height: 30px;       /* Épaisseur de la bande */
+    background: #000;
+    color: #fff;
+    
+    /* Rotation et placement */
+    transform: rotate(-52deg) translate(-87px, -51px);
+    transform-origin: center;
+    
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    pointer-events: none; /* Permet de cliquer sur les liens dessous si besoin */
+}
+
+/* Ajustement pour mobile si nécessaire */
+@media (max-width: 799px) {
+    .deuil-corner-ribbon {
+        left: -20px;
+        width: 142px;
+        height: 20px;
+        transform: rotate(-52deg) translate(-45px, -10px)
+        
+    }
+
+    .header-title {
+        padding-left: 20px;
+    }
 }
 
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
