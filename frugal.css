@@ -399,6 +399,36 @@ span.gouel-ville-proche {
     width: 50%;
 }
 
+.deuil-ribbon {
+    display: inline-block;
+    width: 12px;
+    height: 24px;
+    background-color: #000; /* Noir profond */
+    margin-left: 15px;      /* Espacement avec le texte */
+    vertical-align: middle;
+    position: relative;
+    /* Création de la forme en "V" inversé au bas du ruban */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%);
+    opacity: 0.8;
+    /* Animation de pulsation */
+    animation: pulseDeuil 3s ease-in-out infinite;
+}
+
+@keyframes pulseDeuil {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(0.98);
+    }
+}
+
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */
 @media only screen and (max-width: 799px)
 /*HANDHELD*/
