@@ -399,6 +399,11 @@ span.gouel-ville-proche {
     width: 50%;
 }
 
+.header-title {
+    white-space: nowrap;
+    padding-left: 30px;
+}
+
 .deuil-ribbon {
     display: inline-block;
     width: 12px;
@@ -426,6 +431,44 @@ span.gouel-ville-proche {
     100% {
         opacity: 0.4;
         transform: scale(0.98);
+    }
+}
+
+header {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.deuil-corner-ribbon {
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    width: 232px;       /* Longueur de la bande */
+    height: 30px;       /* Épaisseur de la bande */
+    background: #000;
+    color: #fff;
+    
+    /* Rotation et placement */
+    transform: rotate(-52deg) translate(-87px, -51px);
+    transform-origin: center;
+    
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    pointer-events: none; /* Permet de cliquer sur les liens dessous si besoin */
+}
+
+/* Ajustement pour mobile si nécessaire */
+@media (max-width: 799px) {
+    .deuil-corner-ribbon {
+        left: -20px;
+        width: 142px;
+        height: 20px;
+        transform: rotate(-52deg) translate(-45px, -10px)
+        
+    }
+
+    .header-title {
+        padding-left: 20px;
     }
 }
 
