@@ -97,7 +97,7 @@ function addToCalendarClick(btn) {
     const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
                     (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 
-    if (isApple) {
+    // if (isApple) {
         const ics = [
             'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kerlandrier//FR',
             'BEGIN:VEVENT',
@@ -110,22 +110,25 @@ function addToCalendarClick(btn) {
             'END:VEVENT', 'END:VCALENDAR'
         ].join('\r\n');
         const a = Object.assign(document.createElement('a'), {
-            href: URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' })),
-            download: title.slice(0, 40).replace(/[^\w ]/g, '') + '.ics'
+            href: window.URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' })),
+            download: title.slice(0, 40).replace(/[^\w ]/g, '') + '.ics',
+            style: 'display:none'
         });
+        document.body.appendChild(a);
         a.click();
-        URL.revokeObjectURL(a.href);
-    } else {
-        // Android / desktop: Google Calendar web URL — no app install required
-        window.open(
-            'https://calendar.google.com/calendar/render?action=TEMPLATE' +
-            `&text=${encodeURIComponent(title)}` +
-            `&dates=${fmt(start)}/${fmt(end)}` +
-            `&details=${encodeURIComponent(desc)}` +
-            `&location=${encodeURIComponent(loc)}`,
-            '_blank'
-        );
-    }
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(a.href);
+    // } else {
+    //     // Android / desktop: Google Calendar web URL — no app install required
+    //     window.open(
+    //         'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+    //         `&text=${encodeURIComponent(title)}` +
+    //         `&dates=${fmt(start)}/${fmt(end)}` +
+    //         `&details=${encodeURIComponent(desc)}` +
+    //         `&location=${encodeURIComponent(loc)}`,
+    //         '_blank'
+    //     );
+    // }
 }
 
 
