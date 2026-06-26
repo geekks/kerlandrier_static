@@ -78,6 +78,56 @@ function getDistanceCategory(event) {
     return 'MOINS PROCHE';
 }
 
+// ── Add to Calendar ──────────────────────────────────────────────────────────
+
+/** Escape a value for use inside an HTML double-quoted attribute. */
+function escAttr(s) {
+    return (s ?? '').replace(/[&"<>\n\r]/g, ' ');
+}
+
+function addToCalendarClick(btn) {
+    const title = btn.dataset.title;
+    const start = new Date(btn.dataset.start);
+    const end   = new Date(btn.dataset.end);
+    const loc   = btn.dataset.location;
+    const desc  = btn.dataset.description;
+
+    const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    // Apple ecosystem: iOS devices + macOS with touch (iPad in desktop mode)
+    const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                    (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+    if (isApple) {
+        const ics = [
+            'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kerlandrier//FR',
+            'BEGIN:VEVENT',
+            `UID:${Date.now()}@kerlandrier.fr`,
+            `DTSTART:${fmt(start)}`,
+            `DTEND:${fmt(end)}`,
+            `SUMMARY:${title}`,
+            `LOCATION:${loc}`,
+            `DESCRIPTION:${desc}`,
+            'END:VEVENT', 'END:VCALENDAR'
+        ].join('\r\n');
+        const a = Object.assign(document.createElement('a'), {
+            href: URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' })),
+            download: title.slice(0, 40).replace(/[^\w ]/g, '') + '.ics'
+        });
+        a.click();
+        URL.revokeObjectURL(a.href);
+    } else {
+        // Android / desktop: Google Calendar web URL — no app install required
+        window.open(
+            'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+            `&text=${encodeURIComponent(title)}` +
+            `&dates=${fmt(start)}/${fmt(end)}` +
+            `&details=${encodeURIComponent(desc)}` +
+            `&location=${encodeURIComponent(loc)}`,
+            '_blank'
+        );
+    }
+}
+
 
 function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Init date filters as Date
@@ -200,6 +250,7 @@ function addDayContent(events, d) {
                                     <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
                                 </h2>
                             <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
+                            <button class="add-to-cal" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">+ Agenda</button>
                             </span>`;
         } else {
             // GRIST
@@ -218,6 +269,7 @@ function addDayContent(events, d) {
                                     <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
                                 </h2>
                             <h3>⟜${events[i].location_name}, ${events[i].location_city}</h3>
+                            <button class="add-to-cal" data-title="${escAttr(eventTitle)}" data-start="${escAttr(new Date(events[i].start_date_time * 1000).toISOString())}" data-end="${escAttr(new Date(events[i].end_date_time * 1000).toISOString())}" data-location="${escAttr((events[i].location_name ?? '') + ', ' + (events[i].location_city ?? ''))}" data-description="${escAttr(events[i].description ?? '')}">+ Agenda</button>
                             </span>`;
         }
     }
