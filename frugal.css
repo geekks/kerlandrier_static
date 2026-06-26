@@ -456,6 +456,18 @@ header {
     pointer-events: none; /* Permet de cliquer sur les liens dessous si besoin */
 }
 
+.add-to-cal {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    background: none;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 2px 6px;
+    margin-top: 4px;
+}
+.add-to-cal:hover { opacity: 1; }
+
 /* Ajustement pour mobile si nécessaire */
 @media (max-width: 799px) {
     .deuil-corner-ribbon {
