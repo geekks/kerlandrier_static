@@ -90,45 +90,83 @@ function addToCalendarClick(btn) {
     const start = new Date(btn.dataset.start);
     const end   = new Date(btn.dataset.end);
     const loc   = btn.dataset.location;
-    const desc  = btn.dataset.description;
+    const desc  = btn.dataset.description.substring(0, 60);
 
     const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    // Apple ecosystem: iOS devices + macOS with touch (iPad in desktop mode)
-    const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-                    (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 
-    // if (isApple) {
-        const ics = [
-            'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Kerlandrier//FR',
-            'BEGIN:VEVENT',
-            `UID:${Date.now()}@kerlandrier.fr`,
-            `DTSTART:${fmt(start)}`,
-            `DTEND:${fmt(end)}`,
-            `SUMMARY:${title}`,
-            `LOCATION:${loc}`,
-            `DESCRIPTION:${desc}`,
-            'END:VEVENT', 'END:VCALENDAR'
-        ].join('\r\n');
-        const a = Object.assign(document.createElement('a'), {
-            href: window.URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' })),
-            download: title.slice(0, 40).replace(/[^\w ]/g, '') + '.ics',
-            style: 'display:none'
+    // 1. Clean description for ICS format
+    const cleanDesc = desc
+        .replace(/\\/g, '\\\\')
+        .replace(/,/g, '\\,')
+        .replace(/;/g, '\\;')
+        .replace(/\r?\n/g, '\\n')
+        .trim();
+
+    // 2. Build the ICS structure
+    const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Kerlandrier//FR',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@kerlandrier.fr`,
+        `DTSTART:${fmt(start)}`,
+        `DTEND:${fmt(end)}`,
+        `SUMMARY:${title}`,
+        `LOCATION:${loc}`,
+        `DESCRIPTION:${cleanDesc}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+
+    // 3. Create a standard filename
+    const fileName = title.slice(0, 40).replace(/[^\w ]/g, '').replace(/\s+/g, '_') + '.ics';
+
+    // 4. Create the File object from the ICS string
+    const file = new File([icsContent], fileName, { type: 'text/calendar' });
+
+    // 5. Try Native Sharing API
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({
+            files: [file],
+            title: title,
+            text: desc
+        })
+        .catch(err => {
+            // Re-throw if it wasn't a user cancellation
+            if (err.name !== 'AbortError') console.error('Share failed:', err);
         });
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(a.href);
-    // } else {
-    //     // Android / desktop: Google Calendar web URL — no app install required
-    //     window.open(
-    //         'https://calendar.google.com/calendar/render?action=TEMPLATE' +
-    //         `&text=${encodeURIComponent(title)}` +
-    //         `&dates=${fmt(start)}/${fmt(end)}` +
-    //         `&details=${encodeURIComponent(desc)}` +
-    //         `&location=${encodeURIComponent(loc)}`,
-    //         '_blank'
-    //     );
-    // }
+    } else {
+        // 6. FALLBACK: Device doesn't support file sharing (e.g., Desktop)
+        const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                        (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+        if (isApple) {
+            // Fallback for Apple Desktop (Safari Mac doesn't always support file sharing)
+            const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
+            const dataUrl = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
+            
+            const a = Object.assign(document.createElement('a'), {
+                href: dataUrl,
+                download: fileName,
+                style: 'display:none'
+            });
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        } else {
+            // Fallback for Android/Desktop Chrome/Firefox: Google Calendar Link
+            window.open(
+                'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+                `&text=${encodeURIComponent(title)}` +
+                `&dates=${fmt(start)}/${fmt(end)}` +
+                `&details=${encodeURIComponent(desc)}` +
+                `&location=${encodeURIComponent(loc)}`,
+                '_blank'
+            );
+        }
+    }
 }
 
 
