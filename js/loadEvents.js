@@ -85,65 +85,74 @@ function escAttr(s) {
     return (s ?? '').replace(/[&"<>\n\r]/g, ' ');
 }
 
-function addToCalendarClick(btn) {
-    const title = btn.dataset.title;
-    const start = new Date(btn.dataset.start);
-    const end   = new Date(btn.dataset.end);
-    const loc   = btn.dataset.location;
-    const desc  = btn.dataset.description.substring(0, 60);
+function buildIcsContent(title, start, end, loc, desc) {
+    const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const cleanDesc = desc
+        .replace(/\\/g, '\\\\')
+        .replace(/,/g, '\\,')
+        .replace(/;/g, '\\;')
+        .replace(/\r?\n/g, '\\n')
+        .trim();
+
+    return [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Kerlandrier//FR',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@kerlandrier.fr`,
+        `DTSTART:${fmt(start)}`,
+        `DTEND:${fmt(end)}`,
+        `SUMMARY:${title}`,
+        `LOCATION:${loc}`,
+        `DESCRIPTION:${cleanDesc}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+}
+
+function makeIcsFileName(title) {
+    return title.slice(0, 40).replace(/[^\w ]/g, '').replace(/\s+/g, '_') + '.ics';
+}
+
+function downloadIcs(icsContent, fileName) {
+    const a = Object.assign(document.createElement('a'), { download: fileName, style: 'display:none' });
+
+    if (typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function') {
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+    }
+
+    // Fallback for browsers/environments without URL.createObjectURL.
+    const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
+    a.href = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+function addToCalendarClick(control) {
+    const provider = control.value;
+    if (!provider) return;
+
+    const title = control.dataset.title;
+    const start = new Date(control.dataset.start);
+    const end   = new Date(control.dataset.end);
+    const loc   = control.dataset.location;
+    const desc  = control.dataset.description.substring(0, 60);
 
     const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const icsContent = buildIcsContent(title, start, end, loc, desc);
+    const fileName = makeIcsFileName(title);
 
-    const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-                    (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
-
-    if (isApple) {
-        // --- APPLE STRATEGY: Native .ics file ---
-        const cleanDesc = desc
-            .replace(/\\/g, '\\\\')
-            .replace(/,/g, '\\,')
-            .replace(/;/g, '\\;')
-            .replace(/\r?\n/g, '\\n')
-            .trim();
-
-        const icsContent = [
-            'BEGIN:VCALENDAR',
-            'VERSION:2.0',
-            'PRODID:-//Kerlandrier//FR',
-            'CALSCALE:GREGORIAN',
-            'METHOD:PUBLISH',
-            'BEGIN:VEVENT',
-            `UID:${Date.now()}@kerlandrier.fr`,
-            `DTSTART:${fmt(start)}`,
-            `DTEND:${fmt(end)}`,
-            `SUMMARY:${title}`,
-            `LOCATION:${loc}`,
-            `DESCRIPTION:${cleanDesc}`,
-            'END:VEVENT',
-            'END:VCALENDAR'
-        ].join('\r\n');
-
-        const fileName = title.slice(0, 40).replace(/[^\w ]/g, '').replace(/\s+/g, '_') + '.ics';
-        const file = new File([icsContent], fileName, { type: 'text/calendar' });
-
-        // iOS Safari supports sharing .ics via Web Share API
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-            navigator.share({ files: [file] }).catch(err => {
-                if (err.name !== 'AbortError') console.error(err);
-            });
-        } else {
-            // Fallback for macOS Safari or older iOS
-            const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
-            const dataUrl = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
-            const a = Object.assign(document.createElement('a'), { href: dataUrl, download: fileName, style: 'display:none' });
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
-    } else {
-        // --- ANDROID & DESKTOP STRATEGY: Google Calendar Deep Link ---
-        // On Android, this link prompts the OS to open the native Google Calendar app directly.
+    if (provider === 'google') {
         window.open(
             'https://calendar.google.com/calendar/render?action=TEMPLATE' +
             `&text=${encodeURIComponent(title)}` +
@@ -152,7 +161,22 @@ function addToCalendarClick(btn) {
             `&location=${encodeURIComponent(loc)}`,
             '_blank'
         );
+    } else if (provider === 'apple') {
+        const file = new File([icsContent], fileName, { type: 'text/calendar' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator.share({ files: [file] }).catch(err => {
+                if (err.name !== 'AbortError') console.error(err);
+            });
+        } else {
+            alert("Votre navigateur ne supporte pas le partage de fichiers. Le fichier .ics sera téléchargé à la place.");
+            downloadIcs(icsContent, fileName);
+        }
+    } else if (provider === 'ics') {
+        downloadIcs(icsContent, fileName);
     }
+
+    // Reset so the same provider can be selected again later.
+    control.value = '';
 }
 
 
@@ -270,14 +294,24 @@ function addDayContent(events, d) {
             // Main title
             const eventTitle = events[i].title.toLowerCase().toTitleCase()
             newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
-                                <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
+            <div class="tag-container">
+            ${nextTime}  
+                <label class="add-to-cal-wrap">
+                    <select class="add-to-cal" aria-label="Ajouter au calendrier" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">
+                        <option value="">📅</option>
+                        <option value="apple">APPLE</option>
+                        <option value="google">GOOGLE</option>
+                        <option value="ics">.ics</option>
+                    </select>
+                </label>
+            ${(kws.length > 0) ? kws.join("") : ""} </div>
+            
                                 <h2 class='card-title ${cancel ? "annule" : ""}'>
                                     ${cancel ? "<span >[ANNULÉ]</span>" : ""}
                                     ${complet ? "<span >[COMPLET]</span>" : ""}
                                     <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
                                 </h2>
                             <h3>⟜${events[i].location.name}, ${events[i].location.city}</h3>
-                            <button class="add-to-cal" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">+ Agenda</button>
                             </span>`;
         } else {
             // GRIST
@@ -289,14 +323,24 @@ function addDayContent(events, d) {
             const kws = (events[i].keywords) ? events[i].keywords.split(",").map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
             const eventTitle = events[i].title.toLowerCase().toTitleCase()
             newContent += `<span class='evenement' title='${events[i].description?.replace(/[&<>]/g, " ")}'>
-                                <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
+                                <div class="tag-container">
+                                ${nextTime} 
+                                 <label class="add-to-cal-wrap">
+                    <select class="add-to-cal" aria-label="Ajouter au calendrier" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">
+                        <option value="">📅</option>
+                        <option value="apple">APPLE</option>
+                        <option value="google">GOOGLE</option>
+                        <option value="ics">.ics</option>
+                    </select>
+                </label>
+                             ${(kws.length > 0) ? kws.join("") : ""} </div>
                                 <h2 class='card-title ${cancel ? "annule" : ""}'>
                                     ${cancel ? "<span >[ANNULÉ]</span>" : ""}
                                     ${complet ? "<span >[COMPLET]</span>" : ""}
                                     <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
                                 </h2>
                             <h3>⟜${events[i].location_name}, ${events[i].location_city}</h3>
-                            <button class="add-to-cal" data-title="${escAttr(eventTitle)}" data-start="${escAttr(new Date(events[i].start_date_time * 1000).toISOString())}" data-end="${escAttr(new Date(events[i].end_date_time * 1000).toISOString())}" data-location="${escAttr((events[i].location_name ?? '') + ', ' + (events[i].location_city ?? ''))}" data-description="${escAttr(events[i].description ?? '')}">+ Agenda</button>
+                            
                             </span>`;
         }
     }

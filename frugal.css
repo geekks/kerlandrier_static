@@ -457,15 +457,16 @@ header {
 }
 
 .add-to-cal {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     opacity: 0.6;
-    background: none;
-    border: 1px solid currentColor;
-    border-radius: 3px;
+    border: none;
     cursor: pointer;
-    padding: 2px 6px;
-    margin-top: 4px;
+    width: 20px;
+    text-align: center;
+    appearance: none;
+    vertical-align: text-top;
 }
+
 .add-to-cal:hover { opacity: 1; }
 
 /* Ajustement pour mobile si nécessaire */

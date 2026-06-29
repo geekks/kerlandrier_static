@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
         buildCalendar(null, filters, selectedMonth);
     });
 
-    // Add-to-calendar — event delegation (buttons are rendered dynamically)
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.add-to-cal');
-        if (btn) addToCalendarClick(btn);
+    // Add-to-calendar — event delegation (selects are rendered dynamically)
+    document.addEventListener('change', (e) => {
+        const select = e.target.closest('.add-to-cal');
+        if (select) addToCalendarClick(select);
     });
 
     // Event listeners for distance-category filters: TRES PROCHE, PROCHE, MOINS PROCHE
