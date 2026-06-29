@@ -126,7 +126,8 @@ function downloadIcs(icsContent, fileName) {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        
+        setTimeout(() => URL.revokeObjectURL(url), 250); // iOS fix so it handles redirection properly (asynchronous stuff)
         return;
     }
 
