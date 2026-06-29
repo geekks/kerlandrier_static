@@ -117,23 +117,55 @@ function makeIcsFileName(title) {
 }
 
 function downloadIcs(icsContent, fileName) {
-    const a = Object.assign(document.createElement('a'), { download: fileName, style: 'display:none' });
+    const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                    (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 
-    if (typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function') {
-        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        a.href = url;
+    // --- STRATEGY 1: BULLETPROOF iOS PATH ---
+    if (isApple) {
+        // Convert explicitly to Base64
+        const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
+        const dataUrl = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
+
+        // Create a highly visible (but hidden offscreen) element 
+        // using target="_blank" is the secret sauce for iOS calendar interception
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.target = '_blank'; 
+        a.style.position = 'absolute';
+        a.style.top = '-9999px';
+
         document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
         
-        setTimeout(() => URL.revokeObjectURL(url), 250); // iOS fix so it handles redirection properly (asynchronous stuff)
+        // Slight delay before removing from DOM just in case
+        setTimeout(() => document.body.removeChild(a), 300);
         return;
     }
 
-    // Fallback for browsers/environments without URL.createObjectURL.
+    // --- STRATEGY 2: STANDARD BLOB PATH (Android / Desktop) ---
+    if (typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function') {
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = Object.assign(document.createElement('a'), { 
+            href: url, 
+            download: fileName, 
+            style: 'display:none' 
+        });
+        
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+    }
+
+    // Ultimate fallback for ancient setups
     const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
-    a.href = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
+    const a = Object.assign(document.createElement('a'), { 
+        href: `data:text/calendar;charset=utf-8;base64,${base64Ics}`, 
+        style: 'display:none' 
+    });
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
