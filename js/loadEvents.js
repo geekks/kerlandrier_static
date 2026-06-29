@@ -138,34 +138,36 @@ function addToCalendarClick(btn) {
             if (err.name !== 'AbortError') console.error('Share failed:', err);
         });
     } else {
-        // 6. FALLBACK: Device doesn't support file sharing (e.g., Desktop)
-        const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-                        (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+        alert("something wrong");
+        
+        // // 6. FALLBACK: Device doesn't support file sharing (e.g., Desktop)
+        // const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        //                 (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 
-        if (isApple) {
-            // Fallback for Apple Desktop (Safari Mac doesn't always support file sharing)
-            const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
-            const dataUrl = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
+        // if (isApple) {
+        //     // Fallback for Apple Desktop (Safari Mac doesn't always support file sharing)
+        //     const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
+        //     const dataUrl = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
             
-            const a = Object.assign(document.createElement('a'), {
-                href: dataUrl,
-                download: fileName,
-                style: 'display:none'
-            });
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        } else {
-            // Fallback for Android/Desktop Chrome/Firefox: Google Calendar Link
-            window.open(
-                'https://calendar.google.com/calendar/render?action=TEMPLATE' +
-                `&text=${encodeURIComponent(title)}` +
-                `&dates=${fmt(start)}/${fmt(end)}` +
-                `&details=${encodeURIComponent(desc)}` +
-                `&location=${encodeURIComponent(loc)}`,
-                '_blank'
-            );
-        }
+        //     const a = Object.assign(document.createElement('a'), {
+        //         href: dataUrl,
+        //         download: fileName,
+        //         style: 'display:none'
+        //     });
+        //     document.body.appendChild(a);
+        //     a.click();
+        //     document.body.removeChild(a);
+        // } else {
+        //     // Fallback for Android/Desktop Chrome/Firefox: Google Calendar Link
+        //     window.open(
+        //         'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        //         `&text=${encodeURIComponent(title)}` +
+        //         `&dates=${fmt(start)}/${fmt(end)}` +
+        //         `&details=${encodeURIComponent(desc)}` +
+        //         `&location=${encodeURIComponent(loc)}`,
+        //         '_blank'
+        //     );
+        // }
     }
 }
 
