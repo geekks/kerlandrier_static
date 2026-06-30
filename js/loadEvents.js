@@ -331,7 +331,6 @@ function addDayContent(events, d) {
             ${nextTime}  
                 <label class="add-to-cal-wrap">
                     <select class="add-to-cal" aria-label="Ajouter au calendrier" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">
-                        <option value=""></option>
                         <option value="apple">APPLE</option>
                         <option value="google">GOOGLE</option>
                         <option value="ics">.ics</option>
@@ -360,7 +359,6 @@ function addDayContent(events, d) {
                                 ${nextTime} 
                                  <label class="add-to-cal-wrap">
                     <select class="add-to-cal" aria-label="Ajouter au calendrier" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">
-                        <option value=""></option>
                         <option value="apple">APPLE</option>
                         <option value="google">GOOGLE</option>
                         <option value="ics">.ics</option>
