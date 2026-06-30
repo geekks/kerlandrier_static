@@ -458,7 +458,6 @@ header {
 
 .add-to-cal {
     font-size: 0.9rem;
-    opacity: 0.6;
     border: none;
     cursor: pointer;
     width: 20px;
@@ -466,13 +465,10 @@ header {
     padding: 0;
     text-align: center;
     appearance: none;
-    /* background: url('/ressources/kerlandrier_add_to_calendar.png') center/16px 16px no-repeat; */
     background: url('/ressources/kerlandrier_add_calendar.svg') center/16px 16px no-repeat;
     color: transparent;
-    vertical-align: text-top;
+    vertical-align: center;
 }
-
-.add-to-cal:hover { opacity: 1; }
 
 .add-to-cal option {
     color: initial;
