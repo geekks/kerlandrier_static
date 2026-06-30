@@ -462,12 +462,21 @@ header {
     border: none;
     cursor: pointer;
     width: 20px;
+    height: 20px;
+    padding: 0;
     text-align: center;
     appearance: none;
+    /* background: url('/ressources/kerlandrier_add_to_calendar.png') center/16px 16px no-repeat; */
+    background: url('/ressources/kerlandrier_add_calendar.svg') center/16px 16px no-repeat;
+    color: transparent;
     vertical-align: text-top;
 }
 
 .add-to-cal:hover { opacity: 1; }
+
+.add-to-cal option {
+    color: initial;
+}
 
 /* Ajustement pour mobile si nécessaire */
 @media (max-width: 799px) {
