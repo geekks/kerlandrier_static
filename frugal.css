@@ -456,6 +456,24 @@ header {
     pointer-events: none; /* Permet de cliquer sur les liens dessous si besoin */
 }
 
+.add-to-cal {
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    text-align: center;
+    appearance: none;
+    background: url('/ressources/kerlandrier_add_calendar.svg') center/16px 16px no-repeat;
+    color: transparent;
+    vertical-align: center;
+}
+
+.add-to-cal option {
+    color: initial;
+}
+
 /* Ajustement pour mobile si nécessaire */
 @media (max-width: 799px) {
     .deuil-corner-ribbon {
@@ -466,9 +484,9 @@ header {
         
     }
 
-    .header-title {
+    /* .header-title {
         padding-left: 20px;
-    }
+    } */
 }
 
 /* MEDIA QUERIES --- pour la lecture sur ordinateur, mobile et papier  */

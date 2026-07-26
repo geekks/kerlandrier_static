@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         buildCalendar(null, filters, selectedMonth);
     });
 
+    // Add-to-calendar — event delegation (selects are rendered dynamically)
+    document.addEventListener('change', (e) => {
+        const select = e.target.closest('.add-to-cal');
+        if (select) addToCalendarClick(select);
+    });
+
     // Event listeners for distance-category filters: TRES PROCHE, PROCHE, MOINS PROCHE
     const filterButtons = document.getElementsByClassName('filter');
     for (let i = 0; i < filterButtons.length; i++) {
@@ -39,3 +45,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

@@ -78,6 +78,140 @@ function getDistanceCategory(event) {
     return 'MOINS PROCHE';
 }
 
+// ── Add to Calendar ──────────────────────────────────────────────────────────
+
+/** Escape a value for use inside an HTML double-quoted attribute. */
+function escAttr(s) {
+    return (s ?? '').replace(/[&"<>\n\r]/g, ' ');
+}
+
+function buildIcsContent(title, start, end, loc, desc) {
+    const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const cleanDesc = desc
+        .replace(/\\/g, '\\\\')
+        .replace(/,/g, '\\,')
+        .replace(/;/g, '\\;')
+        .replace(/\r?\n/g, '\\n')
+        .trim();
+
+    return [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Kerlandrier//FR',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@kerlandrier.fr`,
+        `DTSTART:${fmt(start)}`,
+        `DTEND:${fmt(end)}`,
+        `SUMMARY:${title}`,
+        `LOCATION:${loc}`,
+        `DESCRIPTION:${cleanDesc}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+}
+
+function makeIcsFileName(title) {
+    return title.slice(0, 40).replace(/[^\w ]/g, '').replace(/\s+/g, '_') + '.ics';
+}
+
+function downloadIcs(icsContent, fileName) {
+    const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                    (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+    // --- STRATEGY 1: BULLETPROOF iOS PATH ---
+    if (isApple) {
+        // Convert explicitly to Base64
+        const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
+        const dataUrl = `data:text/calendar;charset=utf-8;base64,${base64Ics}`;
+
+        // Create a highly visible (but hidden offscreen) element 
+        // using target="_blank" is the secret sauce for iOS calendar interception
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.target = '_blank'; 
+        a.style.position = 'absolute';
+        a.style.top = '-9999px';
+
+        document.body.appendChild(a);
+        a.click();
+        
+        // Slight delay before removing from DOM just in case
+        setTimeout(() => document.body.removeChild(a), 300);
+        return;
+    }
+
+    // --- STRATEGY 2: STANDARD BLOB PATH (Android / Desktop) ---
+    if (typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function') {
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = Object.assign(document.createElement('a'), { 
+            href: url, 
+            download: fileName, 
+            style: 'display:none' 
+        });
+        
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+    }
+
+    // Ultimate fallback for ancient setups
+    const base64Ics = btoa(unescape(encodeURIComponent(icsContent)));
+    const a = Object.assign(document.createElement('a'), { 
+        href: `data:text/calendar;charset=utf-8;base64,${base64Ics}`, 
+        style: 'display:none' 
+    });
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+function addToCalendarClick(control) {
+    const provider = control.value;
+    if (!provider) return;
+
+    const title = control.dataset.title;
+    const start = new Date(control.dataset.start);
+    const end   = new Date(control.dataset.end);
+    const loc   = control.dataset.location;
+    const desc  = control.dataset.description.substring(0, 60);
+
+    const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const icsContent = buildIcsContent(title, start, end, loc, desc);
+    const fileName = makeIcsFileName(title);
+
+    if (provider === 'google') {
+        window.open(
+            'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+            `&text=${encodeURIComponent(title)}` +
+            `&dates=${fmt(start)}/${fmt(end)}` +
+            `&details=${encodeURIComponent(desc)}` +
+            `&location=${encodeURIComponent(loc)}`,
+            '_blank'
+        );
+    } else if (provider === 'apple') {
+        const file = new File([icsContent], fileName, { type: 'text/calendar' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator.share({ files: [file] }).catch(err => {
+                if (err.name !== 'AbortError') console.error(err);
+            });
+        } else {
+            alert("Votre navigateur ne supporte pas le partage de fichiers. Le fichier .ics sera téléchargé à la place.");
+            downloadIcs(icsContent, fileName);
+        }
+    } else if (provider === 'ics') {
+        downloadIcs(icsContent, fileName);
+    }
+
+    // Reset so the same provider can be selected again later.
+    control.value = '';
+}
+
 
 function buildCalendar(evnts = null, areaFilters = [], dateFilter = "") {
     // Init date filters as Date
@@ -193,7 +327,17 @@ function addDayContent(events, d) {
             // Main title
             const eventTitle = events[i].title.toLowerCase().toTitleCase()
             newContent += `<span class='evenement' title='${events[i].longDescription?.replace(/[&<>]/g, " ") ?? events[i].description?.replace(/[&<>]/g, " ")}'>
-                                <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
+            <div class="tag-container">
+            ${nextTime}  
+                <label class="add-to-cal-wrap">
+                    <select class="add-to-cal" aria-label="Ajouter au calendrier" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">
+                        <option value="apple">APPLE</option>
+                        <option value="google">GOOGLE</option>
+                        <option value="ics">.ics</option>
+                    </select>
+                </label>
+            ${(kws.length > 0) ? kws.join("") : ""} </div>
+            
                                 <h2 class='card-title ${cancel ? "annule" : ""}'>
                                     ${cancel ? "<span >[ANNULÉ]</span>" : ""}
                                     ${complet ? "<span >[COMPLET]</span>" : ""}
@@ -211,13 +355,23 @@ function addDayContent(events, d) {
             const kws = (events[i].keywords) ? events[i].keywords.split(",").map((k) => k ? `<div class="tag"> #${k} </div>` : "") : [];
             const eventTitle = events[i].title.toLowerCase().toTitleCase()
             newContent += `<span class='evenement' title='${events[i].description?.replace(/[&<>]/g, " ")}'>
-                                <div class="tag-container">${nextTime}  ${(kws.length > 0) ? kws.join("") : ""} </div>
+                                <div class="tag-container">
+                                ${nextTime} 
+                                 <label class="add-to-cal-wrap">
+                    <select class="add-to-cal" aria-label="Ajouter au calendrier" data-title="${escAttr(eventTitle)}" data-start="${escAttr(events[i].nextTiming?.begin ?? '')}" data-end="${escAttr(events[i].nextTiming?.end ?? '')}" data-location="${escAttr(events[i].location.name + ', ' + events[i].location.city)}" data-description="${escAttr(events[i].longDescription ?? events[i].description ?? '')}">
+                        <option value="apple">APPLE</option>
+                        <option value="google">GOOGLE</option>
+                        <option value="ics">.ics</option>
+                    </select>
+                </label>
+                             ${(kws.length > 0) ? kws.join("") : ""} </div>
                                 <h2 class='card-title ${cancel ? "annule" : ""}'>
                                     ${cancel ? "<span >[ANNULÉ]</span>" : ""}
                                     ${complet ? "<span >[COMPLET]</span>" : ""}
                                     <a href=${redirectLink} target="_blank"> ${eventTitle} </a>
                                 </h2>
                             <h3>⟜${events[i].location_name}, ${events[i].location_city}</h3>
+                            
                             </span>`;
         }
     }
