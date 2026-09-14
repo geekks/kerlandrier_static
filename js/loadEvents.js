@@ -12,16 +12,21 @@ async function loadEvents(query = defaultQuery) {
     const response = await fetch(query);
     const evnts = await response.json();
     
-    const grist = await fetch('https://grist.hentou.org/api/docs/fRo9SxKZ7NnJnN4vkNrg1s/tables/Kerlandrier/records');
-    const gristData = grist.status === 200 
-        ? await grist.json() 
-        : null;
-    const gristEvnts = (gristData && gristData.records)
-        ? gristData.records.map((data) => data.fields)
-        : {};
-    const upcomingGristEvnts = (gristEvnts.length > 0)
-        ? gristEvnts.filter((e) => new Date() <= new Date(e.end_date_time * 1000))
-        : [];
+    let upcomingGristEvnts = [];
+    try {
+        const grist = await fetch('https://grist.hentou.org/api/docs/fRo9SxKZ7NnJnN4vkNrg1s/tables/Kerlandrier/records');
+        const gristData = grist.ok
+            ? await grist.json()
+            : null;
+        const gristEvnts = (gristData && Array.isArray(gristData.records))
+            ? gristData.records.map((data) => data.fields)
+            : [];
+        upcomingGristEvnts = gristEvnts.filter((e) =>
+            new Date() <= new Date(e.end_date_time * 1000)
+        );
+    } catch (error) {
+        console.warn('Unable to fetch Grist events; continuing without them.', error);
+    }
 
         // Merge OA events with Grist events
         const allEvnts = [...evnts.events, ...upcomingGristEvnts];
